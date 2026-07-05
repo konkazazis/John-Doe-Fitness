@@ -1,6 +1,6 @@
 <section class="relative overflow-hidden bg-stone-50" id="home">
     <div
-        class="mx-auto max-w-7xl px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center py-20 lg:py-16"
+        class="mx-auto max-w-7xl px-6 lg:px-0 grid lg:grid-cols-2 gap-12 items-center py-20 lg:py-16"
     >
         {{-- Copy --}}
         <div>

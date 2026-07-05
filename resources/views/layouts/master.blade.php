@@ -74,7 +74,7 @@
                         href="{{ route("home") }}"
                         class="text-base font-semibold uppercase tracking-[0.35em] text-stone-900"
                     >
-                        kostas
+                        Dinos
                     </a>
 
                     <nav
@@ -99,12 +99,12 @@
                             Contact
                         </a>
                     </nav>
-                    <div
-                        class="group relative inline-block text-left"
-                        id="dropdown-container"
-                    >
-                        @auth
-                            @if (auth()->user()->is_admin)
+                    @auth
+                        @if (auth()->user()->is_admin)
+                            <div
+                                class="group relative inline-block text-left"
+                                id="dropdown-container"
+                            >
                                 <button
                                     type="button"
                                     id="dropdown-button"
@@ -155,26 +155,26 @@
                                         </form>
                                     </div>
                                 </div>
-                            @endif
-                        @endauth
+                            </div>
+                        @endif
+                    @endauth
 
-                        <button
-                            id="burger-btn"
-                            class="sm:hidden flex flex-col justify-center items-center gap-1.5 w-8 h-8 text-stone-700 hover:text-stone-900 transition-colors"
-                            aria-label="Toggle menu"
-                            aria-expanded="false"
-                        >
-                            <span
-                                class="burger-line block w-6 h-0.5 bg-current transition-all duration-300"
-                            ></span>
-                            <span
-                                class="burger-line block w-6 h-0.5 bg-current transition-all duration-300"
-                            ></span>
-                            <span
-                                class="burger-line block w-6 h-0.5 bg-current transition-all duration-300"
-                            ></span>
-                        </button>
-                    </div>
+                    <button
+                        id="burger-btn"
+                        class="sm:hidden flex flex-col justify-center items-center gap-1.5 w-8 h-8 text-stone-700 hover:text-stone-900 transition-colors"
+                        aria-label="Toggle menu"
+                        aria-expanded="false"
+                    >
+                        <span
+                            class="burger-line block w-6 h-0.5 bg-current transition-all duration-300"
+                        ></span>
+                        <span
+                            class="burger-line block w-6 h-0.5 bg-current transition-all duration-300"
+                        ></span>
+                        <span
+                            class="burger-line block w-6 h-0.5 bg-current transition-all duration-300"
+                        ></span>
+                    </button>
                 </div>
 
                 <nav
