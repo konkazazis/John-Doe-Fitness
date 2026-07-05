@@ -16,6 +16,9 @@ use App\Livewire\Admin\Category\CategoryManager;
 use App\Livewire\Admin\Tag\TagManager;
 use App\Livewire\Admin\Contact\ContactManager;
 use App\Livewire\Admin\Project\ProjectManager;
+use App\Livewire\Admin\Plans\PlansManager;
+use App\Livewire\Admin\Testimonials\TestimonialsManager;
+use App\Livewire\Admin\ClientsMessages\ClientsMessagesManager;
 use Illuminate\Support\Facades\Route;
 
 // ─── SEO ──────────────────────────────────────────────────────────────────────
@@ -46,9 +49,12 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/', AdminDashboard::class)->name('dashboard');
     Route::get('/posts', PostManager::class)->name('posts.index');
     Route::get('/projects', ProjectManager::class)->name('projects.index');
+    Route::get('/plans', PlansManager::class)->name('plans.index');
+    Route::get('/testimonials', TestimonialsManager::class)->name('testimonials.index');
     Route::get('/categories', CategoryManager::class)->name('categories.index');
     Route::get('/tags', TagManager::class)->name('tags.index');
     Route::get('/messages', ContactManager::class)->name('messages.index');
+    Route::get('/client-messages', ClientsMessagesManager::class)->name('clients-messages.index');
     Route::redirect('/settings', '/admin/settings/profile')->name('settings');
     Route::get('/settings/profile', SettingsProfile::class)->name('settings.profile');
     Route::get('/settings/security', SettingsSecurity::class)->name('settings.security');
