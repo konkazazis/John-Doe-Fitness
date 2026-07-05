@@ -1,74 +1,112 @@
-<section id="home" class="pt-26 pb-32 px-6 sm:px-8 bg-white">
-    <div class="max-w-3xl mx-auto flex flex-col lg:flex-row lg:gap-12">
-        <div class="flex-col justify-between">
-            <h1 class="font-serif text-6xl md:text-7xl font-bold text-stone-900 mb-6 leading-tight">Kostas Kazazis</h1>
-            <p class="font-serif text-2xl md:text-3xl text-stone-700 mb-4 font-light">Full-Stack Web Developer</p>
-            <p class="text-lg text-stone-600 leading-relaxed mb-8 font-light">
-                Every freelancer needs a website. Crafting clean, reliable and custom sites that get your name out
-                there. My support, in your journey. Based in Düsseldorf.
+<section class="relative overflow-hidden bg-stone-50" id="home">
+    <div
+        class="mx-auto max-w-7xl px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center py-20 lg:py-28"
+    >
+        {{-- Copy --}}
+        <div>
+            <span class="section-label">Coaching &amp; Nutrition</span>
+            <h1
+                class="font-display text-5xl sm:text-6xl font-bold tracking-tight text-stone-900 leading-[1.05]"
+            >
+                Train harder.
+                <span class="text-[#eb5424]">Fuel smarter.</span>
+            </h1>
+            <p class="mt-6 text-lg text-stone-600 max-w-lg">
+                One-to-one strength coaching and personalised nutrition plans,
+                built around your body, your schedule and your goals — not a
+                generic template.
             </p>
-            <div class="mb-8 flex">
-                <span
-                    class="reveal inline-flex items-center gap-[9px] pl-3 pr-3.5 py-[7px] border border-line rounded-full font-mono text-[12px] text-ink-soft bg-card"
-                >
-                    <!-- Container for the dot -->
-                    <span class="relative flex h-2 w-2 flex-shrink-0">
-                        <!-- The Ping Ring (Absolute) -->
-                        <span
-                            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[oklch(0.62_0.16_150)] opacity-75"
-                        ></span>
-                        <!-- The Static Dot (Relative) -->
-                        <span class="relative inline-flex h-2 w-2 rounded-full bg-[oklch(0.62_0.16_150)]"></span>
-                    </span>
 
-                    <!-- Text -->
-                    <p class="m-0 p-0 leading-none">Available for new freelance work — Summer 2026</p>
-                </span>
+            <div class="mt-8 flex flex-wrap gap-4">
+                <a
+                    href="#contact"
+                    class="smoothScroll inline-flex items-center justify-center rounded-full bg-[#eb5424] px-7 py-3 text-sm font-semibold text-white hover:bg-[#c94219] transition-colors"
+                >
+                    Book a free consult
+                </a>
+                <a
+                    href="#services"
+                    class="smoothScroll inline-flex items-center justify-center rounded-full border border-stone-300 px-7 py-3 text-sm font-semibold text-stone-800 hover:border-stone-400 transition-colors"
+                >
+                    See what's included
+                </a>
+            </div>
+
+            {{-- Live stat HUD --}}
+            <div
+                x-data="{
+                    clients: 0,
+                    sessions: 0,
+                    mealsPlanned: 0,
+                    targets: { clients: 120, sessions: 4800, mealsPlanned: 32000 },
+                    animate() {
+                        const duration = 1400
+                        const start = performance.now()
+                        const step = (now) => {
+                            const p = Math.min((now - start) / duration, 1)
+                            const eased = 1 - Math.pow(1 - p, 3)
+                            this.clients = Math.round(this.targets.clients * eased)
+                            this.sessions = Math.round(this.targets.sessions * eased)
+                            this.mealsPlanned = Math.round(this.targets.mealsPlanned * eased)
+                            if (p < 1) requestAnimationFrame(step)
+                        }
+                        requestAnimationFrame(step)
+                    },
+                }"
+                x-init="animate()"
+                class="mt-12 grid grid-cols-3 gap-6 max-w-md"
+            >
+                <div class="stat-chip">
+                    <span class="stat-value" x-text="clients"></span>
+                    <span class="stat-label">Active clients</span>
+                </div>
+                <div class="stat-chip">
+                    <span
+                        class="stat-value"
+                        x-text="sessions.toLocaleString()"
+                    ></span>
+                    <span class="stat-label">Sessions coached</span>
+                </div>
+                <div class="stat-chip">
+                    <span
+                        class="stat-value"
+                        x-text="mealsPlanned.toLocaleString()"
+                    ></span>
+                    <span class="stat-label">Meals planned</span>
+                </div>
             </div>
         </div>
 
-        <div class="pb-12 flex-shrink-0">
+        {{-- Diagonal visual panel --}}
+        <div class="relative h-[420px] lg:h-[520px]">
+            <div
+                class="absolute inset-0 rounded-[2.5rem] bg-[#eb5424]"
+                style="clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%)"
+            ></div>
+
             <img
-                src="https://s3.eu-north-1.amazonaws.com/kazazis.dev/profile-pic.png"
-                alt="Kostas Kazazis"
-                class="w-56 h-56 sm:w-72 sm:h-72 lg:w-82 lg:h-82 rounded-none mx-auto mb-10 object-cover border border-stone-300"
+                src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80"
+                alt="Coach guiding a client through a strength session"
+                class="absolute inset-0 h-full w-full object-cover rounded-[2.5rem]"
+                style="
+                    clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
+                    mix-blend-mode: luminosity;
+                    opacity: 0.85;
+                "
             />
 
-            <div class="flex justify-center gap-8 mb-12">
-                <a
-                    href="https://github.com/konkazazis"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub"
-                    class="text-stone-600 hover:text-stone-900 transition text-xl"
-                >
-                    <i class="fa-brands fa-github"></i>
-                </a>
-                <a
-                    href="https://www.linkedin.com/in/konstantinos-kazazis-32a470228/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn"
-                    class="text-stone-600 hover:text-stone-900 transition text-xl"
-                >
-                    <i class="fa-brands fa-linkedin"></i>
-                </a>
-                <a
-                    href="{{ route("blog") }}"
-                    aria-label="Blog"
-                    class="text-stone-600 hover:text-stone-900 transition text-xl"
-                >
-                    <i class="fa fa-pencil"></i>
-                </a>
-            </div>
-
-            <div class="text-center">
-                <a
-                    href="#work"
-                    class="inline-block text-sm font-medium text-stone-900 border border-stone-400 px-6 py-2 hover:bg-stone-50 transition smoothScroll tracking-wide"
-                >
-                    EXPLORE WORK
-                </a>
+            <div
+                class="absolute bottom-6 left-6 bg-white/95 backdrop-blur rounded-2xl px-5 py-4 shadow-lg max-w-[220px]"
+            >
+                <p class="text-xs uppercase tracking-[0.2em] text-stone-500">
+                    This week
+                </p>
+                <p class="font-display text-2xl font-bold text-stone-900 mt-1">
+                    6 spots left
+                </p>
+                <p class="text-xs text-stone-500 mt-1">
+                    for new 1:1 coaching intakes
+                </p>
             </div>
         </div>
     </div>

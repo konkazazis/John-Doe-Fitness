@@ -1,40 +1,72 @@
-@props(['posts'])
+@props([
+    "posts",
+])
 
-@if($posts->isNotEmpty())
-<section id="blog" class="py-24 px-6 sm:px-8 bg-white border-t border-stone-300">
-    <div class="max-w-5xl mx-auto">
-        <h2 class="font-serif text-5xl md:text-6xl font-bold text-stone-900 mb-20 text-center">
-            Latest Essays
-        </h2>
+@if ($posts->isNotEmpty())
+    <section id="blog" class="py-24 px-6 sm:px-8 bg-stone-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="max-w-2xl mx-auto text-center mb-16">
+                <span class="section-label justify-center">Writing</span>
+                <h2 class="section-heading">Latest essays</h2>
+            </div>
 
-        <div class="space-y-12 mb-16">
-            @foreach($posts->take(3) as $post)
-                <article class="border-b border-stone-300 pb-12">
-                    @if($post->category)
-                        <span class="text-xs font-medium text-stone-600 uppercase tracking-widest">
-                            {{ $post->category->name }}
-                        </span>
-                    @endif
-                    <h3 class="font-serif text-3xl font-bold text-stone-900 my-3 hover:text-stone-700 transition">
-                        <a href="{{ route('posts.show', $post->slug) }}">{{ $post->title }}</a>
-                    </h3>
-                    @if($post->excerpt)
-                        <p class="text-stone-600 leading-relaxed font-light mb-4">{!! Str::limit($post->excerpt, 150) !!}</p>
-                    @endif
-                    <a href="{{ route('posts.show', $post->slug) }}"
-                        class="text-sm font-medium text-stone-900 border-b border-stone-400 hover:border-stone-900 transition">
-                        Read More
-                    </a>
-                </article>
-            @endforeach
+            <div class="grid md:grid-cols-3 gap-6 mb-16">
+                @foreach ($posts->take(3) as $post)
+                    <article class="panel-card flex flex-col">
+                        @if ($post->category)
+                            <span class="tag-badge self-start">
+                                {{ $post->category->name }}
+                            </span>
+                        @endif
+
+                        <h3
+                            class="font-display text-2xl font-bold text-stone-900 mt-4 mb-2"
+                        >
+                            <a
+                                href="{{ route("posts.show", $post->slug) }}"
+                                class="hover:text-[#eb5424] transition-colors"
+                            >
+                                {{ $post->title }}
+                            </a>
+                        </h3>
+
+                        @if ($post->excerpt)
+                            <p class="text-stone-600 text-sm mb-5 flex-1">
+                                {!! Str::limit($post->excerpt, 150) !!}
+                            </p>
+                        @endif
+
+                        <a
+                            href="{{ route("posts.show", $post->slug) }}"
+                            class="inline-flex items-center gap-1.5 text-sm font-semibold text-stone-900 hover:text-[#eb5424] transition-colors"
+                        >
+                            Read more
+                            <svg
+                                class="w-3.5 h-3.5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M9 5l7 7-7 7"
+                                />
+                            </svg>
+                        </a>
+                    </article>
+                @endforeach
+            </div>
+
+            <div class="text-center">
+                <a
+                    href="{{ route("blog") }}"
+                    class="inline-flex items-center justify-center rounded-full border border-stone-300 px-7 py-3 text-sm font-semibold text-stone-800 hover:border-stone-400 hover:bg-white transition-colors"
+                >
+                    View all essays
+                </a>
+            </div>
         </div>
-
-        <div class="text-center">
-            <a href="{{ route('blog') }}"
-                class="inline-block text-sm font-medium text-stone-900 border border-stone-400 px-6 py-2 hover:bg-stone-50 transition tracking-wide">
-                VIEW ALL ESSAYS
-            </a>
-        </div>
-    </div>
-</section>
+    </section>
 @endif

@@ -1,68 +1,75 @@
-<section id="work" class="py-24 px-6 sm:px-8 bg-white border-t border-stone-300">
-    <div class="max-w-5xl mx-auto">
-        <h2 class="font-serif text-5xl md:text-6xl font-bold text-stone-900 mb-20 text-center">
-            Services
-        </h2>
+@php
+    $services = [
+        [
+            "group" => "train",
+            "title" => "1:1 Strength Coaching",
+            "desc" => "Progressive programming built around your equipment, injury history and lifting goals, adjusted every week based on your logged sessions.",
+            "tags" => ["Strength", "Mobility", "In-person or remote"],
+        ],
+        [
+            "group" => "train",
+            "title" => "Small Group Training",
+            "desc" => "Same individual attention to form and load, split across a group of 3-4, for people who train better with company.",
+            "tags" => ["Groups of 3-4", "Twice weekly"],
+        ],
+        [
+            "group" => "fuel",
+            "title" => "Personalised Meal Plans",
+            "desc" => "Macros and meal timing built around your training load, food preferences and schedule — not a copy-pasted 1,500 calorie template.",
+            "tags" => ["Macro coaching", "Grocery lists"],
+        ],
+        [
+            "group" => "fuel",
+            "title" => "Habit & Behaviour Coaching",
+            "desc" => "Weekly check-ins on sleep, stress and adherence, so the plan flexes around your life instead of the other way round.",
+            "tags" => ["Weekly check-ins", "Sustainable pace"],
+        ],
+    ];
+@endphp
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div class="border-l-2 border-stone-400 pl-6">
-                <h3 class="font-serif text-2xl font-bold text-stone-900 mb-4">Custom Websites</h3>
-                <p class="text-stone-600 leading-relaxed font-light">
-                    Beautiful and custom websites, including blogs and an internal CMS. 
-                    Custom crafted code that allowes you to post and edit blogposts,
-                    read email or even create a gallery for your shots.
-                </p>
-            </div>
-
-            <div class="border-l-2 border-stone-400 pl-6">
-                <h3 class="font-serif text-2xl font-bold text-stone-900 mb-4">Mobile-Friendly Design</h3>
-                <p class="text-stone-600 leading-relaxed font-light">
-                    Your website works perfectly on phones, tablets, and computers. Visitors can reach you on any device.
-                </p>
-            </div>
-
-            <div class="border-l-2 border-stone-400 pl-6">
-                <h3 class="font-serif text-2xl font-bold text-stone-900 mb-4">Secure & Protected</h3>
-                <p class="text-stone-600 leading-relaxed font-light">
-                    I follow the best practises to secure your website. 
-                    Login sessions that can identify if its really you who is logging in and 
-                    encryption over all passwords and sensitive data.
-                </p>
-            </div>
-
-             <div class="border-l-2 border-stone-400 pl-6">
-                <h3 class="font-serif text-2xl font-bold text-stone-900 mb-4">Performance in mind</h3>
-                <p class="text-stone-600 leading-relaxed font-light">
-                    The decision to make custom solutions for my clients comes from the need for total control
-                    over my code but also performance.
-                    Guarranted 100 scores across Google Lighthouse.
-                </p>
-            </div>
-
-             <div class="border-l-2 border-stone-400 pl-6">
-                <h3 class="font-serif text-2xl font-bold text-stone-900 mb-4">Overall business support</h3>
-                <p class="text-stone-600 leading-relaxed font-light">
-                    As a fellow freelancer I will provide guidance for buisness domains handling
-                    and recommendations for hosting, email suites, office software and many more.
-                    
-                </p>
-            </div>
-
-             <div class="border-l-2 border-stone-400 pl-6">
-                <h3 class="font-serif text-2xl font-bold text-stone-900 mb-4">Custom Enquires</h3>
-                <p class="text-stone-600 leading-relaxed font-light">
-                    Do you need something that my CMS doesn't contain?
-                    Always ready to take on special requests,
-                    so bring it on!
-                </p>
-            </div>
+<section id="services" class="py-24 bg-white">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="max-w-2xl mb-14">
+            <span class="section-label">What I offer</span>
+            <h2 class="section-heading">Two disciplines, one plan</h2>
+            <p class="text-stone-600 text-lg">
+                Training and nutrition are coached together, not sold as
+                separate add-ons — because progress on the bar depends on what's
+                on your plate.
+            </p>
         </div>
 
-        <div class="text-center mt-16">
-            <a href="#contact"
-                class="inline-block text-sm font-medium text-stone-900 border border-stone-400 px-6 py-2 hover:bg-stone-50 transition smoothScroll tracking-wide">
-                GET STARTED
-            </a>
+        <div class="grid md:grid-cols-2 gap-6">
+            @foreach ($services as $service)
+                @php
+                    $isFuel = $service["group"] === "fuel";
+                @endphp
+
+                <div
+                    class="panel-card {{ $isFuel ? "border-[#4c7a3f]/20" : "border-[#eb5424]/20" }}"
+                >
+                    <span
+                        class="{{ $isFuel ? "category-badge-sprout" : "category-badge" }}"
+                    >
+                        {{ $isFuel ? "Fuel" : "Train" }}
+                    </span>
+                    <h3
+                        class="font-display text-2xl font-bold text-stone-900 mt-4 mb-2"
+                    >
+                        {{ $service["title"] }}
+                    </h3>
+                    <p class="text-stone-600 mb-5">{{ $service["desc"] }}</p>
+                    <div class="flex flex-wrap gap-2">
+                        @foreach ($service["tags"] as $tag)
+                            <span
+                                class="{{ $isFuel ? "tag-badge-sprout" : "tag-badge" }}"
+                            >
+                                {{ $tag }}
+                            </span>
+                        @endforeach
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>

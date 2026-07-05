@@ -1,50 +1,112 @@
-<section id="pricing" class="py-24 px-6 sm:px-8 bg-white border-t border-stone-300">
-    <div class="max-w-5xl mx-auto">
-        <h2 class="font-serif text-5xl md:text-6xl font-bold text-stone-900 mb-20 text-center">
-            Packages
-        </h2>
+<section id="pricing" class="py-24 bg-stone-50">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="flex flex-col items-center text-center mb-12">
+            <span class="section-label">Coaching plans</span>
+            <h2 class="section-heading">Pick your pace</h2>
+            <p class="text-stone-600 text-lg max-w-xl mb-8">
+                Every plan includes both training and nutrition coaching. Annual
+                billing works out to roughly two months free.
+            </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div class="border border-stone-400 p-10">
-                <h3 class="font-serif text-2xl font-bold text-stone-900 mb-2">Custom Web Apps</h3>
-                <p class="text-stone-600 text-lg font-light mb-8">Contact for pricing</p>
-                <ul class="space-y-3 text-stone-700">
-                    <li class="flex items-start"><span class="text-stone-400 mr-3">•</span><span>Blogs, SASS, and more</span></li>
-                    <li class="flex items-start"><span class="text-stone-400 mr-3">•</span><span>Full-stack development</span></li>
-                    <li class="flex items-start"><span class="text-stone-400 mr-3">•</span><span>Domain purchase</span></li>
-                    <li class="flex items-start"><span class="text-stone-400 mr-3">•</span><span>Database design</span></li>
-                    <li class="flex items-start"><span class="text-stone-400 mr-3">•</span><span>User authentication</span></li>
-                    <li class="flex items-start"><span class="text-stone-400 mr-3">•</span><span>Payment integration</span></li>
-                    <li class="flex items-start"><span class="text-stone-400 mr-3">•</span><span>Admin dashboard, CMS</span></li>
-                    <li class="flex items-start"><span class="text-stone-400 mr-3">•</span><span>Hosting setup</span></li>
-                    <li class="flex items-start"><span class="text-stone-400 mr-3">•</span><span>Business emails</span></li>
-                </ul>
-                <a href="#contact"
-                    class="inline-block mt-10 text-sm font-medium text-stone-900 border border-stone-400 px-6 py-2 hover:bg-stone-50 transition smoothScroll tracking-wide">
-                    INQUIRE
-                </a>
-            </div>
-
-            <div class="border-2 border-stone-900 p-10">
-                <div class="mb-8 pb-6 border-b-2 border-stone-300">
-                    <p class="text-xs font-medium text-stone-600 uppercase tracking-widest mb-2">Most Popular</p>
-                    <h3 class="font-serif text-2xl font-bold text-stone-900">Landing Page</h3>
-                </div>
-                <p class="text-stone-600 text-lg font-light mb-8">Contact for pricing</p>
-                <ul class="space-y-3 text-stone-700">
-                    <li class="flex items-start"><span class="text-stone-400 mr-3">•</span><span>5 pages included</span></li>
-                    <li class="flex items-start"><span class="text-stone-400 mr-3">•</span><span>Domain purchase, business emails</span></li>
-                    <li class="flex items-start"><span class="text-stone-400 mr-3">•</span><span>Custom design</span></li>
-                    <li class="flex items-start"><span class="text-stone-400 mr-3">•</span><span>Responsive layout</span></li>
-                    <li class="flex items-start"><span class="text-stone-400 mr-3">•</span><span>SEO optimization</span></li>
-                    <li class="flex items-start"><span class="text-stone-400 mr-3">•</span><span>Contact forms</span></li>
-                    <li class="flex items-start"><span class="text-stone-400 mr-3">•</span><span>Excellent performance</span></li>
-                </ul>
-                <a href="#contact"
-                    class="inline-block mt-10 text-sm font-medium text-white bg-stone-900 px-6 py-2 hover:bg-stone-800 transition smoothScroll tracking-wide">
-                    INQUIRE
-                </a>
+            {{-- Billing toggle --}}
+            <div
+                class="inline-flex items-center rounded-full border border-stone-300 bg-white p-1"
+            >
+                {{--
+                    <button
+                    wire:click="setPeriod('monthly')"
+                    class="px-5 py-2 rounded-full text-sm font-semibold transition-colors {{ $period === "monthly" ? "bg-[#eb5424] text-white" : "text-stone-600" }}"
+                    >
+                    Monthly
+                    </button>
+                    <button
+                    wire:click="setPeriod('annual')"
+                    class="px-5 py-2 rounded-full text-sm font-semibold transition-colors {{ $period === "annual" ? "bg-[#eb5424] text-white" : "text-stone-600" }}"
+                    >
+                    Annual
+                    <span class="ml-1 text-xs opacity-80">save ~20%</span>
+                    </button>
+                --}}
             </div>
         </div>
+
+        {{--
+            <div class="grid md:grid-cols-3 gap-6 items-stretch">
+            @foreach ($plans as $plan)
+            @php
+            $isFuel = $plan["group"] === "fuel";
+            @endphp
+            
+            <div
+            class="panel-card flex flex-col {{ $plan["featured"] ?? false ? "ring-2 ring-[#eb5424] relative" : "" }}"
+            >
+            @if ($plan["featured"] ?? false)
+            <span class="absolute -top-3 left-8 category-badge">
+            Most popular
+            </span>
+            @endif
+            
+            <span
+            class="{{ $isFuel ? "tag-badge-sprout" : "tag-badge" }}"
+            >
+            {{ $isFuel ? "Train + Fuel" : "Train" }}
+            </span>
+            
+            <h3
+            class="font-display text-2xl font-bold text-stone-900 mt-4"
+            >
+            {{ $plan["name"] }}
+            </h3>
+            <p class="text-stone-600 mt-2 mb-6">
+            {{ $plan["blurb"] }}
+            </p>
+            
+            <div class="mb-6">
+            <span
+            class="font-display text-4xl font-bold text-stone-900 tabular-nums"
+            >
+            ${{ $period === "annual" ? $plan["annual"] : $plan["monthly"] }}
+            </span>
+            <span class="text-stone-500">/month</span>
+            @if ($period === "annual")
+            <p class="text-xs text-stone-500 mt-1">
+            billed annually
+            </p>
+            @endif
+            </div>
+            
+            <ul class="space-y-3 mb-8 flex-1">
+            @foreach ($plan["features"] as $feature)
+            <li
+            class="flex items-start gap-2 text-sm text-stone-700"
+            >
+            <svg
+            class="w-4 h-4 mt-0.5 flex-shrink-0 {{ $isFuel ? "text-[#4c7a3f]" : "text-[#eb5424]" }}"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+            >
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M5 13l4 4L19 7"
+            />
+            </svg>
+            {{ $feature }}
+            </li>
+            @endforeach
+            </ul>
+            
+            <a
+            href="#contact"
+            class="smoothScroll text-center rounded-full px-6 py-3 text-sm font-semibold transition-colors {{ $plan["featured"] ?? false ? "bg-[#eb5424] text-white hover:bg-[#c94219]" : "border border-stone-300 text-stone-800 hover:border-stone-400" }}"
+            >
+            Start with {{ $plan["name"] }}
+            </a>
+            </div>
+            @endforeach
+            </div>
+        --}}
     </div>
 </section>

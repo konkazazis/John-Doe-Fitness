@@ -1,18 +1,42 @@
-<section id="technologies" class="py-24 px-6 sm:px-8 bg-white border-t border-stone-300">
-    <div class="max-w-2xl mx-auto">
-        <h2 class="font-serif text-5xl md:text-6xl font-bold text-stone-900 mb-20 text-center">
-            Technologies
-        </h2>
+@php
+    $items = ["NASM-CPT Certified", "Precision Nutrition L1", "ISSA Strength Coach", "Trainerize", "MacroFactor", "CPR / AED Certified"];
+@endphp
 
-        <div class="flex flex-col sm:flex-row gap-8 sm:gap-12">
-            <div class="flex flex-col items-center text-center sm:gap-0">
-                <i class="fa-brands fa-laravel colored text-5xl mb-4"></i>
-                <span class="font-serif font-bold text-stone-900 text-sm">Laravel</span>
-            </div>
-            <div class="border-t sm:border-t-0 sm:border-l-2 border-stone-400 pt-6 sm:pt-0 sm:pl-6">
-                <p>Laravel is a free and open-source PHP-based web framework for building web applications. It was created by Taylor Otwell and intended for the development of web applications following the model–view–controller (MVC) architectural pattern and based on Symfony. Some of the features of Laravel include modular packaging system with a dedicated dependency manager, different ways for accessing relational databases, 
-                    utilities that aid in application deployment and maintenance, and its orientation toward syntactic sugar.</p>
-            </div>
+<section class="py-16 bg-white border-y border-stone-200 overflow-hidden">
+    <p class="text-center section-label mb-8">Credentials &amp; tools</p>
+
+    <div class="relative">
+        <div
+            class="flex gap-12 whitespace-nowrap animate-[marquee_28s_linear_infinite]"
+            style="width: max-content"
+        >
+            @foreach (array_merge($items, $items) as $item)
+                <span
+                    class="font-display text-2xl font-semibold text-stone-300 shrink-0"
+                >
+                    {{ $item }}
+                </span>
+            @endforeach
         </div>
     </div>
 </section>
+
+@once
+    @push("styles")
+        <style>
+            @keyframes marquee {
+                from {
+                    transform: translateX(0);
+                }
+                to {
+                    transform: translateX(-50%);
+                }
+            }
+            @media (prefers-reduced-motion: reduce) {
+                .animate-\[marquee_28s_linear_infinite\] {
+                    animation: none;
+                }
+            }
+        </style>
+    @endpush
+@endonce
