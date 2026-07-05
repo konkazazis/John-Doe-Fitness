@@ -1,0 +1,26 @@
+{
+  "name": "Kostas Kazazis - Full-Stack Web Developer based in Düsseldorf",
+  "short_name": "kazazis.dev",
+  "description": "Full-Stack Web Developer based in Düsseldorf, Germany. Specializing in React, JavaScript, Java, Spring, and PostgreSQL.",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#eb5424",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["business", "productivity"]
+}
