@@ -1,22 +1,6 @@
-@php
-    $testimonials = [
-        [
-            "name" => "Priya M.",
-            "result" => "Down 12kg, first pull-up at 34",
-            "quote" => "The nutrition side actually stuck this time because it was built around meals I already cook, not a meal plan pulled off a website.",
-        ],
-        [
-            "name" => "Dan O.",
-            "result" => "+40kg on his deadlift in 9 months",
-            "quote" => "I have tried three coaches before. This is the first program that changed based on how my actual sessions went, week to week.",
-        ],
-        [
-            "name" => "Sofia R.",
-            "result" => "Marathon PB, race-week fuelling dialed in",
-            "quote" => "Getting training and nutrition from the same person meant nothing ever contradicted itself. Everything pointed the same direction.",
-        ],
-    ];
-@endphp
+@props([
+    "testimonials",
+])
 
 <section class="py-24 bg-stone-900 text-stone-50">
     <div
@@ -49,9 +33,9 @@
                         &ldquo;{{ $t["quote"] }}&rdquo;
                     </p>
                     <p class="mt-6 text-[#eb5424] font-semibold">
-                        {{ $t["name"] }}
+                        {{ $t["client"] }}
                     </p>
-                    <p class="text-stone-400 text-sm">{{ $t["result"] }}</p>
+                    <p class="text-stone-400 text-sm">{{ $t["description"] }}</p>
                 </div>
             @endforeach
         </div>

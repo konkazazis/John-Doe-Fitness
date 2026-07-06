@@ -41,7 +41,7 @@ class TestimonialManager extends Component
     }
 
     public function openCreate(): void
-    {
+    { 
         $this->reset(['editingId', 'client', 'description', 'quote', 'is_published', 'cover']);
         $this->showModal = true;
     }
@@ -86,7 +86,7 @@ class TestimonialManager extends Component
         } else {
             Testimonial::create([
                 ...$data,
-                'slug'  => Testimonial::generateSlug($this->title),
+                'slug'  => Testimonial::generateSlug($this->client),
                 'order' => (Testimonial::max('order') ?? 0) + 1,
             ]);
         }
@@ -122,7 +122,7 @@ class TestimonialManager extends Component
     public function render()
     {
         $testimonials = Testimonial::query()
-            ->when($this->search, fn ($q) => $q->where('title', 'like', "%{$this->search}%"))
+            ->when($this->search, fn ($q) => $q->where('client', 'like', "%{$this->search}%"))
             ->orderBy('order')
             ->paginate(15);
 

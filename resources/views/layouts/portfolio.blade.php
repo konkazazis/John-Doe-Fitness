@@ -10,7 +10,7 @@
 
     <x-portfolio.pricing />
 
-    <x-portfolio.testimonials />
+    <x-portfolio.testimonials :testimonials="$testimonials" />
 
     <x-portfolio.projects :projects="$projects" />
 

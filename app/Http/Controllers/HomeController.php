@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Project;
+use App\Models\Testimonial;
 
 class HomeController extends Controller
 {
@@ -19,8 +20,11 @@ class HomeController extends Controller
         $projects = Project::where('is_published', true)
             ->orderBy('order')
             ->get();
+        
+        $testimonials = Testimonial::where('is_published', true)
+            ->get();
 
-        return view('layouts.portfolio', compact('posts', 'projects'));
+        return view('layouts.portfolio', compact('posts', 'projects', 'testimonials'));
     }
 }
 
