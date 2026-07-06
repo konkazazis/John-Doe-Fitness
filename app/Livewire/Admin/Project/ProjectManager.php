@@ -18,9 +18,6 @@ class ProjectManager extends Component
     public ?int   $editingId     = null;
     public string $title         = '';
     public string $description   = '';
-    public string $live_url      = '';
-    public string $github_url    = '';
-    public string $technologies  = '';
     public bool   $is_published  = false;
     public $cover = null;
 
@@ -31,9 +28,6 @@ class ProjectManager extends Component
         return [
             'title'        => ['required', 'string', 'max:200'],
             'description'  => ['nullable', 'string', 'max:3000'],
-            'live_url'     => ['nullable', 'url', 'max:500'],
-            'github_url'   => ['nullable', 'url', 'max:500'],
-            'technologies' => ['nullable', 'string', 'max:500'],
             'is_published' => ['boolean'],
             'cover'        => ['nullable', 'image', 'max:10240'],
         ];
@@ -46,7 +40,7 @@ class ProjectManager extends Component
 
     public function openCreate(): void
     {
-        $this->reset(['editingId', 'title', 'description', 'live_url', 'github_url', 'technologies', 'is_published', 'cover']);
+        $this->reset(['editingId', 'title', 'description', 'is_published', 'cover']);
         $this->showModal = true;
     }
 
@@ -57,9 +51,6 @@ class ProjectManager extends Component
         $this->editingId    = $project->id;
         $this->title        = $project->title;
         $this->description  = $project->description ?? '';
-        $this->live_url     = $project->live_url ?? '';
-        $this->github_url   = $project->github_url ?? '';
-        $this->technologies = $project->technologies ?? '';
         $this->is_published = $project->is_published;
         $this->cover        = null;
         $this->showModal    = true;
@@ -72,9 +63,6 @@ class ProjectManager extends Component
         $data = [
             'title'        => $this->title,
             'description'  => $this->description ?: null,
-            'live_url'     => $this->live_url ?: null,
-            'github_url'   => $this->github_url ?: null,
-            'technologies' => $this->technologies ?: null,
             'is_published' => $this->is_published,
         ];
 
@@ -100,7 +88,7 @@ class ProjectManager extends Component
         }
 
         $this->showModal = false;
-        $this->reset(['editingId', 'title', 'description', 'live_url', 'github_url', 'technologies', 'is_published', 'cover']);
+        $this->reset(['editingId', 'title', 'description', 'is_published', 'cover']);
     }
 
     public function confirmDelete(int $id): void

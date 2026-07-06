@@ -121,27 +121,6 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-zinc-600 dark:text-zinc-300 mb-1.5 uppercase tracking-wide">Technologies</label>
-                    <input type="text" wire:model="technologies" placeholder="Laravel, Vue.js, Tailwind…"
-                           class="w-full border border-zinc-200 dark:border-zinc-700 rounded-lg px-3 py-2 text-sm bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-900">
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-zinc-600 dark:text-zinc-300 mb-1.5 uppercase tracking-wide">Live URL</label>
-                        <input type="url" wire:model="live_url" placeholder="https://…"
-                               class="w-full border border-zinc-200 dark:border-zinc-700 rounded-lg px-3 py-2 text-sm bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-900">
-                        @error('live_url') <p class="mt-1 text-xs text-red-500">{{ $message }}</p> @enderror
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-zinc-600 dark:text-zinc-300 mb-1.5 uppercase tracking-wide">GitHub URL</label>
-                        <input type="url" wire:model="github_url" placeholder="https://github.com/…"
-                               class="w-full border border-zinc-200 dark:border-zinc-700 rounded-lg px-3 py-2 text-sm bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-900">
-                        @error('github_url') <p class="mt-1 text-xs text-red-500">{{ $message }}</p> @enderror
-                    </div>
-                </div>
-
-                <div>
                     <label class="block text-xs font-semibold text-zinc-600 dark:text-zinc-300 mb-1.5 uppercase tracking-wide">Cover Image</label>
                     <input type="file" wire:model="cover" accept="image/*"
                            class="w-full text-sm text-zinc-600 dark:text-zinc-300 file:mr-3 file:border-0 file:bg-zinc-100 dark:file:bg-zinc-800 file:text-zinc-700 dark:file:text-zinc-300 file:text-xs file:font-semibold file:px-3 file:py-1.5 file:rounded-lg file:cursor-pointer hover:file:bg-zinc-200 dark:hover:file:bg-zinc-700">
