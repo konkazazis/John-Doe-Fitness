@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class Project extends Model
+class Testimonial extends Model
 {
     protected $fillable = [
-        'title', 'slug', 'description', 'cover_image',
+        'client', 'slug', 'description', 'quote', 'cover_image',
         'order', 'is_published',
     ];
 

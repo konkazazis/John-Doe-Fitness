@@ -97,8 +97,8 @@
                     </flux:sidebar.item>
                     <flux:sidebar.item
                         icon="briefcase"
-                        :href="route('admin.testimonials.index')"
-                        :current="request()->routeIs('admin.testimonials.*')"
+                        :href="route('admin.testimonial.index')"
+                        :current="request()->routeIs('admin.testimonial.*')"
                         wire:navigate
                     >
                         Testimonials
