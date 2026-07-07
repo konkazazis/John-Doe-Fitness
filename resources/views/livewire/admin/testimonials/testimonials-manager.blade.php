@@ -28,10 +28,10 @@
                 <thead class="border-b border-zinc-100 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/40">
                     <tr>
                         <th class="text-left px-6 py-3 text-xs font-semibold text-zinc-500 uppercase tracking-wide">Client</th>
-                        <th class="text-left px-6 py-3 text-xs font-semibold text-zinc-500 uppercase tracking-wide">Description</th>
                         <th class="text-left px-6 py-3 text-xs font-semibold text-zinc-500 uppercase tracking-wide">Quote</th>
+                        <th class="text-left px-6 py-3 text-xs font-semibold text-zinc-500 uppercase tracking-wide">Description</th>
                         <th class="text-left px-4 py-3 text-xs font-semibold text-zinc-500 uppercase tracking-wide">Status</th>
-                        <th class="px-6 py-3"></th>
+                        <th class="text-left px-4 py-3 text-xs font-semibold text-zinc-500 uppercase tracking-wide">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-zinc-50 dark:divide-zinc-800">
@@ -39,24 +39,16 @@
                         <tr class="hover:bg-zinc-50/50 dark:hover:bg-zinc-800/30 transition-colors">
                             <td class="px-6 py-4">
                                 <div class="flex items-center gap-3">
-                                    @if($testimonial->coverUrl())
-                                        <img src="{{ $testimonial->coverUrl() }}" alt="{{ $testimonial->client }}"
-                                             class="w-10 h-10 object-cover rounded-md shrink-0">
-                                    @else
-                                        <div class="w-10 h-10 bg-zinc-100 dark:bg-zinc-800 rounded-md shrink-0 flex items-center justify-center">
-                                            <svg class="w-5 h-5 text-zinc-300 dark:text-zinc-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-                                            </svg>
-                                        </div>
-                                    @endif
-                                    {{-- <div>
-                                        <p class="font-semibold text-zinc-800 dark:text-zinc-100">{{ $testimonials->title }}</p>
-                                        <p class="text-xs text-zinc-400 dark:text-zinc-500">{{ $testimonials->slug }}</p>
-                                    </div> --}}
+                                    <div class="w-10 h-10 shrink-0 flex items-center justify-center">
+                                        {{ $testimonial->client }}
+                                    </div>
                                 </div>
                             </td>
                             <td class="px-4 py-4 text-zinc-500 dark:text-zinc-400 text-xs hidden md:table-cell">
-                                {{ $testimonial->quote ?? '—' }}
+                                {{ substr($testimonial->quote, 0 , 20) . ' ' . "..." ?? '—' }}
+                            </td>
+                             <td class="px-4 py-4 text-zinc-500 dark:text-zinc-400 text-xs hidden md:table-cell">
+                                {{ substr($testimonial->description, 0 , 20) . ' ' . "..." ?? '—' }}
                             </td>
                             <td class="px-4 py-4">
                                 @if($testimonial->is_published)
@@ -70,7 +62,7 @@
                                 @endif
                             </td>
                             <td class="px-6 py-4">
-                                <div class="flex items-center justify-end gap-2">
+                                <div class="flex items-center gap-2">
                                     <button wire:click="openEdit({{ $testimonial->id }})"
                                             class="text-xs font-semibold text-zinc-500 hover:text-zinc-900 transition-colors px-2 py-1 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800">Edit</button>
                                     <button wire:click="confirmDelete({{ $testimonial->id }})"

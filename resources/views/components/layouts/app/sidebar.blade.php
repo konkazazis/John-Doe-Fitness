@@ -96,7 +96,7 @@
                         Client Projects
                     </flux:sidebar.item>
                     <flux:sidebar.item
-                        icon="briefcase"
+                        icon="star"
                         :href="route('admin.testimonial.index')"
                         :current="request()->routeIs('admin.testimonial.*')"
                         wire:navigate
