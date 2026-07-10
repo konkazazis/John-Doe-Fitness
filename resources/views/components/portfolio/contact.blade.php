@@ -10,18 +10,19 @@
             </p>
 
             <a href="mailto:hello@kazazis.dev" class="inline-flex items-center gap-3 mt-8 font-mono text-[1.05rem] border-b border-dark-line pb-1.5 transition-all hover:border-on-dark hover:gap-4">
-                kostas@kazazis.dev <span class="arr">&rarr;</span>
+                kostas@kapratsis.fit <span class="arr">&rarr;</span>
             </a>
 
             <div class="flex gap-2.5 mt-[30px]">
-                <a href="https://github.com/konkazazis" target="_blank" rel="noopener" aria-label="GitHub"
-                   class="w-11 h-11 rounded-[11px] border border-dark-line grid place-items-center text-on-dark-mut hover:text-on-dark hover:border-on-dark hover:-translate-y-[3px] transition">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.76.41-1.27.74-1.56-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.5 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.26 5.69.42.36.8 1.08.8 2.18v3.23c0 .31.2.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
-                </a>
-                <a href="https://www.linkedin.com/in/konstantinos-kazazis-32a470228/" target="_blank" rel="noopener" aria-label="LinkedIn"
-                   class="w-11 h-11 rounded-[11px] border border-dark-line grid place-items-center text-on-dark-mut hover:text-on-dark hover:border-on-dark hover:-translate-y-[3px] transition">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM2.4 9.4h5.16V21H2.4V9.4Zm7.7 0h4.95v1.58h.07c.69-1.24 2.37-2.54 4.88-2.54 5.22 0 6.18 3.36 6.18 7.74V21h-5.15v-5.13c0-1.22-.02-2.8-1.7-2.8-1.71 0-1.97 1.32-1.97 2.7V21H10.1V9.4Z"/></svg>
-                </a>
+                <a href="#" target="_blank" rel="noopener" aria-label="GitHub"
+                   class="w-11 h-11 grid place-items-center bg-slate-50 text-on-dark-mut hover:text-on-dark hover:border-on-dark hover:-translate-y-[3px] transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M581.7 188.1C575.5 164.4 556.9 145.8 533.4 139.5C490.9 128 320.1 128 320.1 128C320.1 128 149.3 128 106.7 139.5C83.2 145.8 64.7 164.4 58.4 188.1C47 231 47 320.4 47 320.4C47 320.4 47 409.8 58.4 452.7C64.7 476.3 83.2 494.2 106.7 500.5C149.3 512 320.1 512 320.1 512C320.1 512 490.9 512 533.5 500.5C557 494.2 575.5 476.3 581.8 452.7C593.2 409.8 593.2 320.4 593.2 320.4C593.2 320.4 593.2 231 581.8 188.1zM264.2 401.6L264.2 239.2L406.9 320.4L264.2 401.6z"/></svg>                </a>
+                <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"
+                   class="w-11 h-11 grid place-items-center text-on-dark-mut hover:text-on-dark hover:border-on-dark hover:-translate-y-[3px] transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path fill="rgb(255, 255, 255)" d="M320.3 205C256.8 204.8 205.2 256.2 205 319.7C204.8 383.2 256.2 434.8 319.7 435C383.2 435.2 434.8 383.8 435 320.3C435.2 256.8 383.8 205.2 320.3 205zM319.7 245.4C360.9 245.2 394.4 278.5 394.6 319.7C394.8 360.9 361.5 394.4 320.3 394.6C279.1 394.8 245.6 361.5 245.4 320.3C245.2 279.1 278.5 245.6 319.7 245.4zM413.1 200.3C413.1 185.5 425.1 173.5 439.9 173.5C454.7 173.5 466.7 185.5 466.7 200.3C466.7 215.1 454.7 227.1 439.9 227.1C425.1 227.1 413.1 215.1 413.1 200.3zM542.8 227.5C541.1 191.6 532.9 159.8 506.6 133.6C480.4 107.4 448.6 99.2 412.7 97.4C375.7 95.3 264.8 95.3 227.8 97.4C192 99.1 160.2 107.3 133.9 133.5C107.6 159.7 99.5 191.5 97.7 227.4C95.6 264.4 95.6 375.3 97.7 412.3C99.4 448.2 107.6 480 133.9 506.2C160.2 532.4 191.9 540.6 227.8 542.4C264.8 544.5 375.7 544.5 412.7 542.4C448.6 540.7 480.4 532.5 506.6 506.2C532.8 480 541 448.2 542.8 412.3C544.9 375.3 544.9 264.5 542.8 227.5zM495 452C487.2 471.6 472.1 486.7 452.4 494.6C422.9 506.3 352.9 503.6 320.3 503.6C287.7 503.6 217.6 506.2 188.2 494.6C168.6 486.8 153.5 471.7 145.6 452C133.9 422.5 136.6 352.5 136.6 319.9C136.6 287.3 134 217.2 145.6 187.8C153.4 168.2 168.5 153.1 188.2 145.2C217.7 133.5 287.7 136.2 320.3 136.2C352.9 136.2 423 133.6 452.4 145.2C472 153 487.1 168.1 495 187.8C506.7 217.3 504 287.3 504 319.9C504 352.5 506.7 422.6 495 452z"/></svg>                </a>
+                <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"
+                   class="w-11 h-11 grid place-items-center text-on-dark-mut hover:text-on-dark hover:border-on-dark hover:-translate-y-[3px] transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path fill="rgb(255, 255, 255)" d="M544.5 273.9C500.5 274 457.5 260.3 421.7 234.7L421.7 413.4C421.7 446.5 411.6 478.8 392.7 506C373.8 533.2 347.1 554 316.1 565.6C285.1 577.2 251.3 579.1 219.2 570.9C187.1 562.7 158.3 545 136.5 520.1C114.7 495.2 101.2 464.1 97.5 431.2C93.8 398.3 100.4 365.1 116.1 336C131.8 306.9 156.1 283.3 185.7 268.3C215.3 253.3 248.6 247.8 281.4 252.3L281.4 342.2C266.4 337.5 250.3 337.6 235.4 342.6C220.5 347.6 207.5 357.2 198.4 369.9C189.3 382.6 184.4 398 184.5 413.8C184.6 429.6 189.7 444.8 199 457.5C208.3 470.2 221.4 479.6 236.4 484.4C251.4 489.2 267.5 489.2 282.4 484.3C297.3 479.4 310.4 469.9 319.6 457.2C328.8 444.5 333.8 429.1 333.8 413.4L333.8 64L421.8 64C421.7 71.4 422.4 78.9 423.7 86.2C426.8 102.5 433.1 118.1 442.4 131.9C451.7 145.7 463.7 157.5 477.6 166.5C497.5 179.6 520.8 186.6 544.6 186.6L544.6 274z"/></svg>                </a>
             </div>
         </div>
 
@@ -29,16 +30,25 @@
 
         <div class="lg:flex text-center lg:justify-between border-t border-stone-800 pt-8 text-stone-400 text-sm">
             <div class="mb-4 lg:mb-0">
-                <p>Copyright © {{ date('Y') }} Kostas Kazazis</p>
+                <p> Copyright © {{ date('Y') }}
+                    <a href="https://kazazis.dev" target="_blank" rel="noopener noreferrer"
+                    class="text-sm text-zinc-500 hover:text-brand transition-colors">
+                     Kostas Kazazis 
+                </a>
+                </p>
             </div>
             <div class="flex justify-between lg:gap-4">
-                <a href="https://github.com/konkazazis" target="_blank" rel="noopener noreferrer"
+                <a href="https://www.youtube.com/@NtinosLiftzz" target="_blank" rel="noopener noreferrer"
                     class="text-sm text-zinc-500 hover:text-brand transition-colors">
-                    GitHub
+                    Youtube
                 </a>
-                <a href="https://www.linkedin.com/in/konstantinos-kazazis-32a470228/" target="_blank"
+                <a href="#" target="_blank" rel="noopener noreferrer"
+                    class="text-sm text-zinc-500 hover:text-brand transition-colors">
+                    Instagram
+                </a>
+                <a href="#" target="_blank"
                     rel="noopener noreferrer" class="text-sm text-zinc-500 hover:text-brand transition-colors">
-                    LinkedIn
+                    TikTok
                 </a>
                 <a href="{{ route('impressum') }}" class="text-sm text-zinc-500 hover:text-brand transition-colors">
                     Impressum

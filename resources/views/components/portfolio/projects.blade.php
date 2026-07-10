@@ -6,7 +6,7 @@
     <div class="max-w-6xl mx-auto">
         <div class="max-w-2xl mx-auto text-center mb-20">
             <span class="section-label justify-center">Selected work</span>
-            <h2 class="section-heading">Portfolio</h2>
+            <h2 class="section-heading">Client's stories</h2>
         </div>
 
         <div class="flex flex-col gap-[clamp(40px,6vw,76px)]">
