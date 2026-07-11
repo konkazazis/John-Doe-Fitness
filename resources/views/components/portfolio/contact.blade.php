@@ -3,10 +3,10 @@
         <div class="reveal mb-8">
             <span class="eyebrow text-on-dark-mut">Contact</span>
             <h2 class="mt-[18px] text-[clamp(2.1rem,5vw,3.4rem)] tracking-[-0.03em] leading-[1.04] font-bold">
-                Got something you want <span class="serif-it text-[oklch(0.78_0.1_45)]">built?</span>
+                Got questions about <span class="serif-it text-[oklch(0.78_0.1_45)]">health</span> and <span class="serif-it text-[oklch(0.78_0.1_45)]">fitness?</span>
             </h2>
             <p class="mt-[22px] text-on-dark-mut text-[1.1rem] max-w-[40ch]">
-                Tell me a little about your project. I read every message and reply within a day or two.
+                Tell me a little about your firness goals. I read every message and reply within a day or two.
             </p>
 
             <a href="mailto:hello@kazazis.dev" class="inline-flex items-center gap-3 mt-8 font-mono text-[1.05rem] border-b border-dark-line pb-1.5 transition-all hover:border-on-dark hover:gap-4">
