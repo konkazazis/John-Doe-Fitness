@@ -91,7 +91,7 @@
             @endif
         </header>
 
-        @if($post->user?->is_admin)
+        @if(auth()->user()->role('admin'))
             <div class="flex items-center gap-3 mb-10 pb-8 border-b border-stone-100">
                 <img src="https://s3.eu-north-1.amazonaws.com/kazazis.dev/profile-pic.png" alt="Kostas"
                     class="w-10 h-10 rounded-full object-cover object-top bg-stone-100">

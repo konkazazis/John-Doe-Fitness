@@ -115,7 +115,7 @@
                                         {!! $post->excerpt ?? Str::limit(strip_tags($post->content), 140) !!}
                                     </p>
                                 </div>
-                                @if($post->user?->is_admin)
+                                @if(auth()->user()->role('admin'))
                                     <div class="mt-4 md:mt-0 flex items-center gap-3">
                                         <img src="https://s3.eu-north-1.amazonaws.com/kazazis.dev/profile-pic.png" alt="Kostas"
                                             class="w-10 h-10 rounded-full object-cover bg-stone-100">
