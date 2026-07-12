@@ -38,7 +38,7 @@ Route::get('/privacy', [LegalController::class, 'privacy'])->name('privacy');
 
 // ─── Admin CMS ────────────────────────────────────────────────────────────────
 
-Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', AdminDashboard::class)->name('dashboard');
     Route::get('/posts', PostManager::class)->name('posts.index');
     Route::get('/projects', ProjectManager::class)->name('projects.index');
