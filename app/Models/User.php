@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
@@ -15,7 +14,6 @@ use Illuminate\Support\Str;
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
-    /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
     protected function casts(): array
@@ -25,11 +23,6 @@ class User extends Authenticatable
             'password'          => 'hashed',
             'is_admin'          => 'boolean',
         ];
-    }
-
-    public function isAdmin(): bool
-    {
-        return (bool) $this->is_admin;
     }
 
     public function initials(): string
@@ -44,5 +37,13 @@ class User extends Authenticatable
     public function posts(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function roles() {
+        return $this->belongsToMany(Role::class, 'user_roles');
+    }
+
+    public function role(string $name) {
+        return $this->roles()->where('name', $name)->exists();
     }
 }
