@@ -36,13 +36,6 @@ Route::get('/impressum', [LegalController::class, 'impressum'])->name('impressum
 Route::get('/privacy', [LegalController::class, 'privacy'])->name('privacy');
 
 
-// Post-login redirect: admins go to CMS, everyone else to home
-Route::get('/dashboard', function () {
-    return auth()->user()?->isAdmin()
-        ? redirect()->route('admin.dashboard')
-        : redirect()->route('home');
-})->middleware(['auth'])->name('dashboard');
-
 // ─── Admin CMS ────────────────────────────────────────────────────────────────
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
