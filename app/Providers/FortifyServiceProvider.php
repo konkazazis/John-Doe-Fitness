@@ -34,6 +34,7 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
 
         Fortify::loginView(fn () => view('livewire.auth.login'));
+        Fortify::registerView(fn () => view('livewire.auth.register'));
         Fortify::confirmPasswordView(fn () => view('livewire.auth.confirm-password'));
         Fortify::resetPasswordView(fn () => view('livewire.auth.reset-password'));
         Fortify::requestPasswordResetLinkView(fn () => view('livewire.auth.forgot-password'));
