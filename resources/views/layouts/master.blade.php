@@ -99,8 +99,7 @@
                             Contact
                         </a>
                     </nav>
-                    @auth
-                        @if (auth()->user()->is_admin)
+                         @auth
                             <div
                                 class="group relative inline-block text-left"
                                 id="dropdown-container"
@@ -134,13 +133,14 @@
                                     class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden"
                                 >
                                     <div class="py-1">
-                                        <a
-                                            href="{{ route("admin.dashboard") }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
-                                        >
-                                            Admin
-                                        </a>
-
+                                        @if (auth()->user()->role('admin'))
+                                            <a
+                                                href="{{ route("admin.dashboard") }}"
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+                                            >
+                                                Admin
+                                            </a>
+                                        @endif
                                         <form
                                             method="POST"
                                             action="{{ route("logout") }}"
@@ -156,7 +156,6 @@
                                     </div>
                                 </div>
                             </div>
-                        @endif
                     @endauth
 
                     <button
@@ -188,7 +187,7 @@
                         About
                     </a>
                     @auth
-                        @if (auth()->user()->is_admin)
+                        @if (auth()->user()->role('admin'))
                             <a
                                 href="{{ route("admin.dashboard") }}"
                                 class="py-3 border-b border-stone-100 transition-colors {{ request()->routeIs("admin.*") ? "text-stone-900" : "hover:text-stone-900" }}"
