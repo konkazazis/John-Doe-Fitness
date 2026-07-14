@@ -1,40 +1,3 @@
-@php
-    $plans = [
-        [
-            "name" => "Foundations",
-            "group" => "train",
-            "monthly" => 149,
-            "blurb" => "For people new to structured training who want a plan that adapts.",
-            "features" => ["Custom strength program, updated monthly", "Form review on request", "Email support"],
-        ],
-        [
-            "name" => "Coached",
-            "group" => "fuel",
-            "monthly" => 249,
-            "blurb" => "Training and nutrition coached together, with weekly check-ins.",
-            "features" => [
-                "Everything in Foundations",
-                "Personalised macro & meal plan",
-                "Weekly check-in call",
-                "Direct messaging, 6 days a week",
-            ],
-            "featured" => true,
-        ],
-        [
-            "name" => "Performance",
-            "group" => "train",
-            "monthly" => 399,
-            "blurb" => "For competitive lifters and athletes who need close attention.",
-            "features" => [
-                "Everything in Coached",
-                "Twice-weekly check-ins",
-                "Competition/event prep",
-                "Priority scheduling",
-            ],
-        ],
-    ];
-@endphp
-
 <section id="pricing" class="py-24 bg-stone-50">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="flex flex-col items-center text-center mb-14">
@@ -63,7 +26,7 @@
                     <span
                         class="{{ $isFuel ? "tag-badge-sprout" : "tag-badge" }}"
                     >
-                        {{ $isFuel ? "Train + Fuel" : "Train" }}
+                        {{ $plan->tag }}
                     </span>
 
                     <h3
@@ -72,14 +35,14 @@
                         {{ $plan["name"] }}
                     </h3>
                     <p class="text-stone-600 mt-2 mb-6">
-                        {{ $plan["blurb"] }}
+                        {{ $plan->description }}
                     </p>
 
                     <div class="mb-6">
                         <span
                             class="font-display text-4xl font-bold text-stone-900 tabular-nums"
                         >
-                            ${{ $plan["monthly"] }}
+                            ${{ $plan->price}}
                         </span>
                         <span class="text-stone-500">/month</span>
                     </div>
@@ -111,7 +74,7 @@
                         href="#contact"
                         class="smoothScroll text-center rounded-full px-6 py-3 text-sm font-semibold transition-colors {{ $plan["featured"] ?? false ? "bg-[#eb5424] text-white hover:bg-[#c94219]" : "border border-stone-300 text-stone-800 hover:border-stone-400" }}"
                     >
-                        Start with {{ $plan["name"] }}
+                        Start with {{ $plan->name }}
                     </a>
                 </div>
             @endforeach

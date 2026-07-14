@@ -8,7 +8,7 @@
 
     <x-portfolio.services />
 
-    <x-portfolio.pricing />
+    <x-portfolio.plans :plans="$plans" />
 
     <x-portfolio.testimonials :testimonials="$testimonials" />
 
