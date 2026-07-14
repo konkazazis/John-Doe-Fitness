@@ -71,7 +71,7 @@
                     <span
                         class="font-bold text-base text-zinc-800 dark:text-zinc-100 tracking-tight"
                     >
-                        Portfolio CMS
+                        Admin Dashboard
                     </span>
                 </a>
                 <flux:sidebar.collapse class="lg:hidden" />

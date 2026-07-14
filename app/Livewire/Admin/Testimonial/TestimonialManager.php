@@ -11,6 +11,8 @@ use Livewire\WithPagination;
 class TestimonialManager extends Component
 {
 
+    use WithPagination;
+
     public string $search = '';
 
     public bool   $showModal     = false;
