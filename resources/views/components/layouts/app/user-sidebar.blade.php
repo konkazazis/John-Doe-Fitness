@@ -114,8 +114,8 @@
             </flux:sidebar.item>
             <flux:sidebar.item
                 icon="cog-6-tooth"
-                :href="route('admin.settings.profile')"
-                :current="request()->routeIs('admin.settings.*')"
+                :href="route('user.settings.profile')"
+                :current="request()->routeIs('user.settings.*')"
                 wire:navigate
             >
                 Settings
@@ -132,7 +132,7 @@
         <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
 
         <a
-            href="{{ route("admin.dashboard") }}"
+            href="{{ route("user.dashboard") }}"
             wire:navigate
             class="mx-auto flex items-center gap-2"
         >
