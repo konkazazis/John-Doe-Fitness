@@ -2,12 +2,12 @@
     <div class="flex flex-col gap-6">
         <div class="text-center">
             <h1 class="text-2xl font-bold text-zinc-900 dark:text-zinc-100">Create an account</h1>
-            <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Enter your details below to get started</p>
+            <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-400">Enter your details below to get started</p>
         </div>
 
         @if ($errors->any())
-    <pre>{{ $errors }}</pre>
-@endif
+            <pre>{{ $errors }}</pre>
+        @endif
 
         <form method="POST" action="{{ route('register') }}" class="flex flex-col gap-4">
             @csrf
@@ -23,7 +23,7 @@
                 placeholder="Your name"
             />
             @error('name')
-                <p class="-mt-2 text-xs text-red-500">{{ $message }}</p>
+            <p class="-mt-2 text-xs text-red-500">{{ $message }}</p>
             @enderror
 
             <flux:input
@@ -36,7 +36,7 @@
                 placeholder="email@example.com"
             />
             @error('email')
-                <p class="-mt-2 text-xs text-red-500">{{ $message }}</p>
+            <p class="-mt-2 text-xs text-red-500">{{ $message }}</p>
             @enderror
 
             <flux:input
@@ -49,7 +49,7 @@
                 viewable
             />
             @error('password')
-                <p class="-mt-2 text-xs text-red-500">{{ $message }}</p>
+            <p class="-mt-2 text-xs text-red-500">{{ $message }}</p>
             @enderror
 
             <flux:input
@@ -62,17 +62,17 @@
                 viewable
             />
             @error('password_confirmation')
-                <p class="-mt-2 text-xs text-red-500">{{ $message }}</p>
+            <p class="-mt-2 text-xs text-red-500">{{ $message }}</p>
             @enderror
 
-            <flux:button variant="primary" type="submit" class="w-full mt-2">
+            <flux:button variant="primary" type="submit" class="mt-2 w-full">
                 Create account
             </flux:button>
         </form>
 
         <div class="text-center text-sm text-zinc-500 dark:text-zinc-400">
             Already have an account?
-            <a href="{{ route('login') }}" class="text-zinc-900 dark:text-zinc-100 underline">Log in</a>
+            <a href="{{ route('login') }}" class="text-zinc-900 underline dark:text-zinc-100">Log in</a>
         </div>
     </div>
 </x-layouts.auth.simple>

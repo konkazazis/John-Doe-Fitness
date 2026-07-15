@@ -1,18 +1,18 @@
 @php
-    $items = ["NASM-CPT Certified", "Precision Nutrition L1", "ISSA Strength Coach", "Trainerize", "MacroFactor", "CPR / AED Certified"];
+    $items = ['NASM-CPT Certified', 'Precision Nutrition L1', 'ISSA Strength Coach', 'Trainerize', 'MacroFactor', 'CPR / AED Certified'];
 @endphp
 
-<section class="py-16 bg-white border-y border-stone-200 overflow-hidden">
-    <p class="text-center section-label mb-8">Credentials &amp; tools</p>
+<section class="overflow-hidden border-y border-stone-200 bg-white py-16">
+    <p class="section-label mb-8 text-center">Credentials &amp; tools</p>
 
     <div class="relative">
         <div
-            class="flex gap-12 whitespace-nowrap animate-[marquee_28s_linear_infinite]"
+            class="flex animate-[marquee_28s_linear_infinite] gap-12 whitespace-nowrap"
             style="width: max-content"
         >
             @foreach (array_merge($items, $items) as $item)
                 <span
-                    class="font-display text-2xl font-semibold text-stone-300 shrink-0"
+                    class="font-display shrink-0 text-2xl font-semibold text-stone-300"
                 >
                     {{ $item }}
                 </span>

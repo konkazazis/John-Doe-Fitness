@@ -1,24 +1,24 @@
-<section id="pricing" class="py-24 bg-stone-50">
+<section id="pricing" class="bg-stone-50 py-24">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="flex flex-col items-center text-center mb-14">
+        <div class="mb-14 flex flex-col items-center text-center">
             <span class="section-label">Coaching plans</span>
             <h2 class="section-heading">Pick your plan</h2>
-            <p class="text-stone-600 text-lg max-w-xl">
+            <p class="max-w-xl text-lg text-stone-600">
                 Every plan includes both training and nutrition coaching.
             </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-6 items-stretch">
+        <div class="grid items-stretch gap-6 md:grid-cols-3">
             @foreach ($plans as $plan)
                 @php
-                    $isFuel = $plan["group"] === "fuel";
+                    $isFuel = $plan['group'] === 'fuel';
                 @endphp
 
                 <div
                     class="panel-card flex flex-col {{ $plan["featured"] ?? false ? "ring-2 ring-[#eb5424] relative" : "" }}"
                 >
                     @if ($plan["featured"] ?? false)
-                        <span class="absolute -top-3 left-8 category-badge">
+                        <span class="category-badge absolute -top-3 left-8">
                             Most popular
                         </span>
                     @endif
@@ -30,11 +30,11 @@
                     </span>
 
                     <h3
-                        class="font-display text-2xl font-bold text-stone-900 mt-4"
+                        class="font-display mt-4 text-2xl font-bold text-stone-900"
                     >
                         {{ $plan["name"] }}
                     </h3>
-                    <p class="text-stone-600 mt-2 mb-6">
+                    <p class="mt-2 mb-6 text-stone-600">
                         {{ $plan->description }}
                     </p>
 
@@ -47,7 +47,7 @@
                         <span class="text-stone-500">/month</span>
                     </div>
 
-                    <ul class="space-y-3 mb-8 flex-1">
+                    <ul class="mb-8 flex-1 space-y-3">
                         @foreach ($plan["features"] as $feature)
                             <li
                                 class="flex items-start gap-2 text-sm text-stone-700"

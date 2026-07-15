@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4dd5c55a3cb8c60dd05cd720bee33937",
+    "content-hash": "fd38bd011bffd086c4c6c5a857d02280",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -8158,6 +8158,62 @@
             "time": "2025-03-19T14:43:43+00:00"
         },
         {
+            "name": "joelstein/blade-formatter",
+            "version": "v0.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/joelstein/blade-formatter.git",
+                "reference": "ecab507da41620319ccbaa50a15e7796f8970450"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/joelstein/blade-formatter/zipball/ecab507da41620319ccbaa50a15e7796f8970450",
+                "reference": "ecab507da41620319ccbaa50a15e7796f8970450",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "larastan/larastan": "^3.0",
+                "laravel-zero/framework": "^12.1",
+                "laravel-zero/phar-updater": "^1.4",
+                "laravel/pao": "^1.0",
+                "laravel/pint": "^1.29",
+                "mockery/mockery": "^1.6",
+                "phpunit/phpunit": "^13.0"
+            },
+            "bin": [
+                "builds/blade-format"
+            ],
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "BladeFormatter\\": "app/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Format Blade templates and Livewire SFCs with Pint, Tailwind class sorting, and auto-indentation",
+            "keywords": [
+                "Pint",
+                "blade",
+                "formatter",
+                "laravel",
+                "livewire",
+                "tailwind"
+            ],
+            "support": {
+                "issues": "https://github.com/joelstein/blade-formatter/issues",
+                "source": "https://github.com/joelstein/blade-formatter/tree/v0.8.1"
+            },
+            "time": "2026-05-20T17:50:58+00:00"
+        },
+        {
             "name": "laravel/pail",
             "version": "v1.2.6",
             "source": {
@@ -10628,5 +10684,5 @@
         "php": "^8.4"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.6.0"
 }

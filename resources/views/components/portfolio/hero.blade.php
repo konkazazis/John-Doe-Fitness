@@ -1,17 +1,17 @@
 <section class="relative overflow-hidden bg-stone-50" id="home">
     <div
-        class="mx-auto max-w-7xl px-6 lg:px-0 grid lg:grid-cols-2 gap-12 items-center py-20 lg:py-16"
+        class="mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-2 lg:px-0 lg:py-16"
     >
         {{-- Copy --}}
         <div>
             <span class="section-label">Coaching &amp; Nutrition</span>
             <h1
-                class="font-display text-5xl sm:text-6xl font-bold tracking-tight text-stone-900 leading-[1.05]"
+                class="font-display text-5xl leading-[1.05] font-bold tracking-tight text-stone-900 sm:text-6xl"
             >
                 Train harder.
                 <span class="text-[#eb5424]">Fuel smarter.</span>
             </h1>
-            <p class="mt-6 text-lg text-stone-600 max-w-lg">
+            <p class="mt-6 max-w-lg text-lg text-stone-600">
                 One-to-one strength coaching and personalised nutrition plans,
                 built around your body, your schedule and your goals — not a
                 generic template.
@@ -20,13 +20,13 @@
             <div class="mt-8 flex flex-wrap gap-4">
                 <a
                     href="#contact"
-                    class="smoothScroll inline-flex items-center justify-center rounded-full bg-[#eb5424] px-7 py-3 text-sm font-semibold text-white hover:bg-[#c94219] transition-colors"
+                    class="smoothScroll inline-flex items-center justify-center rounded-full bg-[#eb5424] px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#c94219]"
                 >
                     Book a free consult
                 </a>
                 <a
                     href="#services"
-                    class="smoothScroll inline-flex items-center justify-center rounded-full border border-stone-300 px-7 py-3 text-sm font-semibold text-stone-800 hover:border-stone-400 transition-colors"
+                    class="smoothScroll inline-flex items-center justify-center rounded-full border border-stone-300 px-7 py-3 text-sm font-semibold text-stone-800 transition-colors hover:border-stone-400"
                 >
                     See what's included
                 </a>
@@ -54,7 +54,7 @@
                     },
                 }"
                 x-init="animate()"
-                class="mt-12 grid grid-cols-3 gap-6 max-w-md"
+                class="mt-12 grid max-w-md grid-cols-3 gap-6"
             >
                 <div class="stat-chip">
                     <span class="stat-value" x-text="clients"></span>
@@ -87,7 +87,7 @@
             <img
                 src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80"
                 alt="Coach guiding a client through a strength session"
-                class="absolute inset-0 h-full w-full object-cover rounded-[2.5rem]"
+                class="absolute inset-0 h-full w-full rounded-[2.5rem] object-cover"
                 style="
                     clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
                     mix-blend-mode: luminosity;
@@ -96,15 +96,15 @@
             />
 
             <div
-                class="absolute bottom-6 left-6 bg-white/95 backdrop-blur rounded-2xl px-5 py-4 shadow-lg max-w-[220px]"
+                class="absolute bottom-6 left-6 max-w-[220px] rounded-2xl bg-white/95 px-5 py-4 shadow-lg backdrop-blur"
             >
-                <p class="text-xs uppercase tracking-[0.2em] text-stone-500">
+                <p class="text-xs tracking-[0.2em] text-stone-500 uppercase">
                     This week
                 </p>
-                <p class="font-display text-2xl font-bold text-stone-900 mt-1">
+                <p class="font-display mt-1 text-2xl font-bold text-stone-900">
                     6 spots left
                 </p>
-                <p class="text-xs text-stone-500 mt-1">
+                <p class="mt-1 text-xs text-stone-500">
                     for new 1:1 coaching intakes
                 </p>
             </div>

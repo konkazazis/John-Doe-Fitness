@@ -2,7 +2,7 @@
     "testimonials",
 ])
 
-<section class="py-24 bg-stone-900 text-stone-50">
+<section class="bg-stone-900 py-24 text-stone-50">
     <div
         x-data="{
             active: 0,
@@ -14,12 +14,12 @@
                 this.active = (this.active - 1 + this.count) % this.count
             },
         }"
-        class="mx-auto max-w-4xl px-6 lg:px-8 text-center"
+        class="mx-auto max-w-4xl px-6 text-center lg:px-8"
     >
         <span class="section-label text-stone-400">Results, not promises</span>
 
         <div
-            class="relative min-h-[180px] flex items-center justify-center mt-10"
+            class="relative mt-10 flex min-h-[180px] items-center justify-center"
         >
             @foreach ($testimonials as $i => $t)
                 <div
@@ -29,25 +29,25 @@
                     x-transition:enter-end="opacity-100 translate-y-0"
                     class="absolute inset-0"
                 >
-                    <p class="font-display text-2xl sm:text-3xl leading-snug">
+                    <p class="font-display text-2xl leading-snug sm:text-3xl">
                         &ldquo;{{ $t["quote"] }}&rdquo;
                     </p>
-                    <p class="mt-6 text-[#eb5424] font-semibold">
+                    <p class="mt-6 font-semibold text-[#eb5424]">
                         {{ $t["client"] }}
                     </p>
-                    <p class="text-stone-400 text-sm">{{ $t["description"] }}</p>
+                    <p class="text-sm text-stone-400">{{ $t["description"] }}</p>
                 </div>
             @endforeach
         </div>
 
-        <div class="flex items-center justify-center gap-6 mt-10">
+        <div class="mt-10 flex items-center justify-center gap-6">
             <button
                 @click="prev()"
                 aria-label="Previous testimonial"
-                class="w-10 h-10 rounded-full border border-stone-700 flex items-center justify-center hover:border-stone-500 transition-colors"
+                class="flex h-10 w-10 items-center justify-center rounded-full border border-stone-700 transition-colors hover:border-stone-500"
             >
                 <svg
-                    class="w-4 h-4"
+                    class="h-4 w-4"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -65,7 +65,7 @@
                 @foreach ($testimonials as $i => $t)
                     <button
                         @click="active = {{ $i }}"
-                        class="w-2 h-2 rounded-full transition-colors"
+                        class="h-2 w-2 rounded-full transition-colors"
                         :class="active === {{ $i }} ? 'bg-[#eb5424]' : 'bg-stone-700'"
                         aria-label="Go to testimonial {{ $i + 1 }}"
                     ></button>
@@ -75,10 +75,10 @@
             <button
                 @click="next()"
                 aria-label="Next testimonial"
-                class="w-10 h-10 rounded-full border border-stone-700 flex items-center justify-center hover:border-stone-500 transition-colors"
+                class="flex h-10 w-10 items-center justify-center rounded-full border border-stone-700 transition-colors hover:border-stone-500"
             >
                 <svg
-                    class="w-4 h-4"
+                    class="h-4 w-4"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"

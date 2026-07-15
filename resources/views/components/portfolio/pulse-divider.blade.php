@@ -5,7 +5,7 @@
 @endphp
 
 <div {{ $attributes->class('w-full overflow-hidden py-2') }} aria-hidden="true">
-    <svg viewBox="0 0 400 24" preserveAspectRatio="none" class="w-full h-6">
+    <svg viewBox="0 0 400 24" preserveAspectRatio="none" class="h-6 w-full">
         <polyline
             points="0,12 140,12 155,2 168,22 182,4 194,20 206,12 400,12"
             fill="none"

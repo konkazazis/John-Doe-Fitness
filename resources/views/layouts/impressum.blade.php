@@ -13,37 +13,35 @@
 @endpush
 
 @section('content')
-    <div class="max-w-2xl my-8 mx-6 lg:mx-auto">
+    <div class="mx-6 my-8 max-w-2xl lg:mx-auto">
 
-        <div class="mt-8 mb-10 pb-6 border-b border-stone-200 flex items-end justify-between gap-4">
+        <div class="mt-8 mb-10 flex items-end justify-between gap-4 border-b border-stone-200 pb-6">
             <div>
-                <h1 class="text-3xl font-bold tracking-tight uppercase mb-2">
+                <h1 class="mb-2 text-3xl font-bold tracking-tight uppercase">
                     Im<strong class="text-brand">pressum</strong>
                 </h1>
-                <p class="text-stone-400 text-sm">
+                <p class="text-sm text-stone-400">
                     {{ $lang === 'en' ? 'Legal Notice — required by German law (§5 TMG)' : 'Angaben gemäß § 5 TMG' }}
                 </p>
             </div>
-            <div class="flex gap-1 shrink-0">
+            <div class="flex shrink-0 gap-1">
                 <a href="{{ route('impressum') }}"
-                    class="px-3 py-1 rounded text-xs font-medium tracking-wide transition-colors
-                                  {{ $lang === 'de' ? 'bg-stone-800 text-white' : 'text-stone-500 border border-stone-200 hover:border-stone-400 hover:text-stone-700' }}">
+                    class="rounded px-3 py-1 text-xs font-medium tracking-wide transition-colors {{ $lang === 'de' ? 'bg-stone-800 text-white' : 'text-stone-500 border border-stone-200 hover:border-stone-400 hover:text-stone-700' }}">
                     DE
                 </a>
                 <a href="{{ route('impressum', ['lang' => 'en']) }}"
-                    class="px-3 py-1 rounded text-xs font-medium tracking-wide transition-colors
-                                  {{ $lang === 'en' ? 'bg-stone-800 text-white' : 'text-stone-500 border border-stone-200 hover:border-stone-400 hover:text-stone-700' }}">
+                    class="rounded px-3 py-1 text-xs font-medium tracking-wide transition-colors {{ $lang === 'en' ? 'bg-stone-800 text-white' : 'text-stone-500 border border-stone-200 hover:border-stone-400 hover:text-stone-700' }}">
                     EN
                 </a>
             </div>
         </div>
 
-        <div class="prose prose-stone max-w-none text-stone-700 leading-relaxed space-y-8">
+        <div class="prose prose-stone max-w-none space-y-8 leading-relaxed text-stone-700">
 
             @if($lang === 'de')
 
                 <section>
-                    <h2 class="text-lg font-bold text-stone-800 mb-2">Verantwortlich</h2>
+                    <h2 class="mb-2 text-lg font-bold text-stone-800">Verantwortlich</h2>
                     <p>
                         Konstantinos Kazazis<br>
                         Oberratherstrassse 24<br>
@@ -53,7 +51,7 @@
                 </section>
 
                 <section>
-                    <h2 class="text-lg font-bold text-stone-800 mb-2">Kontakt</h2>
+                    <h2 class="mb-2 text-lg font-bold text-stone-800">Kontakt</h2>
                     <p>
                         E-Mail:
                         <a href="mailto:kazaziskonstantinos@gmail.com" class="text-brand hover:underline">
@@ -63,12 +61,12 @@
                 </section>
 
                 <section>
-                    <h2 class="text-lg font-bold text-stone-800 mb-2">Umsatzsteuer-ID</h2>
+                    <h2 class="mb-2 text-lg font-bold text-stone-800">Umsatzsteuer-ID</h2>
                     <p>DE460984115</p>
                 </section>
 
                 <section>
-                    <h2 class="text-lg font-bold text-stone-800 mb-2">Haftung für Inhalte</h2>
+                    <h2 class="mb-2 text-lg font-bold text-stone-800">Haftung für Inhalte</h2>
                     <p>
                         Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit,
                         Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.
@@ -78,7 +76,7 @@
                 </section>
 
                 <section>
-                    <h2 class="text-lg font-bold text-stone-800 mb-2">Haftung für Links</h2>
+                    <h2 class="mb-2 text-lg font-bold text-stone-800">Haftung für Links</h2>
                     <p>
                         Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte kein
                         Einfluss besteht. Für die Inhalte der verlinkten Seiten ist stets der jeweilige
@@ -89,7 +87,7 @@
                 </section>
 
                 <section>
-                    <h2 class="text-lg font-bold text-stone-800 mb-2">Urheberrecht</h2>
+                    <h2 class="mb-2 text-lg font-bold text-stone-800">Urheberrecht</h2>
                     <p>
                         Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten
                         unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung,
@@ -101,7 +99,7 @@
             @else
 
                 <section>
-                    <h2 class="text-lg font-bold text-stone-800 mb-2">Responsible Party</h2>
+                    <h2 class="mb-2 text-lg font-bold text-stone-800">Responsible Party</h2>
                     <p>
                         Konstantinos Kazazis<br>
                         Oberratherstrassse 24<br>
@@ -111,7 +109,7 @@
                 </section>
 
                 <section>
-                    <h2 class="text-lg font-bold text-stone-800 mb-2">Contact</h2>
+                    <h2 class="mb-2 text-lg font-bold text-stone-800">Contact</h2>
                     <p>
                         Email:
                         <a href="mailto:kazaziskonstantinos@gmail.com" class="text-brand hover:underline">
@@ -121,12 +119,12 @@
                 </section>
 
                 <section>
-                    <h2 class="text-lg font-bold text-stone-800 mb-2">VAT Number</h2>
+                    <h2 class="mb-2 text-lg font-bold text-stone-800">VAT Number</h2>
                     <p>DE460984115</p>
                 </section>
 
                 <section>
-                    <h2 class="text-lg font-bold text-stone-800 mb-2">Liability for Content</h2>
+                    <h2 class="mb-2 text-lg font-bold text-stone-800">Liability for Content</h2>
                     <p>
                         The contents of this website have been compiled with the utmost care. However,
                         no guarantee can be given for the accuracy, completeness, or timeliness of the
@@ -136,7 +134,7 @@
                 </section>
 
                 <section>
-                    <h2 class="text-lg font-bold text-stone-800 mb-2">Liability for Links</h2>
+                    <h2 class="mb-2 text-lg font-bold text-stone-800">Liability for Links</h2>
                     <p>
                         This website contains links to external third-party websites over whose content
                         I have no control. The respective provider or operator of those pages is always
@@ -146,7 +144,7 @@
                 </section>
 
                 <section>
-                    <h2 class="text-lg font-bold text-stone-800 mb-2">Copyright</h2>
+                    <h2 class="mb-2 text-lg font-bold text-stone-800">Copyright</h2>
                     <p>
                         The content and works created by the site operator on these pages are subject to
                         German copyright law. Reproduction, editing, distribution, and any kind of use
