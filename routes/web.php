@@ -9,6 +9,7 @@ use App\Http\Controllers\RobotsController;
 use App\Http\Controllers\SitemapController;
 use App\Livewire\Admin\Dashboard as AdminDashboard;
 use App\Livewire\User\Dashboard as UserDashboard;
+use App\Livewire\User\Messages\MessageManager;
 use App\Livewire\Admin\Settings\Profile as SettingsProfile;
 use App\Livewire\Admin\Settings\Security as SettingsSecurity;
 use App\Livewire\Admin\Settings\Appearance as SettingsAppearance;
@@ -41,7 +42,7 @@ Route::get('/privacy', [LegalController::class, 'privacy'])->name('privacy');
 Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
     Route::middleware(['role:user'])->group(function () {
         Route::get('/', UserDashboard::class)->name('dashboard');
-        Route::get('/messages', ContactManager::class)->name('messages.index');
+        Route::get('/messages', MessageManager::class)->name('messages');
         Route::redirect('/settings', '/user/settings/profile')->name('settings');
         Route::get('/settings/profile', SettingsProfile::class)->name('settings.profile');
         Route::get('/settings/security', SettingsSecurity::class)->name('settings.security');

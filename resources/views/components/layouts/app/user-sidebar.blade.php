@@ -78,35 +78,28 @@
         </flux:sidebar.header>
 
         <flux:sidebar.nav>
-            <flux:sidebar.group heading="Content" class="grid">
-                <flux:sidebar.item
-                    icon="briefcase"
-                    :href="route('admin.plans.index')"
-                    :current="request()->routeIs('admin.plans.*')"
-                    wire:navigate
-                >
-                    Plans
-                </flux:sidebar.item>
-                <flux:sidebar.item
-                    icon="inbox"
-                    :href="route('admin.messages.index')"
-                    :current="request()->routeIs('admin.messages.*')"
-                    wire:navigate
-                >
-                    Messages Messages
-                </flux:sidebar.item>
-            </flux:sidebar.group>
-
-            <flux:sidebar.group heading="Admin" class="grid">
+            <flux:sidebar.group heading="Main" class="grid">
                 <flux:sidebar.item
                     icon="chart-bar"
-                    :href="route('admin.dashboard')"
-                    :current="request()->routeIs('admin.dashboard')"
+                    :href="route('user.dashboard')"
+                    :current="request()->routeIs('user.dashboard')"
                     wire:navigate
                 >
                     Overview
                 </flux:sidebar.item>
             </flux:sidebar.group>
+
+            <flux:sidebar.group heading="Content" class="grid">
+                <flux:sidebar.item
+                    icon="inbox"
+                    :href="route('user.messages')"
+                    :current="request()->routeIs('user.messages.*')"
+                    wire:navigate
+                >
+                    Messages
+                </flux:sidebar.item>
+            </flux:sidebar.group>
+
         </flux:sidebar.nav>
 
         <flux:spacer />

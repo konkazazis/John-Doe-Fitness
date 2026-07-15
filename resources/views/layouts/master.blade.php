@@ -98,6 +98,14 @@
                     >
                         Contact
                     </a>
+                    @if (!Auth::user()) 
+                        <a
+                            href="{{ route("login") }}"
+                            class="transition-colors hover:text-stone-900"
+                        >
+                            Login/Register
+                        </a>
+                    @endauth
                 </nav>
                 @auth
                     <div
@@ -133,14 +141,6 @@
                             class="ring-opacity-5 absolute right-0 mt-2 hidden w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black focus:outline-none"
                         >
                             <div class="py-1">
-                                @if (auth()->user()->role('admin'))
-                                    <a
-                                        href="{{ route("admin.dashboard") }}"
-                                        class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 hover:text-gray-900"
-                                    >
-                                        Admin
-                                    </a>
-                                @endif
                                 @auth
                                     @if (auth()->user()->role('admin'))
                                         <a
