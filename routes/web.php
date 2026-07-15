@@ -39,30 +39,33 @@ Route::get('/privacy', [LegalController::class, 'privacy'])->name('privacy');
 // ─── User CMS ────────────────────────────────────────────────────────────────
 
 Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
-    Route::get('/', UserDashboard::class)->name('dashboard');
-    //Route::get('/purchased-plans', PurchasedPlansManager::class)->name('purchased-plans.index');
-    Route::get('/messages', ContactManager::class)->name('messages.index');
-    Route::redirect('/settings', '/user/settings/profile')->name('settings');
-    Route::get('/settings/profile', SettingsProfile::class)->name('settings.profile');
-    Route::get('/settings/security', SettingsSecurity::class)->name('settings.security');
-    Route::get('/settings/appearance', SettingsAppearance::class)->name('settings.appearance');
+    Route::middleware(['role:user'])->group(function () {
+        Route::get('/', UserDashboard::class)->name('dashboard');
+        Route::get('/messages', ContactManager::class)->name('messages.index');
+        Route::redirect('/settings', '/user/settings/profile')->name('settings');
+        Route::get('/settings/profile', SettingsProfile::class)->name('settings.profile');
+        Route::get('/settings/security', SettingsSecurity::class)->name('settings.security');
+        Route::get('/settings/appearance', SettingsAppearance::class)->name('settings.appearance');
+    });
 });
 
 
 // ─── Admin CMS ────────────────────────────────────────────────────────────────
 
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/', AdminDashboard::class)->name('dashboard');
-    Route::get('/posts', PostManager::class)->name('posts.index');
-    Route::get('/projects', ProjectManager::class)->name('projects.index');
-    Route::get('/plans', PlansManager::class)->name('plans.index');
-    Route::get('/testimonials', TestimonialManager::class)->name('testimonial.index');
-    Route::get('/categories', CategoryManager::class)->name('categories.index');
-    Route::get('/tags', TagManager::class)->name('tags.index');
-    Route::get('/messages', ContactManager::class)->name('messages.index');
-    Route::get('/client-messages', ClientsMessagesManager::class)->name('clients-messages.index');
-    Route::redirect('/settings', '/admin/settings/profile')->name('settings');
-    Route::get('/settings/profile', SettingsProfile::class)->name('settings.profile');
-    Route::get('/settings/security', SettingsSecurity::class)->name('settings.security');
-    Route::get('/settings/appearance', SettingsAppearance::class)->name('settings.appearance');
+    Route::middleware(['role:admin'])->group(function () {
+        Route::get('/', AdminDashboard::class)->name('dashboard');
+        Route::get('/posts', PostManager::class)->name('posts.index');
+        Route::get('/projects', ProjectManager::class)->name('projects.index');
+        Route::get('/plans', PlansManager::class)->name('plans.index');
+        Route::get('/testimonials', TestimonialManager::class)->name('testimonial.index');
+        Route::get('/categories', CategoryManager::class)->name('categories.index');
+        Route::get('/tags', TagManager::class)->name('tags.index');
+        Route::get('/messages', ContactManager::class)->name('messages.index');
+        Route::get('/client-messages', ClientsMessagesManager::class)->name('clients-messages.index');
+        Route::redirect('/settings', '/admin/settings/profile')->name('settings');
+        Route::get('/settings/profile', SettingsProfile::class)->name('settings.profile');
+        Route::get('/settings/security', SettingsSecurity::class)->name('settings.security');
+        Route::get('/settings/appearance', SettingsAppearance::class)->name('settings.appearance');
+    });
 });
