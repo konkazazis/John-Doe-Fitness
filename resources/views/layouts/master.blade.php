@@ -81,7 +81,7 @@
                     class="hidden gap-8 text-sm font-medium tracking-[0.35em] text-stone-600 uppercase sm:flex"
                 >
                     <a
-                        href="{{ route("about") }}"
+                        href="{{ route("home") }}#about"
                         class="transition-colors {{ request()->routeIs("about") ? "text-stone-900" : "hover:text-stone-900" }}"
                     >
                         About
@@ -119,7 +119,7 @@
                         >
                             <img
                                 src="https://s3.eu-north-1.amazonaws.com/kazazis.dev/profile-pic.png"
-                                alt="Kostas"
+                                alt="User profile image"
                                 class="h-10 w-10 rounded-full bg-stone-100 object-cover"
                             />
                             <svg
