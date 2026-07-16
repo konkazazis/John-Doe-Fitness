@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
-@section('title', 'Blog · kostas')
-@section('meta_description', 'Thoughts on code, design, and the web — a developer blog by Kostas.')
-@section('og_title', 'Blog · kostas')
+@section('title', 'Blog · John Doe')
+@section('meta_description', 'Thoughts on fitness.')
+@section('og_title', 'Blog · John Doe')
 @section('canonical', $activeCategory ? route('blog', ['category' => $activeCategory->slug]) : route('blog'))
 
 @push('head')
@@ -26,12 +26,12 @@
         {!! json_encode([
             $ldContext => 'https://schema.org',
             $ldType => 'Blog',
-            'name' => 'Blog · kostas',
-            'description' => 'Thoughts on code, design, and the web — a developer blog by Kostas.',
+            'name' => 'Blog · John Doe',
+            'description' => 'Thoughts on fitness',
             'url' => route('blog'),
             'author' => [
                 $ldType => 'Person',
-                'name' => 'Konstantinos Kazazis',
+                'name' => 'John Doe',
                 'url' => route('about'),
             ],
             'blogPost' => $posts->map(fn($post) => [
@@ -115,9 +115,9 @@
                                 </div>
                                 @if(auth()->user()->role('admin'))
                                     <div class="mt-4 flex items-center gap-3 md:mt-0">
-                                        <img src="https://s3.eu-north-1.amazonaws.com/kazazis.dev/profile-pic.png" alt="Kostas"
+                                        <img src="https://s3.eu-north-1.amazonaws.com/kazazis.dev/profile-pic.png" alt="John Doe"
                                             class="h-10 w-10 rounded-full bg-stone-100 object-cover">
-                                        <div class="text-xs font-semibold tracking-[0.25em] text-stone-500 uppercase">Kostas</div>
+                                        <div class="text-xs font-semibold tracking-[0.25em] text-stone-500 uppercase">John Doe</div>
                                     </div>
                                 @endif
                             </div>

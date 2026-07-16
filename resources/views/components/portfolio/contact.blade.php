@@ -10,7 +10,7 @@
             </p>
 
             <a href="mailto:hello@kazazis.dev" class="border-dark-line hover:border-on-dark mt-8 inline-flex items-center gap-3 border-b pb-1.5 font-mono text-[1.05rem] transition-all hover:gap-4">
-                kostas@kapratsis.fit <span class="arr">&rarr;</span>
+                example@mail.com <span class="arr">&rarr;</span>
             </a>
 
             <div class="mt-[30px] flex gap-2.5">
@@ -33,7 +33,7 @@
                             <p> Copyright © {{ date('Y') }}
                                 <a href="https://kazazis.dev" target="_blank" rel="noopener noreferrer"
                                     class="hover:text-brand text-sm text-zinc-500 transition-colors">
-                                    Kostas Kazazis
+                                    John Doe
                                 </a>
                             </p>
                         </div>
