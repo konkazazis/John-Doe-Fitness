@@ -40,7 +40,7 @@
                 'url' => route('posts.show', $post->slug),
                 'datePublished' => $post->published_at->toIso8601String(),
                 'description' => \Illuminate\Support\Str::limit(strip_tags($post->excerpt ?? $post->content), 160),
-                'author' => [$ldType => 'Person', 'name' => 'Konstantinos Kazazis', 'url' => route('about')],
+                'author' => [$ldType => 'Person', 'name' => 'John Doe'],
             ])->values()->all(),
         ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
     </script>

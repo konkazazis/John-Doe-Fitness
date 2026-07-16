@@ -32,7 +32,7 @@
 
     {{-- Twitter Card --}}
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:creator" content="@konkazazis" />
+    <meta name="twitter:creator" content="@JohnDoe" />
     <meta name="twitter:title" content="@yield("og_title", "John Doe")" />
     <meta
         name="twitter:description"

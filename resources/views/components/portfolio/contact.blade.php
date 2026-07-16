@@ -9,7 +9,7 @@
                 Tell me a little about your firness goals. I read every message and reply within a day or two.
             </p>
 
-            <a href="mailto:hello@kazazis.dev" class="border-dark-line hover:border-on-dark mt-8 inline-flex items-center gap-3 border-b pb-1.5 font-mono text-[1.05rem] transition-all hover:gap-4">
+            <a href="mailto:example@mail.com" class="border-dark-line hover:border-on-dark mt-8 inline-flex items-center gap-3 border-b pb-1.5 font-mono text-[1.05rem] transition-all hover:gap-4">
                 example@mail.com <span class="arr">&rarr;</span>
             </a>
 
@@ -31,7 +31,7 @@
                     <div class="border-t border-stone-800 pt-8 text-center text-sm text-stone-400 lg:flex lg:justify-between">
                         <div class="mb-4 lg:mb-0">
                             <p> Copyright © {{ date('Y') }}
-                                <a href="https://kazazis.dev" target="_blank" rel="noopener noreferrer"
+                                <a href="#" target="_blank" rel="noopener noreferrer"
                                     class="hover:text-brand text-sm text-zinc-500 transition-colors">
                                     John Doe
                                 </a>

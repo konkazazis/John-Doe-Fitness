@@ -43,12 +43,12 @@
             'dateModified' => $post->updated_at->toIso8601String(),
             'author' => [
                 $ldType => 'Person',
-                'name' => 'Konstantinos Kazazis',
+                'name' => 'John Doe',
                 'url' => route('about'),
             ],
             'publisher' => [
                 $ldType => 'Person',
-                'name' => 'Konstantinos Kazazis',
+                'name' => 'John Doe',
             ],
             'keywords' => $post->tags->pluck('name')->join(', '),
             'articleSection' => $post->category?->name,
