@@ -234,12 +234,6 @@
                     Contact
                 </a>
                 <a
-                    href="{{ route("impressum") }}"
-                    class="border-b border-stone-100 py-3 transition-colors hover:text-stone-900"
-                >
-                    Impressum
-                </a>
-                <a
                     href="{{ route("privacy") }}"
                     class="border-b border-stone-100 py-3 transition-colors hover:text-stone-900"
                 >

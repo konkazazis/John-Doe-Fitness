@@ -50,9 +50,6 @@
                                 rel="noopener noreferrer" class="hover:text-brand text-sm text-zinc-500 transition-colors">
                                 TikTok
                             </a>
-                            <a href="{{ route('impressum') }}" class="hover:text-brand text-sm text-zinc-500 transition-colors">
-                                Impressum
-                            </a>
                             <a href="{{ route('privacy') }}" class="hover:text-brand text-sm text-zinc-500 transition-colors">
                                 Privacy
                             </a>
