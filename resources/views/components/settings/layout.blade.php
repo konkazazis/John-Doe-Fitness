@@ -1,9 +1,15 @@
 <div class="flex items-start max-md:flex-col">
     <div class="me-10 w-full pb-4 md:w-[220px]">
         <flux:navlist aria-label="{{ __('Settings') }}">
-            <flux:navlist.item :href="route('admin.settings.profile')" wire:navigate>{{ __('Profile') }}</flux:navlist.item>
-            <flux:navlist.item :href="route('admin.settings.security')" wire:navigate>{{ __('Security') }}</flux:navlist.item>
-            <flux:navlist.item :href="route('admin.settings.appearance')" wire:navigate>{{ __('Appearance') }}</flux:navlist.item>
+            @if (auth()->user()->role('admin'))
+                <flux:navlist.item :href="route('admin.settings.profile')" wire:navigate>{{ __('Profile') }}</flux:navlist.item>
+                <flux:navlist.item :href="route('admin.settings.security')" wire:navigate>{{ __('Security') }}</flux:navlist.item>
+                <flux:navlist.item :href="route('admin.settings.appearance')" wire:navigate>{{ __('Appearance') }}</flux:navlist.item>
+            @elseif (auth()->user()->role('user'))
+                <flux:navlist.item :href="route('user.settings.profile')" wire:navigate>{{ __('Profile') }}</flux:navlist.item>
+                <flux:navlist.item :href="route('user.settings.security')" wire:navigate>{{ __('Security') }}</flux:navlist.item>
+                <flux:navlist.item :href="route('user.settings.appearance')" wire:navigate>{{ __('Appearance') }}</flux:navlist.item>
+            @endif
         </flux:navlist>
     </div>
 
