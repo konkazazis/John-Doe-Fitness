@@ -1,9 +1,9 @@
 User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: /user
 Disallow: /login
 Disallow: /logout
 Disallow: /register
-Disallow: /profile
 
 Sitemap: {{ route('sitemap') }}

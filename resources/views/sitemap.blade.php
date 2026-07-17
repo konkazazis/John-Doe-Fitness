@@ -9,12 +9,6 @@
     </url>
 
     <url>
-        <loc>{{ route('about') }}</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-
-    <url>
         <loc>{{ route('blog') }}</loc>
         <lastmod>{{ $latestPostDate->toAtomString() }}</lastmod>
         <changefreq>daily</changefreq>
