@@ -23,6 +23,7 @@ use App\Livewire\Admin\Plans\PlansManager;
 use App\Livewire\Admin\Testimonial\TestimonialManager;
 use App\Livewire\Admin\ClientsMessages\ClientsMessagesManager;
 use Illuminate\Support\Facades\Route;
+use Laravel\Cashier\Http\Controllers\WebhookController;
 
 // ─── SEO ──────────────────────────────────────────────────────────────────────
 
@@ -50,13 +51,16 @@ Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
     });
 });
 
+// ─── Stripe ────────────────────────────────────────────────────────────────
+
+Route::post('stripe/webhook', [WebhookController::class, 'handleWebhook']);
+
 Route::middleware('auth')->group(function () {
     Route::post('/subscribe/{key}', [SubscriptionController::class, 'subscribe'])
         ->name('subscription.subscribe');
     Route::get('/subscription/success', [SubscriptionController::class, 'success'])
         ->name('subscription.success');
 });
-
 
 // ─── Admin CMS ────────────────────────────────────────────────────────────────
 
