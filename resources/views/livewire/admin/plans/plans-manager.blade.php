@@ -74,7 +74,7 @@
                 </table>
             </div>
             @if($plans->hasPages())
-                <div class="border-t border-zinc-100 px-6 py-4 dark:border-zinc-800">{{ $plan->links() }}</div>
+                <div class="border-t border-zinc-100 px-6 py-4 dark:border-zinc-800">{{ $plans->links() }}</div>
             @endif
         @endif
     </div>
@@ -122,17 +122,31 @@
                 </div>
 
                 <div>
+                    <label class="mb-1.5 block text-xs font-semibold tracking-wide text-zinc-600 uppercase dark:text-zinc-300">Key</label>
+                    <input type="text" wire:model="key" placeholder="e.g. pro"
+                        class="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-800 placeholder-zinc-400 focus:ring-2 focus:ring-zinc-900 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100">
+                    @error('key') <p class="mt-1 text-xs text-red-500">{{ $message }}</p> @enderror
+                </div>
+
+                <div>
                     <label class="mb-1.5 block text-xs font-semibold tracking-wide text-zinc-600 uppercase dark:text-zinc-300">Features</label>
-                    <textarea wire:model="features" rows="4" placeholder="One feature per line"></textarea>
-                    @error('features') <span class="error">{{ $message }}</span> @enderror
-                    <div>
-                        <label class="mb-1.5 block text-xs font-semibold tracking-wide text-zinc-600 uppercase dark:text-zinc-300">Tag</label>
-                        <textarea wire:model="tag" rows="3" placeholder="Tag..."
-                            class="w-full resize-none rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-800 placeholder-zinc-400 focus:ring-2 focus:ring-zinc-900 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"></textarea>
-                        @error('tag') <p class="mt-1 text-xs text-red-500">{{ $message }}</p> @enderror
+                    <textarea wire:model="features" rows="4" placeholder="One feature per line"
+                        class="w-full resize-none rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-800 placeholder-zinc-400 focus:ring-2 focus:ring-zinc-900 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"></textarea>
+                    @error('features') <p class="mt-1 text-xs text-red-500">{{ $message }}</p> @enderror
+                </div>
 
-                    </div>
+                <div>
+                    <label class="mb-1.5 block text-xs font-semibold tracking-wide text-zinc-600 uppercase dark:text-zinc-300">Tag</label>
+                    <textarea wire:model="tag" rows="1" placeholder="e.g. pro"
+                        class="w-full resize-none rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-800 placeholder-zinc-400 focus:ring-2 focus:ring-zinc-900 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"></textarea>
+                    @error('tag') <p class="mt-1 text-xs text-red-500">{{ $message }}</p> @enderror
+                </div>
 
+                <div>
+                    <label class="mb-1.5 block text-xs font-semibold tracking-wide text-zinc-600 uppercase dark:text-zinc-300">Stripe Price ID</label>
+                    <input type="text" wire:model="stripe_price_id" placeholder="price_1AbCdEfGhIjKlMnO"
+                        class="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-800 placeholder-zinc-400 focus:ring-2 focus:ring-zinc-900 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100">
+                    @error('stripe_price_id') <p class="mt-1 text-xs text-red-500">{{ $message }}</p> @enderror
                 </div>
 
                 <div class="mt-6 flex justify-end gap-3 border-t border-zinc-100 pt-4 dark:border-zinc-800">

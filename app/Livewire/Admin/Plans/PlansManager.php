@@ -8,29 +8,37 @@ use Livewire\WithPagination;
 
 class PlansManager extends Component
 {
-
     use WithPagination;
 
     public string $search = '';
 
-    public bool   $showModal     = false;
-    public ?int   $editingId     = null;
-    public string $name        = '';
-    public string $description   = '';
-    public string $features         = '';
-    public ?int $price = null; 
-    public string $tag = '';
+    public bool   $showModal    = false;
+    public ?int   $editingId    = null;
+    public string $name         = '';
+    public string $key          = '';
+    public string $description  = '';
+    public string $features     = '';
+    public ?int   $price        = null;
+    public string $tag          = '';
+    public string $stripe_price_id = '';
 
     public ?int $deletingId = null;
 
     protected function rules(): array
     {
         return [
-            'name'       => ['required', 'string', 'max:50'],
-            'price'        => ['required', 'integer', 'min:0'],
-            'description'  => ['required', 'string', 'max:3000'],
-            'features' => ['required', 'string', 'max:1000'],
-            'tag' => ['required', 'string', 'max:50']
+            'name'            => ['required', 'string', 'max:50'],
+            'key'             => [
+                'required',
+                'string',
+                'max:50',
+                'unique:plans,key' . ($this->editingId ? ",{$this->editingId}" : ''),
+            ],
+            'price'           => ['required', 'integer', 'min:0'],
+            'description'     => ['required', 'string', 'max:3000'],
+            'features'        => ['required', 'string', 'max:1000'],
+            'tag'             => ['required', 'string', 'max:50'],
+            'stripe_price_id' => ['required', 'string', 'max:255'],
         ];
     }
 
@@ -40,8 +48,9 @@ class PlansManager extends Component
     }
 
     public function openCreate(): void
-    { 
-        $this->reset(['name', 'price', 'description', 'tag', 'features']);
+    {
+        $this->editingId = null;
+        $this->reset(['name', 'key', 'price', 'description', 'tag', 'features', 'stripe_price_id']);
         $this->showModal = true;
     }
 
@@ -49,13 +58,15 @@ class PlansManager extends Component
     {
         $plan = Plan::findOrFail($id);
 
-        $this->editingId    = $plan->id;
-        $this->name        = $plan->name;
-        $this->price        = $plan->price;
-        $this->description  = $plan->description ?? '';
-        $this->tag = $plan->tag;
-        $this->features    = implode("\n", $plan->features ?? []);
-        $this->showModal    = true;
+        $this->editingId       = $plan->id;
+        $this->name            = $plan->name;
+        $this->key             = $plan->key;
+        $this->price           = $plan->price;
+        $this->description     = $plan->description ?? '';
+        $this->tag             = $plan->tag;
+        $this->stripe_price_id = $plan->stripe_price_id;
+        $this->features        = implode("\n", $plan->features ?? []);
+        $this->showModal       = true;
     }
 
     public function save(): void
@@ -63,11 +74,13 @@ class PlansManager extends Component
         $this->validate();
 
         $data = [
-            'name'        => $this->name,
-            'description'  => $this->description,
-            'price'  => $this->price,
-            'tag' => $this->tag,
-            'features'    => collect(explode("\n", $this->features))
+            'name'            => $this->name,
+            'key'             => $this->key,
+            'description'     => $this->description,
+            'price'           => $this->price,
+            'tag'             => $this->tag,
+            'stripe_price_id' => $this->stripe_price_id,
+            'features'        => collect(explode("\n", $this->features))
                 ->map(fn ($line) => trim($line))
                 ->filter()
                 ->values()
@@ -77,13 +90,11 @@ class PlansManager extends Component
         if ($this->editingId) {
             Plan::findOrFail($this->editingId)->update($data);
         } else {
-            Plan::create([
-                ...$data,
-            ]);
+            Plan::create($data);
         }
 
         $this->showModal = false;
-        $this->reset(['name', 'price', 'description', 'tag', 'features']);
+        $this->reset(['name', 'key', 'price', 'description', 'tag', 'features', 'stripe_price_id']);
     }
 
     public function confirmDelete(int $id): void
@@ -99,9 +110,7 @@ class PlansManager extends Component
     public function delete(): void
     {
         if ($this->deletingId) {
-            $plan = Plan::findOrFail($this->deletingId);
-
-            $plan->delete();
+            Plan::findOrFail($this->deletingId)->delete();
             $this->deletingId = null;
         }
     }

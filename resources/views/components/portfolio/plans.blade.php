@@ -69,13 +69,14 @@
                             </li>
                         @endforeach
                     </ul>
-
-                    <a
-                        href="#contact"
-                        class="smoothScroll text-center rounded-full px-6 py-3 text-sm font-semibold transition-colors {{ $plan["featured"] ?? false ? "bg-[#eb5424] text-white hover:bg-[#c94219]" : "border border-stone-300 text-stone-800 hover:border-stone-400" }}"
-                    >
-                        Start with {{ $plan->name }}
-                    </a>
+                    @auth
+                        <form method="POST" action="{{ route('subscription.subscribe', $plan->key) }}">
+                    @csrf
+                            <button type="submit" class="btn btn-primary">Choose {{ $plan->name }}</button>
+                        </form>
+                    @else
+                        <a href="{{ route('login') }}" class="btn btn-primary">Login to subscribe</a>
+                    @endauth
                 </div>
             @endforeach
         </div>

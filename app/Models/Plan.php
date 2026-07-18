@@ -9,12 +9,14 @@ use Illuminate\Support\Str;
 class Plan extends Model
 {
     protected $fillable = [
-        'name', 'description', 'price', 'tag', 'features',
+        'name', 'description', 'price', 'tag', 'key', 'features',
+        'stripe_price_id', 'is_active', 'order',
     ];
 
     protected $casts = [
         'price' => 'integer',
         'features' => 'array',
+        'is_active' => 'boolean',
+        'order' => 'integer',
     ];
-
 }

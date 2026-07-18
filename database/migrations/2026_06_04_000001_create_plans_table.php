@@ -10,11 +10,15 @@ return new class extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
+            $table->string('key')->unique();
             $table->string('name');
+            $table->string('stripe_price_id');
+            $table->decimal('price', 8, 2);
             $table->text('description');
-            $table->integer('price');
             $table->string('tag')->nullable();
-            $table->json('features')->nullable()->change();
+            $table->unsignedInteger('order')->default(0);
+            $table->boolean('is_active')->default(true);
+            $table->json('features')->nullable();
             $table->timestamps();
         });
     }

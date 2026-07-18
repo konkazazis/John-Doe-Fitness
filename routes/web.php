@@ -7,6 +7,7 @@ use App\Http\Controllers\LegalController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RobotsController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\SubscriptionController;
 use App\Livewire\Admin\Dashboard as AdminDashboard;
 use App\Livewire\User\Dashboard as UserDashboard;
 use App\Livewire\User\Messages\MessageManager;
@@ -47,6 +48,13 @@ Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
         Route::get('/settings/security', SettingsSecurity::class)->name('settings.security');
         Route::get('/settings/appearance', SettingsAppearance::class)->name('settings.appearance');
     });
+});
+
+Route::middleware('auth')->group(function () {
+    Route::post('/subscribe/{key}', [SubscriptionController::class, 'subscribe'])
+        ->name('subscription.subscribe');
+    Route::get('/subscription/success', [SubscriptionController::class, 'success'])
+        ->name('subscription.success');
 });
 
 
