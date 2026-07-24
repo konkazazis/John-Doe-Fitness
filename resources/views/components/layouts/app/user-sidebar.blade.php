@@ -89,6 +89,35 @@
                 </flux:sidebar.item>
             </flux:sidebar.group>
 
+             <flux:sidebar.group heading="Progress" class="grid">
+                <flux:sidebar.item
+                    icon="chart-bar"
+                    :href="route('user.my-subscription')"
+                    :current="request()->routeIs('user.my-subscription')"
+                    wire:navigate
+                >
+                    My Subscription
+                </flux:sidebar.item>
+
+                <flux:sidebar.item
+                    icon="chart-bar"
+                    :href="route('user.my-nutrition')"
+                    :current="request()->routeIs('user.my-nutrition')"
+                    wire:navigate
+                >
+                    My Nutrition
+                </flux:sidebar.item>
+
+                <flux:sidebar.item
+                    icon="chart-bar"
+                    :href="route('user.my-exercise')"
+                    :current="request()->routeIs('user.my-exercise')"
+                    wire:navigate
+                >
+                    My Exercise
+                </flux:sidebar.item>
+            </flux:sidebar.group>
+
             <flux:sidebar.group heading="Content" class="grid">
                 <flux:sidebar.item
                     icon="inbox"
