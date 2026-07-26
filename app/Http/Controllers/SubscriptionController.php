@@ -12,7 +12,7 @@ class SubscriptionController extends Controller
         $plan = Plan::where('key', $key)->firstOrFail();
 
         return $request->user()
-            ->newSubscription('default', $plan->stripe_price_id)
+            ->newSubscription($plan->name, $plan->stripe_price_id)
             ->checkout([
                 'success_url' => route('subscription.success'),
                 'cancel_url' => route('home'),
