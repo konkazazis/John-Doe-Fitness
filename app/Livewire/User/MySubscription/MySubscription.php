@@ -10,28 +10,30 @@ class MySubscription extends Component
 {
     public $subscription = null; 
     public $plan = null;
+    public $user = null;
 
     public function mount()
     {
+        $this->user = Auth::user();
         $this->fetchSubscription();
     }
 
     public function fetchSubscription()
-{
-    $user = Auth::user();
+    {
 
-    $this->subscription = $user->subscriptions()->active()->first();
+        $this->subscription = $this->user->subscriptions()->active()->first();
 
-    if ($this->subscription) {
-        $this->plan = Plan::where('stripe_price_id', $this->subscription->stripe_price)->first();
-    } else {
-        $this->plan = null; 
-    }
-}   
+        if ($this->subscription) {
+            $this->plan = Plan::where('stripe_price_id', $this->subscription->stripe_price)->first();
+        } else {
+            $this->plan = null; 
+        }
+    }   
 
     public function render()
     {
-        return view('livewire.user.my-subscription.my-subscription')
-            ->layout('layouts.app', ['title' => 'My Subscription — CMS']);
+        return view('livewire.user.my-subscription.my-subscription', [
+            'user' => $this->user,
+        ])->layout('layouts.app', ['title' => 'My Subscription — CMS']);
     }
 }   

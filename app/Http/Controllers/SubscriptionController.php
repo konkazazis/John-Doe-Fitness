@@ -19,8 +19,17 @@ class SubscriptionController extends Controller
             ]);
     }
 
-    public function success()
+    public function success(Request $request)
     {
+        $user = $request->user();
+        $subscription = $user->subscriptions()->latest()->first();
+
+        if ($subscription && $subscription->asStripeSubscription()->default_payment_method) {
+            $user->updateDefaultPaymentMethod(
+                $subscription->asStripeSubscription()->default_payment_method
+            );
+        }
+
         return view('subscription.success');
     }
 }

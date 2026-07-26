@@ -32,7 +32,7 @@
                 </div>
                 <div>
                     <p class="text-zinc-500">Payment method</p>
-                    <p class="mt-0.5 font-medium text-zinc-200">Visa •••• 4471</p>
+                    <p class="mt-0.5 font-medium text-zinc-200">{{ strtoupper($user->pm_type) }}   ••••{{ $user->pm_last_four }}</p>
                 </div>
                 {{ $subscription }}
                 ==============
