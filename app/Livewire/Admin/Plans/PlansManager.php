@@ -15,8 +15,8 @@ class PlansManager extends Component
     public bool   $showModal    = false;
     public ?int   $editingId    = null;
     public string $name         = '';
-    public string $key          = '';
     public string $description  = '';
+    public string $billing_cycle = '';
     public string $features     = '';
     public ?int   $price        = null;
     public string $tag          = '';
@@ -28,13 +28,8 @@ class PlansManager extends Component
     {
         return [
             'name'            => ['required', 'string', 'max:50'],
-            'key'             => [
-                'required',
-                'string',
-                'max:50',
-                'unique:plans,key' . ($this->editingId ? ",{$this->editingId}" : ''),
-            ],
             'price'           => ['required', 'integer', 'min:0'],
+            'billing_cycle'   => ['required', 'string', 'max:50'],
             'description'     => ['required', 'string', 'max:3000'],
             'features'        => ['required', 'string', 'max:1000'],
             'tag'             => ['required', 'string', 'max:50'],
@@ -50,7 +45,7 @@ class PlansManager extends Component
     public function openCreate(): void
     {
         $this->editingId = null;
-        $this->reset(['name', 'key', 'price', 'description', 'tag', 'features', 'stripe_price_id']);
+        $this->reset(['name', 'price', 'billing_cycle',  'description', 'tag', 'features', 'stripe_price_id']);
         $this->showModal = true;
     }
 
@@ -60,7 +55,7 @@ class PlansManager extends Component
 
         $this->editingId       = $plan->id;
         $this->name            = $plan->name;
-        $this->key             = $plan->key;
+        $this->billing_cycle   = $plan->billing_cycle;
         $this->price           = $plan->price;
         $this->description     = $plan->description ?? '';
         $this->tag             = $plan->tag;
@@ -75,7 +70,7 @@ class PlansManager extends Component
 
         $data = [
             'name'            => $this->name,
-            'key'             => $this->key,
+            'billing_cycle'   => $this->billing_cycle,
             'description'     => $this->description,
             'price'           => $this->price,
             'tag'             => $this->tag,
@@ -94,7 +89,7 @@ class PlansManager extends Component
         }
 
         $this->showModal = false;
-        $this->reset(['name', 'key', 'price', 'description', 'tag', 'features', 'stripe_price_id']);
+        $this->reset(['name', 'price', 'billing_cycle', 'description', 'tag', 'features', 'stripe_price_id']);
     }
 
     public function confirmDelete(int $id): void

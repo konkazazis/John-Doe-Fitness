@@ -70,7 +70,7 @@
                         @endforeach
                     </ul>
                     @auth
-                        <form method="POST" action="{{ route('subscription.subscribe', $plan->key) }}">
+                        <form method="POST" action="{{ route('subscription.subscribe', $plan->stripe_price_id) }}">
                     @csrf
                             <button type="submit" class="btn btn-primary">Choose {{ $plan->name }}</button>
                         </form>

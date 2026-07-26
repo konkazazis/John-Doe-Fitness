@@ -64,7 +64,7 @@ Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
 Route::post('stripe/webhook', [WebhookController::class, 'handleWebhook']);
 
 Route::middleware('auth')->group(function () {
-    Route::post('/subscribe/{key}', [SubscriptionController::class, 'subscribe'])
+    Route::post('/subscribe/{stripe_price_id}', [SubscriptionController::class, 'subscribe'])
         ->name('subscription.subscribe');
     Route::get('/subscription/success', [SubscriptionController::class, 'success'])
         ->name('subscription.success');

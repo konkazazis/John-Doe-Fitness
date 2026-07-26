@@ -17,13 +17,17 @@ class MySubscription extends Component
     }
 
     public function fetchSubscription()
-    {
-        $user = Auth::user();
+{
+    $user = Auth::user();
 
-        $this->subscription = $user->subscription('default');
+    $this->subscription = $user->subscriptions()->active()->first();
+
+    if ($this->subscription) {
         $this->plan = Plan::where('stripe_price_id', $this->subscription->stripe_price)->first();
-
+    } else {
+        $this->plan = null; 
     }
+}   
 
     public function render()
     {

@@ -10,10 +10,10 @@ return new class extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
-            $table->string('key')->unique();
             $table->string('name');
             $table->string('stripe_price_id');
             $table->decimal('price', 8, 2);
+            $table->string('billing_cycle');
             $table->text('description');
             $table->string('tag')->nullable();
             $table->unsignedInteger('order')->default(0);
