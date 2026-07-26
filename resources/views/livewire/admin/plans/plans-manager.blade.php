@@ -100,9 +100,10 @@
 
             <div class="space-y-4">
                 <div>
-                    <label class="mb-1.5 block text-xs font-semibold tracking-wide text-zinc-600 uppercase dark:text-zinc-300">Name</label>
-                    <input type="text" wire:model="name" placeholder="Plan name"
+                    <label class="mb-1.5 block text-xs font-semibold tracking-wide text-zinc-600 uppercase dark:text-zinc-300">Name (from Stripe)</label>
+                    <input type="text" wire:model="name" placeholder="Sync a Stripe Price ID below to fill this in" readonly
                         class="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-800 placeholder-zinc-400 focus:ring-2 focus:ring-zinc-900 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100">
+                    <p class="mt-1 text-xs text-zinc-500">Synced from the Stripe Product name.</p>
                     @error('name') <p class="mt-1 text-xs text-red-500">{{ $message }}</p> @enderror
                 </div>
 
@@ -115,15 +116,24 @@
                 </div>
 
                 <div>
-                    <label class="mb-1.5 block text-xs font-semibold tracking-wide text-zinc-600 uppercase dark:text-zinc-300">Price</label>
-                    <input wire:model="price" placeholder="Price..." type="number" min="1" class="w-full resize-none rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-800 placeholder-zinc-400 focus:ring-2 focus:ring-zinc-900 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100">
-                    @error('price') <p class="mt-1 text-xs text-red-500">{{ $message }}</p> @enderror
+                    <label class="mb-1.5 block text-xs font-semibold tracking-wide text-zinc-600 uppercase dark:text-zinc-300">Price (from Stripe)</label>
+                    <input 
+                        type="text" 
+                        wire:model="price" 
+                        readonly 
+                        class="w-full resize-none rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-800 placeholder-zinc-400 focus:ring-2 focus:ring-zinc-900 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
+                    >
+                    <p class="text-xs text-gray-500">Synced from Stripe — use the Sync button above.</p>
                 </div>
 
                 <div>
-                    <label class="mb-1.5 block text-xs font-semibold tracking-wide text-zinc-600 uppercase dark:text-zinc-300">Billing cycle</label>
-                    <input wire:model="billing_cycle" placeholder="monthly, yearly..." type="text" class="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-800 placeholder-zinc-400 focus:ring-2 focus:ring-zinc-900 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100">
-                    @error('billing_cycle') <p class="mt-1 text-xs text-red-500">{{ $message }}</p> @enderror
+                    <label class="mb-1.5 block text-xs font-semibold tracking-wide text-zinc-600 uppercase dark:text-zinc-300">Billing Cycle</label>
+                    <input 
+                        type="text" 
+                        wire:model="billing_cycle" 
+                        readonly 
+                        class="w-full resize-none rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-800 placeholder-zinc-400 focus:ring-2 focus:ring-zinc-900 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
+                    >
                 </div>
 
                 <div>
@@ -142,8 +152,16 @@
 
                 <div>
                     <label class="mb-1.5 block text-xs font-semibold tracking-wide text-zinc-600 uppercase dark:text-zinc-300">Stripe Price ID</label>
-                    <input type="text" wire:model="stripe_price_id" placeholder="price_1AbCdEfGhIjKlMnO"
-                        class="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-800 placeholder-zinc-400 focus:ring-2 focus:ring-zinc-900 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100">
+                    <div class="flex gap-2">
+                        <input type="text" wire:model="stripe_price_id" placeholder="price_1AbCdEfGhIjKlMnO"
+                            class="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-800 placeholder-zinc-400 focus:ring-2 focus:ring-zinc-900 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100">
+                        <button type="button" wire:click="fetchPrice" wire:loading.attr="disabled" wire:target="fetchPrice"
+                            class="shrink-0 rounded-lg border border-zinc-200 px-4 py-2 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-100 disabled:opacity-50 dark:border-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-800">
+                            <span wire:loading.remove wire:target="fetchPrice">Sync</span>
+                            <span wire:loading wire:target="fetchPrice">Syncing…</span>
+                        </button>
+                    </div>
+                    <p class="mt-1 text-xs text-zinc-500">Fills in price and billing cycle from Stripe.</p>
                     @error('stripe_price_id') <p class="mt-1 text-xs text-red-500">{{ $message }}</p> @enderror
                 </div>
 

@@ -12,7 +12,7 @@ class Plan extends Model
     ];
 
     protected $casts = [
-        'price' => 'integer',
+        'price' => 'decimal:2',
         'features' => 'array',
         'is_active' => 'boolean',
         'order' => 'integer',

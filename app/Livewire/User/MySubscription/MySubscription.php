@@ -6,22 +6,21 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Plan;
 
+
 class MySubscription extends Component
 {
     public $subscription = null; 
     public $plan = null;
     public $user = null;
-
     public function mount()
     {
         $this->user = Auth::user();
+        $this->subscription = $this->user->subscriptions()->active()->first();
         $this->fetchSubscription();
     }
 
     public function fetchSubscription()
     {
-
-        $this->subscription = $this->user->subscriptions()->active()->first();
 
         if ($this->subscription) {
             $this->plan = Plan::where('stripe_price_id', $this->subscription->stripe_price)->first();

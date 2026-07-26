@@ -37,6 +37,9 @@
                 {{ $subscription }}
                 ==============
                 {{ $plan }}
+                ==============
+                {{-- {{ $invoices }} --}}
+                =============
             </div>
 
             <div class="mt-6 flex flex-wrap gap-3">
