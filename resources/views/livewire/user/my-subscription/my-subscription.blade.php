@@ -79,25 +79,30 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-zinc-800/70">
-                @foreach([
-                    ['date' => 'Jul 18, 2026', 'desc' => 'Pro Coaching Plan', 'amount' => '$49.00', 'status' => 'Paid'],
-                    ['date' => 'Jun 18, 2026', 'desc' => 'Pro Coaching Plan', 'amount' => '$49.00', 'status' => 'Paid'],
-                    ['date' => 'May 18, 2026', 'desc' => 'Pro Coaching Plan', 'amount' => '$49.00', 'status' => 'Paid'],
-                ] as $invoice)
+                @forelse($invoices as $invoice)
+                    @php $status = $invoice->asStripeInvoice()->status; @endphp
                     <tr>
-                        <td class="px-6 py-4 text-zinc-300">{{ $invoice['date'] }}</td>
-                        <td class="px-6 py-4 text-zinc-300">{{ $invoice['desc'] }}</td>
-                        <td class="px-6 py-4 text-zinc-300">{{ $invoice['amount'] }}</td>
+                        <td class="px-6 py-4 text-zinc-300">{{ $invoice->date()->format('M d, Y') }}</td>
+                        <td class="px-6 py-4 text-zinc-300">{{ $plan->name }}</td>
+                        <td class="px-6 py-4 text-zinc-300">{{ $invoice->total() }}</td>
                         <td class="px-6 py-4">
-                            <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-400">
-                                {{ $invoice['status'] }}
+                            <span @class([
+                                'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium',
+                                'bg-emerald-500/10 text-emerald-400' => $status === 'paid',
+                                'bg-zinc-500/10 text-zinc-400' => $status !== 'paid',
+                            ])>
+                                {{ ucfirst($status) }}
                             </span>
                         </td>
                         <td class="px-6 py-4 text-right">
                             <a href="#" class="text-zinc-400 hover:text-zinc-200 font-medium">Download</a>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="5" class="px-6 py-8 text-center text-zinc-500">No invoices yet.</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
         @endif

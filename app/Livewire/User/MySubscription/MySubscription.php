@@ -6,36 +6,43 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Plan;
 
-
 class MySubscription extends Component
 {
-    public $subscription = null; 
+    public $subscription = null;
     public $plan = null;
     public $user = null;
     public $next_billing_date = null;
+
     public function mount()
     {
         $this->user = Auth::user();
+
         $this->subscription = $this->user->subscriptions()->active()->first();
-        $this->fetchSubscription();
+
+        if ($this->subscription) {
+            $this->fetchSubscription();
+        } else {
+            $this->plan = null;
+        }
+    }
+
+    public function fetchInvoices()
+    {
+        return $this->subscription ? $this->subscription->invoices() : collect();
     }
 
     public function fetchSubscription()
     {
-
-        if ($this->subscription) {
-            $this->plan = Plan::where('stripe_price_id', $this->subscription->stripe_price)->first();
-            $this->next_billing_date = $this->subscription->currentPeriodEnd();
-        } else {
-            $this->plan = null; 
-        }
+        $this->plan = Plan::where('stripe_price_id', $this->subscription->stripe_price)->first();
+        $this->next_billing_date = $this->subscription->currentPeriodEnd();
     }   
 
     public function render()
     {
         return view('livewire.user.my-subscription.my-subscription', [
             'user' => $this->user,
-            'next_billing_date' => $this->next_billing_date
+            'next_billing_date' => $this->next_billing_date,
+            'invoices' => $this->fetchInvoices(),
         ])->layout('layouts.app', ['title' => 'My Subscription — CMS']);
     }
 }   
