@@ -24,22 +24,16 @@
             <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm">
                 <div>
                     <p class="text-zinc-500">Renews on</p>
-                    <p class="mt-0.5 font-medium text-zinc-200">Aug 18, 2026</p>
+                    <p class="mt-0.5 font-medium text-zinc-200">{{ $next_billing_date?->format('M d, Y') }}</p>
                 </div>
                 <div>
                     <p class="text-zinc-500">Billing cycle</p>
-                    <p class="mt-0.5 font-medium text-zinc-200">{{ $plan->billing_cycle }}</p>
+                    <p class="mt-0.5 font-medium text-zinc-200">{{ ucfirst($plan->billing_cycle) }}</p>
                 </div>
                 <div>
                     <p class="text-zinc-500">Payment method</p>
                     <p class="mt-0.5 font-medium text-zinc-200">{{ strtoupper($user->pm_type) }}   ••••{{ $user->pm_last_four }}</p>
                 </div>
-                {{ $subscription }}
-                ==============
-                {{ $plan }}
-                ==============
-                {{-- {{ $invoices }} --}}
-                =============
             </div>
 
             <div class="mt-6 flex flex-wrap gap-3">

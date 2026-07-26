@@ -12,6 +12,7 @@ class MySubscription extends Component
     public $subscription = null; 
     public $plan = null;
     public $user = null;
+    public $next_billing_date = null;
     public function mount()
     {
         $this->user = Auth::user();
@@ -24,6 +25,7 @@ class MySubscription extends Component
 
         if ($this->subscription) {
             $this->plan = Plan::where('stripe_price_id', $this->subscription->stripe_price)->first();
+            $this->next_billing_date = $this->subscription->currentPeriodEnd();
         } else {
             $this->plan = null; 
         }
@@ -33,6 +35,7 @@ class MySubscription extends Component
     {
         return view('livewire.user.my-subscription.my-subscription', [
             'user' => $this->user,
+            'next_billing_date' => $this->next_billing_date
         ])->layout('layouts.app', ['title' => 'My Subscription — CMS']);
     }
 }   
