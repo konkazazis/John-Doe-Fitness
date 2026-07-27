@@ -37,12 +37,11 @@
             </div>
 
             <div class="mt-6 flex flex-wrap gap-3">
-                <button type="button" class="rounded-lg bg-emerald-500 px-4 py-2 text-sm font-medium text-zinc-950 hover:bg-emerald-400 transition-colors">
-                    Upgrade plan
-                </button>
-                <button type="button" class="rounded-lg border border-zinc-700 px-4 py-2 text-sm font-medium text-zinc-300 hover:bg-zinc-800 transition-colors">
-                    Update payment method
-                </button>
+                <a href="{{ route('user.change-payment-method') }}">
+                    <button type="button" class="rounded-lg border border-zinc-700 px-4 py-2 text-sm font-medium text-zinc-300 hover:bg-zinc-800 transition-colors">
+                        Update payment method
+                    </button>
+                </a>
                 <button type="button" class="rounded-lg px-4 py-2 text-sm font-medium text-rose-400 hover:bg-rose-500/10 transition-colors">
                     Cancel subscription
                 </button>

@@ -52,6 +52,10 @@ Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
         Route::get('/my-subscription', MySubscription::class)->name('my-subscription');
         Route::get('/my-nutrition', MyNutrition::class)->name('my-nutrition');
         Route::get('/my-exercise', MyExercise::class)->name('my-exercise');
+        Route::get('/subscription/change-payment-method', [MySubscription::class,'changePaymentMethod'])
+        ->name('change-payment-method');
+        Route::get('/subscription/payment-method-updated', [MySubscription::class, 'paymentMethodUpdated'])
+        ->name('payment-method-updated');
         Route::redirect('/settings', '/user/settings/profile')->name('settings');
         Route::get('/settings/profile', SettingsProfile::class)->name('settings.profile');
         Route::get('/settings/security', SettingsSecurity::class)->name('settings.security');

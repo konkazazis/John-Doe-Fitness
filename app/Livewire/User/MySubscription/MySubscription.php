@@ -5,6 +5,7 @@ namespace App\Livewire\User\MySubscription;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Plan;
+use Illuminate\Http\Request;
 
 class MySubscription extends Component
 {
@@ -36,6 +37,18 @@ class MySubscription extends Component
         $this->plan = Plan::where('stripe_price_id', $this->subscription->stripe_price)->first();
         $this->next_billing_date = $this->subscription->currentPeriodEnd();
     }   
+
+    public function changePaymentMethod(Request $request) {
+
+        return $request->user()->redirectToBillingPortal(route('user.payment-method-updated'));
+    }
+
+    public function paymentMethodUpdated(Request $request)
+    {
+        $request->user()->updateDefaultPaymentMethodFromStripe();
+
+        return redirect()->route('user.my-subscription');
+    }
 
     public function render()
     {
