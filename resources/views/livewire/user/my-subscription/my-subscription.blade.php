@@ -42,7 +42,9 @@
                         Update payment method
                     </button>
                 </a>
-                <button type="button" class="rounded-lg px-4 py-2 text-sm font-medium text-rose-400 hover:bg-rose-500/10 transition-colors">
+                <button type="button" 
+                    wire:click="cancel" 
+                    wire:confirm="Are you sure you want to cancel your subscription immediately? This cannot be undone." class="rounded-lg px-4 py-2 text-sm font-medium text-rose-400 hover:bg-rose-500/10 transition-colors">
                     Cancel subscription
                 </button>
             </div>

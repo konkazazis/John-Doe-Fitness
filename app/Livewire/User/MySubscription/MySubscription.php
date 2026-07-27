@@ -50,6 +50,16 @@ class MySubscription extends Component
         return redirect()->route('user.my-subscription');
     }
 
+    public function cancel() 
+    {
+        if ($this->subscription) {
+            $this->subscription->cancelNow();;
+        }
+
+        return redirect()->route('user.my-subscription');
+
+    }   
+
     public function render()
     {
         return view('livewire.user.my-subscription.my-subscription', [
