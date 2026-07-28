@@ -24,4 +24,12 @@ class Project extends Model
     {
         return $this->cover_image ? Storage::disk('s3')->url($this->cover_image) : null;
     }
+
+    public static function generateSlug(string $title): string
+    {
+        $slug  = Str::slug($title);
+        $count = static::where('slug', 'like', "{$slug}%")->count();
+
+        return $count ? "{$slug}-{$count}" : $slug;
+    }
 }
