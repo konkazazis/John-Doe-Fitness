@@ -13,6 +13,7 @@ class MySubscription extends Component
     public $plan = null;
     public $user = null;
     public $next_billing_date = null;
+    public bool $showCancelModal = false;
 
     public function mount()
     {
@@ -50,15 +51,27 @@ class MySubscription extends Component
         return redirect()->route('user.my-subscription');
     }
 
-    public function cancel() 
+    public function confirmCancel(): void
+    {
+        $this->showCancelModal = true;
+    }
+
+    public function cancelCancel(): void
+    {
+        $this->showCancelModal = false;
+    }
+
+    public function cancel()
     {
         if ($this->subscription) {
-            $this->subscription->cancelNow();;
+            $this->subscription->cancelNow();
         }
+
+        $this->showCancelModal = false;
 
         return redirect()->route('user.my-subscription');
 
-    }   
+    }
 
     public function render()
     {

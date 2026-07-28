@@ -42,9 +42,9 @@
                         Update payment method
                     </button>
                 </a>
-                <button type="button" 
-                    wire:click="cancel" 
-                    wire:confirm="Are you sure you want to cancel your subscription immediately? This cannot be undone." class="rounded-lg px-4 py-2 text-sm font-medium text-rose-400 hover:bg-rose-500/10 transition-colors">
+                <button type="button"
+                    wire:click="confirmCancel"
+                    class="rounded-lg px-4 py-2 text-sm font-medium text-rose-400 hover:bg-rose-500/10 transition-colors">
                     Cancel subscription
                 </button>
             </div>
@@ -106,7 +106,23 @@
                 @endforelse
             </tbody>
         </table>
-        @endif
-      
+    </div>
+    @endif
+
+    {{-- Cancel confirmation --}}
+    <div x-data="{ show: @entangle('showCancelModal').live }"
+        x-show="show"
+        x-transition:enter="transition duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+        @keydown.escape.window="$wire.cancelCancel()"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm"
+        style="display: none;">
+        <div @click.stop class="w-full max-w-sm rounded-2xl border border-zinc-800/70 bg-zinc-900 p-6 text-center shadow-xl">
+            <p class="mb-2 text-lg font-bold text-white">Cancel subscription?</p>
+            <p class="mb-6 text-sm text-zinc-500">This will cancel your subscription immediately. This cannot be undone.</p>
+            <div class="flex justify-center gap-3">
+                <button wire:click="cancelCancel" class="px-4 py-2 text-sm font-semibold text-zinc-400 hover:text-white">Keep subscription</button>
+                <button wire:click="cancel" class="rounded-lg bg-rose-600 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-rose-700">Cancel subscription</button>
+            </div>
+        </div>
     </div>
 </div>
