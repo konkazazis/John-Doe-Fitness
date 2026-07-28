@@ -96,7 +96,8 @@
                             </span>
                         </td>
                         <td class="px-6 py-4 text-right">
-                            <a href="#" class="text-zinc-400 hover:text-zinc-200 font-medium">Download</a>
+                            <a href="{{ $invoice->asStripeInvoice()->invoice_pdf }}" target="_blank" rel="noopener noreferrer"
+                                class="text-zinc-400 hover:text-zinc-200 font-medium">Download</a>
                         </td>
                     </tr>
                 @empty
