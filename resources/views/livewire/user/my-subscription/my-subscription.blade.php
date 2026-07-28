@@ -1,10 +1,10 @@
 <div>
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-        @if (empty($subscription))
-            <div class="flex text-center">
+     @if (empty($subscription))
+            <div class="flex flex-row min-h-screen justify-center items-center">
                 <h1>No subscriptions at this time</h1>
             </div>
         @else
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
               {{-- Current plan --}}
         <div class="lg:col-span-2 rounded-2xl border border-zinc-800/70 bg-gradient-to-br from-zinc-900 to-zinc-900/40 p-6">
             <div class="flex items-start justify-between">
