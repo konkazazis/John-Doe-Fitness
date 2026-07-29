@@ -72,7 +72,7 @@
                                                 Edit
                                             </button>
                                             <button wire:click="confirmDelete({{ $post->id }})"
-                                                class="rounded px-2 py-1 text-xs font-semibold text-red-400 transition-colors hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/30">
+                                                class="rounded px-2 py-1 text-xs font-semibold text-red-600 dark:text-red-400 transition-colors hover:bg-red-50 hover:text-red-700 dark:hover:text-red-300 dark:hover:bg-red-950/30">
                                                 Delete
                                             </button>
                                         </div>
