@@ -100,6 +100,15 @@
                 </flux:sidebar.item>
 
                 <flux:sidebar.item
+                    icon="clock"
+                    :href="route('user.account-history')"
+                    :current="request()->routeIs('user.account-history')"
+                    wire:navigate
+                >
+                    Account History
+                </flux:sidebar.item>
+
+                <flux:sidebar.item
                     icon="chart-bar"
                     :href="route('user.my-nutrition')"
                     :current="request()->routeIs('user.my-nutrition')"
