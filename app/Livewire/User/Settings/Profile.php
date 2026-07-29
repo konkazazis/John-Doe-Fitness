@@ -12,12 +12,13 @@ use Livewire\Component;
 class Profile extends Component
 {
     public string $username = '';
+
     public string $email = '';
 
     public function mount(): void
     {
         $this->username = Auth::user()->username;
-        $this->email    = Auth::user()->email;
+        $this->email = Auth::user()->email;
     }
 
     public function updateProfileInformation(): void
@@ -26,7 +27,7 @@ class Profile extends Component
 
         $validated = $this->validate([
             'username' => ['required', 'string', 'max:255'],
-            'email'    => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
         ]);
 
         $user->forceFill($validated)->save();

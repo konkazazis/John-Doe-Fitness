@@ -14,10 +14,10 @@ class BlogController extends Controller
 
         $posts = Post::published()
             ->with(['user', 'category', 'tags'])
-            ->when($categorySlug, fn($q) => $q->whereHas('category', fn($q) => $q->where('slug', $categorySlug)))
+            ->when($categorySlug, fn ($q) => $q->whereHas('category', fn ($q) => $q->where('slug', $categorySlug)))
             ->when($search, function ($q) use ($search) {
-                $term = '%' . strtolower($search) . '%';
-                $q->where(fn($q) => $q
+                $term = '%'.strtolower($search).'%';
+                $q->where(fn ($q) => $q
                     ->whereRaw('LOWER(title) LIKE ?', [$term])
                     ->orWhereRaw('LOWER(excerpt) LIKE ?', [$term])
                     ->orWhereRaw('LOWER(content) LIKE ?', [$term])
@@ -27,7 +27,7 @@ class BlogController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        $categories = Category::whereHas('posts', fn($q) => $q->published())
+        $categories = Category::whereHas('posts', fn ($q) => $q->published())
             ->orderBy('name')
             ->get();
 

@@ -2,25 +2,28 @@
 
 namespace App\Livewire\Admin\Testimonial;
 
-use Livewire\Component;
 use App\Models\Testimonial;
 use Illuminate\Support\Facades\Storage;
-use Livewire\WithFileUploads;
+use Livewire\Component;
 use Livewire\WithPagination;
 
 class TestimonialManager extends Component
 {
-
     use WithPagination;
 
     public string $search = '';
 
-    public bool   $showModal     = false;
-    public ?int   $editingId     = null;
-    public string $client        = '';
-    public string $description   = '';
-    public string $quote         = '';
-    public bool   $is_published  = false;
+    public bool $showModal = false;
+
+    public ?int $editingId = null;
+
+    public string $client = '';
+
+    public string $description = '';
+
+    public string $quote = '';
+
+    public bool $is_published = false;
 
     public $cover = null;
 
@@ -29,11 +32,11 @@ class TestimonialManager extends Component
     protected function rules(): array
     {
         return [
-            'client'       => ['required', 'string', 'max:50'],
-            'quote'        => ['required', 'string', 'max:200'],
-            'description'  => ['nullable', 'string', 'max:3000'],
+            'client' => ['required', 'string', 'max:50'],
+            'quote' => ['required', 'string', 'max:200'],
+            'description' => ['nullable', 'string', 'max:3000'],
             'is_published' => ['boolean'],
-            'cover'        => ['nullable', 'image', 'max:10240'],
+            'cover' => ['nullable', 'image', 'max:10240'],
         ];
     }
 
@@ -43,7 +46,7 @@ class TestimonialManager extends Component
     }
 
     public function openCreate(): void
-    { 
+    {
         $this->reset(['editingId', 'client', 'description', 'quote', 'is_published', 'cover']);
         $this->showModal = true;
     }
@@ -52,13 +55,13 @@ class TestimonialManager extends Component
     {
         $testimonial = Testimonial::findOrFail($id);
 
-        $this->editingId    = $testimonial->id;
-        $this->client        = $testimonial->client;
-        $this->quote        = $testimonial->quote;
-        $this->description  = $testimonial->description ?? '';
+        $this->editingId = $testimonial->id;
+        $this->client = $testimonial->client;
+        $this->quote = $testimonial->quote;
+        $this->description = $testimonial->description ?? '';
         $this->is_published = $testimonial->is_published;
-        $this->cover        = null;
-        $this->showModal    = true;
+        $this->cover = null;
+        $this->showModal = true;
     }
 
     public function save(): void
@@ -66,9 +69,9 @@ class TestimonialManager extends Component
         $this->validate();
 
         $data = [
-            'client'        => $this->client,
-            'description'  => $this->description ?: null,
-            'quote'  => $this->quote ?: null,
+            'client' => $this->client,
+            'description' => $this->description ?: null,
+            'quote' => $this->quote ?: null,
             'is_published' => $this->is_published,
         ];
 

@@ -33,9 +33,9 @@ class ContactManager extends Component
 
     public function render()
     {
-        $messages    = ContactMessage::latest()->paginate(20);
+        $messages = ContactMessage::latest()->paginate(20);
         $unreadCount = ContactMessage::where('is_read', false)->count();
-        $current     = $this->viewing ? ContactMessage::find($this->viewing) : null;
+        $current = $this->viewing ? ContactMessage::find($this->viewing) : null;
 
         return view('livewire.admin.contact.contact-manager', compact('messages', 'unreadCount', 'current'))
             ->layout('layouts.app', ['title' => 'Messages — CMS']);

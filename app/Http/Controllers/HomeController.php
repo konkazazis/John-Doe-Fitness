@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Plan;
 use App\Models\Post;
 use App\Models\Project;
 use App\Models\Testimonial;
-use App\Models\Plan;
 
 class HomeController extends Controller
 {

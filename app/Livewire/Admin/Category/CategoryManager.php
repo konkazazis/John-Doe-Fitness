@@ -13,9 +13,11 @@ class CategoryManager extends Component
 
     public string $search = '';
 
-    public bool   $showModal = false;
-    public ?int   $editingId = null;
-    public string $name      = '';
+    public bool $showModal = false;
+
+    public ?int $editingId = null;
+
+    public string $name = '';
 
     public ?int $deletingId = null;
 
@@ -39,9 +41,9 @@ class CategoryManager extends Component
 
     public function openEdit(int $id): void
     {
-        $category       = Category::findOrFail($id);
+        $category = Category::findOrFail($id);
         $this->editingId = $category->id;
-        $this->name      = $category->name;
+        $this->name = $category->name;
         $this->showModal = true;
     }
 
@@ -50,7 +52,7 @@ class CategoryManager extends Component
         $this->validate();
 
         if ($this->editingId) {
-            $category       = Category::findOrFail($this->editingId);
+            $category = Category::findOrFail($this->editingId);
             $category->name = $this->name;
             $category->slug = Str::slug($this->name);
             $category->save();

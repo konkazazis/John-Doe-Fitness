@@ -2,17 +2,21 @@
 
 namespace App\Livewire\User\MySubscription;
 
-use Livewire\Component;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Plan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
 
 class MySubscription extends Component
 {
     public $subscription = null;
+
     public $plan = null;
+
     public $user = null;
+
     public $next_billing_date = null;
+
     public bool $showCancelModal = false;
 
     public function mount()
@@ -37,9 +41,10 @@ class MySubscription extends Component
     {
         $this->plan = Plan::where('stripe_price_id', $this->subscription->stripe_price)->first();
         $this->next_billing_date = $this->subscription->currentPeriodEnd();
-    }   
+    }
 
-    public function changePaymentMethod(Request $request) {
+    public function changePaymentMethod(Request $request)
+    {
 
         return $request->user()->redirectToBillingPortal(route('user.payment-method-updated'));
     }
@@ -81,4 +86,4 @@ class MySubscription extends Component
             'invoices' => $this->fetchInvoices(),
         ])->layout('layouts.app', ['title' => 'My Subscription — CMS']);
     }
-}   
+}

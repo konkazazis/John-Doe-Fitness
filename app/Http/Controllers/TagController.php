@@ -23,7 +23,7 @@ class TagController extends Controller
     public function update(Request $request, Tag $tag)
     {
         $data = $request->validate([
-            'name' => 'required|string|max:255|unique:tags,name,' . $tag->id,
+            'name' => 'required|string|max:255|unique:tags,name,'.$tag->id,
         ]);
 
         $tag->update($data);
@@ -35,6 +35,7 @@ class TagController extends Controller
     public function destroy(Tag $tag)
     {
         $tag->delete();
+
         return redirect()->route('admin.taxonomy')->with('success', 'Tag deleted.');
     }
 }

@@ -1,12 +1,14 @@
 <?php
 
+use App\Models\User;
+
 return [
 
     // Update the providers array to use the Account model
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => User::class,
         ],
     ],
 
@@ -35,5 +37,3 @@ return [
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
 
 ];
-
-?>

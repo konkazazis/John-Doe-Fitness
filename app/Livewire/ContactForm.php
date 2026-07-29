@@ -7,15 +7,19 @@ use Livewire\Component;
 
 class ContactForm extends Component
 {
-    public string $name    = '';
-    public string $email   = '';
+    public string $name = '';
+
+    public string $email = '';
+
     public string $subject = '';
+
     public string $message = '';
-    public bool $sent      = false;
+
+    public bool $sent = false;
 
     protected array $rules = [
-        'name'    => 'required|string|max:255',
-        'email'   => 'required|email|max:255',
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
         'subject' => 'required|string|max:155',
         'message' => 'required|string',
     ];
@@ -25,8 +29,8 @@ class ContactForm extends Component
         $this->validate();
 
         ContactMessage::create([
-            'name'    => $this->name,
-            'email'   => $this->email,
+            'name' => $this->name,
+            'email' => $this->email,
             'subject' => $this->subject,
             'message' => $this->message,
         ]);

@@ -6,7 +6,6 @@ use Livewire\Component;
 
 class ClientsMessagesManager extends Component
 {
-
     public function index()
     {
 

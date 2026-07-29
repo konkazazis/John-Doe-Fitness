@@ -14,11 +14,16 @@ class ProjectManager extends Component
 
     public string $search = '';
 
-    public bool   $showModal     = false;
-    public ?int   $editingId     = null;
-    public string $title         = '';
-    public string $description   = '';
-    public bool   $is_published  = false;
+    public bool $showModal = false;
+
+    public ?int $editingId = null;
+
+    public string $title = '';
+
+    public string $description = '';
+
+    public bool $is_published = false;
+
     public $cover = null;
 
     public ?int $deletingId = null;
@@ -26,10 +31,10 @@ class ProjectManager extends Component
     protected function rules(): array
     {
         return [
-            'title'        => ['required', 'string', 'max:200'],
-            'description'  => ['nullable', 'string', 'max:3000'],
+            'title' => ['required', 'string', 'max:200'],
+            'description' => ['nullable', 'string', 'max:3000'],
             'is_published' => ['boolean'],
-            'cover'        => ['nullable', 'image', 'max:10240'],
+            'cover' => ['nullable', 'image', 'max:10240'],
         ];
     }
 
@@ -48,12 +53,12 @@ class ProjectManager extends Component
     {
         $project = Project::findOrFail($id);
 
-        $this->editingId    = $project->id;
-        $this->title        = $project->title;
-        $this->description  = $project->description ?? '';
+        $this->editingId = $project->id;
+        $this->title = $project->title;
+        $this->description = $project->description ?? '';
         $this->is_published = $project->is_published;
-        $this->cover        = null;
-        $this->showModal    = true;
+        $this->cover = null;
+        $this->showModal = true;
     }
 
     public function save(): void
@@ -61,8 +66,8 @@ class ProjectManager extends Component
         $this->validate();
 
         $data = [
-            'title'        => $this->title,
-            'description'  => $this->description ?: null,
+            'title' => $this->title,
+            'description' => $this->description ?: null,
             'is_published' => $this->is_published,
         ];
 

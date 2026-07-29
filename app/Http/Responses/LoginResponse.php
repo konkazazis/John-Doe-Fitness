@@ -12,8 +12,8 @@ class LoginResponse implements LoginResponseContract
 
         $route = match (true) {
             $user->role('admin') => 'admin.dashboard',
-            $user->role('user')  => 'user.dashboard',
-            default              => 'home',
+            $user->role('user') => 'user.dashboard',
+            default => 'home',
         };
 
         return redirect()->intended(route($route));

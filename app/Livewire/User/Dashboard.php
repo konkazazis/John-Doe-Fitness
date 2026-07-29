@@ -2,7 +2,7 @@
 
 namespace App\Livewire\User;
 
-//use App\Models\Message;
+// use App\Models\Message;
 use Livewire\Component;
 
 class Dashboard extends Component
@@ -18,7 +18,7 @@ class Dashboard extends Component
         //     'unreadMessages', 'totalMessages', 'recentMessages'
         // ))->layout('layouts.app', ['title' => 'Overview — CMS']);
 
-            return view('livewire.user.dashboard')->layout('layouts.app', ['title' => 'Overview — CMS']);
-        
+        return view('livewire.user.dashboard')->layout('layouts.app', ['title' => 'Overview — CMS']);
+
     }
 }

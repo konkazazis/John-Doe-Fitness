@@ -2,10 +2,10 @@
 
 namespace App\Livewire\Admin\Plans;
 
-use Livewire\Component;
 use App\Models\Plan;
-use Livewire\WithPagination;
 use Laravel\Cashier\Cashier;
+use Livewire\Component;
+use Livewire\WithPagination;
 use Stripe\Exception\InvalidRequestException;
 
 class PlansManager extends Component
@@ -13,19 +13,27 @@ class PlansManager extends Component
     use WithPagination;
 
     public string $search = '';
-    public bool   $showModal    = false;
-    public ?int   $editingId    = null;
-    
 
-    public string $name         = '';
-    public string $description  = '';
-    public string $billing_cycle = ''; 
-    public string $features     = '';
-    public ?float $price        = null; 
-    public string $tag          = '';
+    public bool $showModal = false;
+
+    public ?int $editingId = null;
+
+    public string $name = '';
+
+    public string $description = '';
+
+    public string $billing_cycle = '';
+
+    public string $features = '';
+
+    public ?float $price = null;
+
+    public string $tag = '';
+
     public string $stripe_price_id = '';
-    
-    public ?int $deletingId    = null;
+
+    public ?int $deletingId = null;
+
     public string $errorMessage = '';
 
     public function fetchPrice(): void
@@ -62,7 +70,7 @@ class PlansManager extends Component
             $this->name = '';
             $this->addError('stripe_price_id', $this->errorMessage);
         } catch (\Exception $e) {
-            $this->errorMessage = 'Error connecting to Stripe: ' . $e->getMessage();
+            $this->errorMessage = 'Error connecting to Stripe: '.$e->getMessage();
             $this->addError('stripe_price_id', $this->errorMessage);
         }
     }
@@ -70,12 +78,12 @@ class PlansManager extends Component
     protected function rules(): array
     {
         return [
-            'name'            => ['required', 'string', 'max:50'],
-            'price'           => ['required', 'numeric', 'min:0'],
-            'billing_cycle'   => ['required', 'string', 'max:50'],
-            'description'     => ['required', 'string', 'max:3000'],
-            'features'        => ['required', 'string'],
-            'tag'             => ['required', 'string', 'max:50'],
+            'name' => ['required', 'string', 'max:50'],
+            'price' => ['required', 'numeric', 'min:0'],
+            'billing_cycle' => ['required', 'string', 'max:50'],
+            'description' => ['required', 'string', 'max:3000'],
+            'features' => ['required', 'string'],
+            'tag' => ['required', 'string', 'max:50'],
             'stripe_price_id' => ['required', 'string', 'max:255'],
         ];
     }
@@ -96,25 +104,25 @@ class PlansManager extends Component
     {
         $plan = Plan::findOrFail($id);
 
-        $this->editingId       = $plan->id;
-        $this->name            = $plan->name;
-        $this->billing_cycle   = $plan->billing_cycle;
-        
-        $this->price           = $plan->price; 
-        
-        $this->description     = $plan->description ?? '';
-        $this->tag             = $plan->tag;
+        $this->editingId = $plan->id;
+        $this->name = $plan->name;
+        $this->billing_cycle = $plan->billing_cycle;
+
+        $this->price = $plan->price;
+
+        $this->description = $plan->description ?? '';
+        $this->tag = $plan->tag;
         $this->stripe_price_id = $plan->stripe_price_id;
-        $this->features        = is_array($plan->features) ? implode("\n", $plan->features) : $plan->features;
-        
-        $this->showModal       = true;
+        $this->features = is_array($plan->features) ? implode("\n", $plan->features) : $plan->features;
+
+        $this->showModal = true;
 
         $this->fetchPrice();
     }
 
     public function save(): void
     {
-        if ($this->stripe_price_id && !$this->price) {
+        if ($this->stripe_price_id && ! $this->price) {
             $this->fetchPrice();
 
             if ($this->errorMessage) {
@@ -125,13 +133,13 @@ class PlansManager extends Component
         $this->validate();
 
         $data = [
-            'name'            => $this->name,
-            'billing_cycle'   => $this->billing_cycle,
-            'description'     => $this->description,
-            'price'           => $this->price,
-            'tag'             => $this->tag,
+            'name' => $this->name,
+            'billing_cycle' => $this->billing_cycle,
+            'description' => $this->description,
+            'price' => $this->price,
+            'tag' => $this->tag,
             'stripe_price_id' => $this->stripe_price_id,
-            'features'        => collect(explode("\n", $this->features))
+            'features' => collect(explode("\n", $this->features))
                 ->map(fn ($line) => trim($line))
                 ->filter()
                 ->values()
@@ -177,4 +185,4 @@ class PlansManager extends Component
         return view('livewire.admin.plans.plans-manager', compact('plans'))
             ->layout('layouts.app', ['title' => 'Plans — CMS']);
     }
-}   
+}

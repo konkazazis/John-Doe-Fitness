@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-
 class AboutController extends Controller
 {
     public function index()
@@ -12,5 +10,3 @@ class AboutController extends Controller
         return view('layouts.about');
     }
 }
-
-?>

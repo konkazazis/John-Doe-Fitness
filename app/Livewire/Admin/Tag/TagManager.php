@@ -12,9 +12,11 @@ class TagManager extends Component
 
     public string $search = '';
 
-    public bool   $showModal = false;
-    public ?int   $editingId = null;
-    public string $name      = '';
+    public bool $showModal = false;
+
+    public ?int $editingId = null;
+
+    public string $name = '';
 
     public ?int $deletingId = null;
 
@@ -38,9 +40,9 @@ class TagManager extends Component
 
     public function openEdit(int $id): void
     {
-        $tag             = Tag::findOrFail($id);
+        $tag = Tag::findOrFail($id);
         $this->editingId = $tag->id;
-        $this->name      = $tag->name;
+        $this->name = $tag->name;
         $this->showModal = true;
     }
 
@@ -49,7 +51,7 @@ class TagManager extends Component
         $this->validate();
 
         if ($this->editingId) {
-            $tag       = Tag::findOrFail($this->editingId);
+            $tag = Tag::findOrFail($this->editingId);
             $tag->name = $this->name;
             $tag->save();
         } else {

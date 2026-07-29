@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-    
+
         Schema::create('user_roles', function (Blueprint $table) {
             $table->integer('role_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreign('role_id')
                 ->references('id')->on('roles');
         });
-
 
     }
 
