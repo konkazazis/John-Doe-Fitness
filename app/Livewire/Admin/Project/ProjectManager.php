@@ -127,6 +127,6 @@ class ProjectManager extends Component
             ->paginate(15);
 
         return view('livewire.admin.project.project-manager', compact('projects'))
-            ->layout('layouts.app', ['title' => 'Projects — CMS']);
+            ->layout('layouts.app', ['title' => 'Projects']);
     }
 }

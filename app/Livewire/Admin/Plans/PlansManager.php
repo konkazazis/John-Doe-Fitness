@@ -183,6 +183,6 @@ class PlansManager extends Component
             ->paginate(15);
 
         return view('livewire.admin.plans.plans-manager', compact('plans'))
-            ->layout('layouts.app', ['title' => 'Plans — CMS']);
+            ->layout('layouts.app', ['title' => 'Plans']);
     }
 }

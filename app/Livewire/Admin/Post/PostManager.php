@@ -153,6 +153,6 @@ class PostManager extends Component
         $recentPosts = Post::latest()->limit(40)->get(['id', 'title', 'status']);
 
         return view('livewire.admin.post.post-manager', compact('posts', 'categories', 'tags', 'recentPosts'))
-            ->layout('layouts.app', ['title' => 'Posts — CMS']);
+            ->layout('layouts.app', ['title' => 'Posts']);
     }
 }

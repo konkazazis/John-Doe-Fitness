@@ -11,6 +11,6 @@ class Appearance extends Component
     public function render()
     {
         return view('livewire.user.settings.appearance')
-            ->layout('layouts.app', ['title' => 'Appearance — Settings']);
+            ->layout('layouts.app', ['title' => 'Appearance']);
     }
 }

@@ -84,6 +84,6 @@ class MySubscription extends Component
             'user' => $this->user,
             'next_billing_date' => $this->next_billing_date,
             'invoices' => $this->fetchInvoices(),
-        ])->layout('layouts.app', ['title' => 'My Subscription — CMS']);
+        ])->layout('layouts.app', ['title' => 'My Subscription']);
     }
 }

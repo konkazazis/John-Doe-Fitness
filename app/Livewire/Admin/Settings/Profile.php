@@ -38,6 +38,6 @@ class Profile extends Component
     public function render()
     {
         return view('livewire.admin.settings.profile')
-            ->layout('layouts.app', ['title' => 'Profile — Settings']);
+            ->layout('layouts.app', ['title' => 'Profile']);
     }
 }

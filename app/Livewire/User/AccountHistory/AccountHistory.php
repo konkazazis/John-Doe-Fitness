@@ -37,6 +37,6 @@ class AccountHistory extends Component
             'subscriptions' => $subscriptions,
             'plans' => $plans,
             'invoices' => $this->fetchInvoices(),
-        ])->layout('layouts.app', ['title' => 'Account History — CMS']);
+        ])->layout('layouts.app', ['title' => 'Account History']);
     }
 }

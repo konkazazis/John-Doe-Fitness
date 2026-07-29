@@ -94,6 +94,6 @@ class CategoryManager extends Component
             ->paginate(20);
 
         return view('livewire.admin.category.category-manager', compact('categories'))
-            ->layout('layouts.app', ['title' => 'Categories — CMS']);
+            ->layout('layouts.app', ['title' => 'Categories']);
     }
 }

@@ -38,6 +38,6 @@ class ContactManager extends Component
         $current = $this->viewing ? ContactMessage::find($this->viewing) : null;
 
         return view('livewire.admin.contact.contact-manager', compact('messages', 'unreadCount', 'current'))
-            ->layout('layouts.app', ['title' => 'Messages — CMS']);
+            ->layout('layouts.app', ['title' => 'Messages']);
     }
 }

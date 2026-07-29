@@ -131,6 +131,6 @@ class TestimonialManager extends Component
             ->paginate(15);
 
         return view('livewire.admin.testimonials.testimonials-manager', compact('testimonials'))
-            ->layout('layouts.app', ['title' => 'Testimonials — CMS']);
+            ->layout('layouts.app', ['title' => 'Testimonials']);
     }
 }

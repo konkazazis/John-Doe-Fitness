@@ -8,6 +8,6 @@ class MessageManager extends Component
 {
     public function render()
     {
-        return view('livewire.user.messages.messages')->layout('layouts.app', ['title' => 'Messages — CMS']);
+        return view('livewire.user.messages.messages')->layout('layouts.app', ['title' => 'Messages']);
     }
 }

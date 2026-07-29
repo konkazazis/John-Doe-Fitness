@@ -30,6 +30,6 @@ class Dashboard extends Component
             'totalPosts', 'publishedPosts', 'totalProjects', 'publishedProjects',
             'totalCategories', 'totalTags', 'unreadMessages', 'totalMessages',
             'recentPosts', 'recentMessages'
-        ))->layout('layouts.app', ['title' => 'Overview — CMS']);
+        ))->layout('layouts.app', ['title' => 'Overview']);
     }
 }

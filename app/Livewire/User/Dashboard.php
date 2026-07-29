@@ -18,7 +18,7 @@ class Dashboard extends Component
         //     'unreadMessages', 'totalMessages', 'recentMessages'
         // ))->layout('layouts.app', ['title' => 'Overview — CMS']);
 
-        return view('livewire.user.dashboard')->layout('layouts.app', ['title' => 'Overview — CMS']);
+        return view('livewire.user.dashboard')->layout('layouts.app', ['title' => 'Overview']);
 
     }
 }

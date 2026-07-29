@@ -91,6 +91,6 @@ class TagManager extends Component
             ->paginate(20);
 
         return view('livewire.admin.tag.tag-manager', compact('tags'))
-            ->layout('layouts.app', ['title' => 'Tags — CMS']);
+            ->layout('layouts.app', ['title' => 'Tags']);
     }
 }
