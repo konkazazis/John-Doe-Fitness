@@ -50,7 +50,6 @@
                                         @endif
                                         <div>
                                             <p class="font-semibold text-zinc-800 dark:text-zinc-100">{{ $project->title }}</p>
-                                            <p class="text-xs text-zinc-400 dark:text-zinc-500">{{ $project->slug }}</p>
                                         </div>
                                     </div>
                                 </td>

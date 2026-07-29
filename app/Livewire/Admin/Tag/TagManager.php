@@ -3,7 +3,6 @@
 namespace App\Livewire\Admin\Tag;
 
 use App\Models\Tag;
-use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -52,12 +51,10 @@ class TagManager extends Component
         if ($this->editingId) {
             $tag       = Tag::findOrFail($this->editingId);
             $tag->name = $this->name;
-            $tag->slug = Str::slug($this->name);
             $tag->save();
         } else {
             Tag::create([
                 'name' => $this->name,
-                'slug' => Str::slug($this->name),
             ]);
         }
 

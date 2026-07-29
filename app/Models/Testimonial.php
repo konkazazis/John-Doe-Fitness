@@ -4,12 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class Testimonial extends Model
 {
     protected $fillable = [
-        'client', 'slug', 'description', 'quote', 'cover_image',
+        'client', 'description', 'quote', 'cover_image',
         'order', 'is_published',
     ];
 

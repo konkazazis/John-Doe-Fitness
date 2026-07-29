@@ -28,7 +28,6 @@
                     <thead class="border-b border-zinc-100 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-800/40">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-semibold tracking-wide text-zinc-500 uppercase">Name</th>
-                            <th class="hidden px-4 py-3 text-left text-xs font-semibold tracking-wide text-zinc-500 uppercase sm:table-cell">Slug</th>
                             <th class="hidden px-4 py-3 text-left text-xs font-semibold tracking-wide text-zinc-500 uppercase sm:table-cell">Posts</th>
                             <th class="px-6 py-3"></th>
                         </tr>
@@ -37,7 +36,6 @@
                         @foreach($tags as $tag)
                             <tr class="transition-colors hover:bg-zinc-50/50 dark:hover:bg-zinc-800/30">
                                 <td class="px-6 py-4 font-semibold text-zinc-800 dark:text-zinc-100">{{ $tag->name }}</td>
-                                <td class="hidden px-4 py-4 font-mono text-xs text-zinc-400 sm:table-cell dark:text-zinc-500">{{ $tag->slug }}</td>
                                 <td class="hidden px-4 py-4 text-zinc-600 sm:table-cell dark:text-zinc-300">{{ $tag->posts_count }}</td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center justify-end gap-2">

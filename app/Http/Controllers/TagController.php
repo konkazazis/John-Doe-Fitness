@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Tag;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class TagController extends Controller
 {
@@ -15,7 +14,6 @@ class TagController extends Controller
             'name' => 'required|string|max:255|unique:tags,name',
         ]);
 
-        $data['slug'] = Str::slug($data['name']);
         Tag::create($data);
 
         return redirect()->route('admin.taxonomy')->with('success', 'Tag created.');
@@ -28,7 +26,6 @@ class TagController extends Controller
             'name' => 'required|string|max:255|unique:tags,name,' . $tag->id,
         ]);
 
-        $data['slug'] = Str::slug($data['name']);
         $tag->update($data);
 
         return redirect()->route('admin.taxonomy')->with('success', 'Tag updated.');

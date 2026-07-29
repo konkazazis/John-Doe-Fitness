@@ -88,7 +88,6 @@ class TestimonialManager extends Component
         } else {
             Testimonial::create([
                 ...$data,
-                'slug'  => Testimonial::generateSlug($this->client),
                 'order' => (Testimonial::max('order') ?? 0) + 1,
             ]);
         }
