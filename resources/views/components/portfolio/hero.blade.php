@@ -87,6 +87,7 @@
             <img
                 src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80"
                 alt="Coach guiding a client through a strength session"
+                fetchpriority="high"
                 class="absolute inset-0 h-full w-full rounded-[2.5rem] object-cover"
                 style="
                     clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);

@@ -6,6 +6,8 @@
             <img
                 src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80"
                 alt="Coach reviewing a training log with a client"
+                loading="lazy"
+                decoding="async"
                 class="h-[420px] w-full rounded-3xl object-cover"
             />
             <div

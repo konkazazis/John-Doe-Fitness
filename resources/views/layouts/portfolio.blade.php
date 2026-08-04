@@ -1,6 +1,34 @@
 @extends('layouts.master')
 
-@section('title', 'Portfolio')
+@section('title', 'John Doe · Personal Trainer & Nutrition Coach')
+@section('meta_description', 'One-to-one strength coaching and personalised nutrition plans, built around your body, your schedule and your goals — not a generic template.')
+@section('og_title', 'John Doe · Personal Trainer & Nutrition Coach')
+
+@push('schema')
+    <script type="application/ld+json">
+        @php
+            $ldContext = '@context';
+            $ldType = '@type';
+        @endphp
+        {!! json_encode([
+            $ldContext => 'https://schema.org',
+            $ldType => 'ProfessionalService',
+            'name' => 'John Doe Coaching',
+            'description' => 'One-to-one strength coaching and personalised nutrition plans.',
+            'url' => route('home'),
+            'image' => asset('images/home-bg.jpg'),
+            'priceRange' => '$$',
+            'founder' => [
+                $ldType => 'Person',
+                'name' => 'John Doe',
+                'jobTitle' => 'Personal Trainer & Nutrition Coach',
+            ],
+            'sameAs' => [
+                'https://www.youtube.com/@NtinosLiftzz',
+            ],
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+    </script>
+@endpush
 
 @section('content')
 

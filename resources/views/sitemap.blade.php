@@ -15,6 +15,12 @@
         <priority>0.9</priority>
     </url>
 
+    <url>
+        <loc>{{ route('privacy') }}</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
     @foreach($categories as $category)
         <url>
             <loc>{{ route('blog', ['category' => $category->slug]) }}</loc>

@@ -44,7 +44,7 @@
             'author' => [
                 $ldType => 'Person',
                 'name' => 'John Doe',
-                'url' => route('about'),
+                'url' => route('home').'#about',
             ],
             'publisher' => [
                 $ldType => 'Person',
@@ -97,9 +97,9 @@
                     class="h-10 w-10 rounded-full bg-stone-100 object-cover object-top">
                 <div>
                     <p class="text-sm font-semibold text-stone-800">Konstantinos Kazazis</p>
-                    <a href="{{ route('about') }}" rel="author"
+                    <a href="{{ route('home') }}#about" rel="author"
                         class="hover:text-brand text-xs text-stone-400 transition-colors">
-                        Software Developer
+                        Personal Trainer &amp; Nutrition Coach
                     </a>
                 </div>
             </div>

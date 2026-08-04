@@ -7,7 +7,7 @@
     <title>@yield("title", "John Doe - Fitness Instructor")</title>
     <meta
         name="description"
-        content="@yield("meta_description", "A developer who loves building things for the web. Thoughts on code, design, and everything in between.")"
+        content="@yield("meta_description", "One-to-one strength coaching and personalised nutrition plans for real, sustainable results.")"
     />
     <link rel="canonical" href="@yield("canonical", url()->current())" />
 
@@ -20,7 +20,7 @@
     <meta property="og:title" content="@yield("og_title", "John Doe")" />
     <meta
         property="og:description"
-        content="@yield("meta_description", "A developer who loves building things for the web. Thoughts on code, design, and everything in between.")"
+        content="@yield("meta_description", "One-to-one strength coaching and personalised nutrition plans for real, sustainable results.")"
     />
     <meta property="og:site_name" content="John Doe" />
     <meta
@@ -36,7 +36,7 @@
     <meta name="twitter:title" content="@yield("og_title", "John Doe")" />
     <meta
         name="twitter:description"
-        content="@yield("meta_description", "A developer who loves building things for the web. Thoughts on code, design, and everything in between.")"
+        content="@yield("meta_description", "One-to-one strength coaching and personalised nutrition plans for real, sustainable results.")"
     />
     <meta
         name="twitter:image"
@@ -50,7 +50,11 @@
         />
     @endif
 
+    <link rel="icon" href="{{ asset("favicon.svg") }}" type="image/svg+xml" />
     <link rel="manifest" href="{{ asset("site.webmanifest") }}" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -198,8 +202,8 @@
                 class="hidden flex-col gap-0 border-t border-stone-200 bg-white px-6 pb-4 text-sm font-semibold tracking-wide text-stone-700 uppercase sm:hidden"
             >
                 <a
-                    href="{{ route("about") }}"
-                    class="py-3 border-b border-stone-100 transition-colors {{ request()->routeIs("about") ? "text-stone-900" : "hover:text-stone-900" }}"
+                    href="{{ route("home") }}#about"
+                    class="py-3 border-b border-stone-100 text-stone-700 transition-colors hover:text-stone-900"
                 >
                     About
                 </a>

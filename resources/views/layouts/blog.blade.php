@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title', 'Blog · John Doe')
-@section('meta_description', 'Thoughts on fitness.')
+@section('meta_description', 'Training tips, nutrition science and coaching notes from John Doe.')
 @section('og_title', 'Blog · John Doe')
 @section('canonical', $activeCategory ? route('blog', ['category' => $activeCategory->slug]) : route('blog'))
 
@@ -27,12 +27,12 @@
             $ldContext => 'https://schema.org',
             $ldType => 'Blog',
             'name' => 'Blog · John Doe',
-            'description' => 'Thoughts on fitness',
+            'description' => 'Training tips, nutrition science and coaching notes from John Doe.',
             'url' => route('blog'),
             'author' => [
                 $ldType => 'Person',
                 'name' => 'John Doe',
-                'url' => route('about'),
+                'url' => route('home').'#about',
             ],
             'blogPost' => $posts->map(fn($post) => [
                 $ldType => 'BlogPosting',
@@ -53,8 +53,8 @@
                 <div class="gap-6 md:flex md:items-end md:justify-between">
                     <div>
                         <span class="section-label">Writing</span>
-                        <h1 class="section-heading">Thoughts on code, design and the web.</h1>
-                        <p class="max-w-2xl text-stone-600">A quiet collection of notes, projects and technical ideas.</p>
+                        <h1 class="section-heading">Thoughts on training, nutrition and coaching.</h1>
+                        <p class="max-w-2xl text-stone-600">A quiet collection of notes on strength training, nutrition and coaching.</p>
                     </div>
 
                     <form method="GET" action="{{ route('blog') }}" class="mt-4 shrink-0 md:mt-0">
