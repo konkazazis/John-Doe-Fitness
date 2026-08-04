@@ -2,11 +2,7 @@
 <html lang="{{ str_replace("_", "-", app()->getLocale()) }}">
 <head>
     @include("partials.head")
-    <link
-        href="https://cdn.quilljs.com/1.3.7/quill.snow.css"
-        rel="stylesheet"
-    />
-    <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
+    @vite('resources/js/quill.js')
     <style>
         .ql-toolbar.ql-snow {
             border-left: none;
