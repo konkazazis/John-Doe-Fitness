@@ -20,6 +20,7 @@ use App\Livewire\Admin\Settings\Profile as SettingsProfile;
 use App\Livewire\Admin\Settings\Security as SettingsSecurity;
 use App\Livewire\Admin\Tag\TagManager;
 use App\Livewire\Admin\Testimonial\TestimonialManager;
+use App\Livewire\Admin\Users\UserManager;
 use App\Livewire\User\AccountHistory\AccountHistory;
 use App\Livewire\User\Dashboard as UserDashboard;
 use App\Livewire\User\Messages\MessageManager;
@@ -79,6 +80,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::middleware(['role:admin'])->group(function () {
         Route::get('/', AdminDashboard::class)->name('dashboard');
+        Route::get('/users', UserManager::class)->name('users.index');
         Route::get('/posts', PostManager::class)->name('posts.index');
         Route::get('/projects', ProjectManager::class)->name('projects.index');
         Route::get('/plans', PlansManager::class)->name('plans.index');

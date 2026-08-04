@@ -154,6 +154,14 @@
                 >
                     Overview
                 </flux:sidebar.item>
+                <flux:sidebar.item
+                    icon="users"
+                    :href="route('admin.users.index')"
+                    :current="request()->routeIs('admin.users.*')"
+                    wire:navigate
+                >
+                    Users
+                </flux:sidebar.item>
             </flux:sidebar.group>
         </flux:sidebar.nav>
 
