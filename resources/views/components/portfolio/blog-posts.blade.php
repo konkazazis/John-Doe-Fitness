@@ -20,25 +20,25 @@
                         @endif
 
                         <h3
-                            class="font-display mt-4 mb-2 text-2xl font-bold text-stone-900"
+                            class="font-display mt-4 mb-2 text-2xl text-ink uppercase"
                         >
                             <a
                                 href="{{ route("posts.show", $post->slug) }}"
-                                class="transition-colors hover:text-[#eb5424]"
+                                class="transition-colors hover:text-brand"
                             >
                                 {{ $post->title }}
                             </a>
                         </h3>
 
                         @if ($post->excerpt)
-                            <p class="mb-5 flex-1 text-sm text-stone-600">
+                            <p class="mb-5 flex-1 text-sm text-ink/60">
                                 {!! Str::limit($post->excerpt, 150) !!}
                             </p>
                         @endif
 
                         <a
                             href="{{ route("posts.show", $post->slug) }}"
-                            class="inline-flex items-center gap-1.5 text-sm font-semibold text-stone-900 transition-colors hover:text-[#eb5424]"
+                            class="inline-flex items-center gap-1.5 text-sm font-bold text-ink transition-colors hover:text-brand"
                         >
                             Read more
                             <svg
@@ -62,7 +62,7 @@
             <div class="text-center">
                 <a
                     href="{{ route("blog") }}"
-                    class="inline-flex items-center justify-center rounded-full border border-stone-300 px-7 py-3 text-sm font-semibold text-stone-800 transition-colors hover:border-stone-400 hover:bg-white"
+                    class="inline-flex items-center justify-center rounded-full border-2 border-ink px-7 py-3 text-sm font-bold text-ink transition-colors hover:bg-ink hover:text-white"
                 >
                     View all essays
                 </a>

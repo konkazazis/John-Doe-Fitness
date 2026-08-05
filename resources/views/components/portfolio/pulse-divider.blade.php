@@ -1,7 +1,7 @@
 @props(['color' => 'brand'])
 
 @php
-    $stroke = $color === 'sprout' ? '#4c7a3f' : '#eb5424';
+    $stroke = $color === 'sprout' ? '#4c7a3f' : '#ff6b4a';
 @endphp
 
 <div {{ $attributes->class('w-full overflow-hidden py-2') }} aria-hidden="true">

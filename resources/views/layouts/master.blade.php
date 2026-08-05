@@ -64,43 +64,50 @@
 <body>
     <div class="flex min-h-screen flex-col">
         <header
-            class="sticky top-0 z-50 border-b border-stone-200 bg-white/95 px-4 backdrop-blur-sm md:px-0"
+            class="sticky top-0 z-50 border-b-2 border-ink bg-cream px-4 md:px-0"
         >
             <div
                 class="mx-auto flex h-20 max-w-7xl items-center justify-between"
             >
                 <a
                     href="{{ route("home") }}"
-                    class="text-base font-semibold tracking-[0.35em] text-stone-900 uppercase"
+                    class="flex items-center gap-2.5"
                 >
-                    John-Doe
+                    <span
+                        class="flex h-9 w-9 items-center justify-center rounded-full bg-brand text-base font-black text-white"
+                    >
+                        J
+                    </span>
+                    <span class="font-display text-lg tracking-tight text-ink uppercase">
+                        John&nbsp;Doe
+                    </span>
                 </a>
 
                 <nav
-                    class="hidden gap-8 text-sm font-medium tracking-[0.35em] text-stone-600 uppercase sm:flex"
+                    class="hidden items-center gap-8 text-sm font-bold text-ink sm:flex"
                 >
                     <a
                         href="{{ route("home") }}#about"
-                        class="transition-colors {{ request()->routeIs("about") ? "text-stone-900" : "hover:text-stone-900" }}"
+                        class="transition-colors hover:text-brand"
                     >
                         About
                     </a>
                     <a
                         href="{{ route("blog") }}"
-                        class="transition-colors {{ request()->routeIs("blog") || request()->routeIs("posts.show") ? "text-stone-900" : "hover:text-stone-900" }}"
+                        class="transition-colors {{ request()->routeIs("blog") || request()->routeIs("posts.show") ? "text-brand" : "hover:text-brand" }}"
                     >
                         Blog
                     </a>
                     <a
                         href="{{ route("home") }}#contact"
-                        class="transition-colors hover:text-stone-900"
+                        class="transition-colors hover:text-brand"
                     >
                         Contact
                     </a>
-                    @if (!Auth::user()) 
+                    @if (!Auth::user())
                         <a
                             href="{{ route("login") }}"
-                            class="transition-colors hover:text-stone-900"
+                            class="rounded-full bg-ink px-5 py-2.5 font-bold text-white transition-colors hover:bg-ink/80"
                         >
                             Login/Register
                         </a>
@@ -176,29 +183,29 @@
 
                 <button
                     id="burger-btn"
-                    class="flex h-8 w-8 flex-col items-center justify-center gap-1.5 text-stone-700 transition-colors hover:text-stone-900 sm:hidden"
+                    class="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-full bg-ink text-white transition-colors sm:hidden"
                     aria-label="Toggle menu"
                     aria-expanded="false"
                 >
                     <span
-                        class="burger-line block h-0.5 w-6 bg-current transition-all duration-300"
+                        class="burger-line block h-0.5 w-5 bg-current transition-all duration-300"
                     ></span>
                     <span
-                        class="burger-line block h-0.5 w-6 bg-current transition-all duration-300"
+                        class="burger-line block h-0.5 w-5 bg-current transition-all duration-300"
                     ></span>
                     <span
-                        class="burger-line block h-0.5 w-6 bg-current transition-all duration-300"
+                        class="burger-line block h-0.5 w-5 bg-current transition-all duration-300"
                     ></span>
                 </button>
             </div>
 
             <nav
                 id="mobile-nav"
-                class="hidden flex-col gap-0 border-t border-stone-200 bg-white px-6 pb-4 text-sm font-semibold tracking-wide text-stone-700 uppercase sm:hidden"
+                class="hidden flex-col gap-0 border-t-2 border-ink bg-cream px-6 pb-4 text-sm font-bold tracking-wide text-ink uppercase sm:hidden"
             >
                 <a
                     href="{{ route("home") }}#about"
-                    class="py-3 border-b border-stone-100 text-stone-700 transition-colors hover:text-stone-900"
+                    class="py-3 border-b border-ink/10 text-ink transition-colors hover:text-brand"
                 >
                     About
                 </a>
@@ -206,14 +213,14 @@
                     @if (auth()->user()->role('admin'))
                         <a
                             href="{{ route("admin.dashboard") }}"
-                            class="py-3 border-b border-stone-100 transition-colors {{ request()->routeIs("admin.*") ? "text-stone-900" : "hover:text-stone-900" }}"
+                            class="py-3 border-b border-ink/10 transition-colors {{ request()->routeIs("admin.*") ? "text-brand" : "hover:text-brand" }}"
                         >
                             Admin
                         </a>
                     @elseif (auth()->user()->role('user'))
                         <a
                             href="{{ route("user.dashboard") }}"
-                            class="py-3 border-b border-stone-100 transition-colors {{ request()->routeIs("user.*") ? "text-stone-900" : "hover:text-stone-900" }}"
+                            class="py-3 border-b border-ink/10 transition-colors {{ request()->routeIs("user.*") ? "text-brand" : "hover:text-brand" }}"
                         >
                             My Dashboard
                         </a>
@@ -222,19 +229,19 @@
 
                 <a
                     href="{{ route("blog") }}"
-                    class="py-3 border-b border-stone-100 transition-colors {{ request()->routeIs("blog") || request()->routeIs("posts.show") ? "text-stone-900" : "hover:text-stone-900" }}"
+                    class="py-3 border-b border-ink/10 transition-colors {{ request()->routeIs("blog") || request()->routeIs("posts.show") ? "text-brand" : "hover:text-brand" }}"
                 >
                     Blog
                 </a>
                 <a
                     href="{{ route("home") }}#contact"
-                    class="border-b border-stone-100 py-3 transition-colors hover:text-stone-900"
+                    class="border-b border-ink/10 py-3 transition-colors hover:text-brand"
                 >
                     Contact
                 </a>
                 <a
                     href="{{ route("privacy") }}"
-                    class="border-b border-stone-100 py-3 transition-colors hover:text-stone-900"
+                    class="border-b border-ink/10 py-3 transition-colors hover:text-brand"
                 >
                     Privacy
                 </a>
@@ -243,7 +250,7 @@
                         @csrf
                         <button
                             type="submit"
-                            class="w-full py-3 text-left text-stone-700 transition-colors hover:text-stone-900"
+                            class="w-full py-3 text-left text-ink transition-colors hover:text-brand"
                         >
                             Logout
                         </button>
@@ -252,10 +259,8 @@
             </nav>
         </header>
 
-        <div class="mx-auto w-full max-w-7xl flex-1">
-            <div class="mx-auto w-full max-w-350 flex-1">
-                @yield("content")
-            </div>
+        <div class="w-full flex-1">
+            @yield("content")
         </div>
         @stack("scripts")
         <script>

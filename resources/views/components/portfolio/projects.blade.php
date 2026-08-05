@@ -17,7 +17,7 @@
                     <a
                         href="{{ $project->live_url ?? "#" }}"
                         @if($project->live_url) target="_blank" rel="noopener" @endif
-                        class="group relative rounded-3xl overflow-hidden border border-stone-200 bg-stone-100 aspect-[16/11] shadow-sm {{ $i % 2 ? "md:order-2" : "" }}"
+                        class="group relative rounded-3xl overflow-hidden border-2 border-ink bg-stone-100 aspect-[16/11] {{ $i % 2 ? "md:order-2" : "" }}"
                     >
                         @if ($project->coverUrl())
                             <img
@@ -29,7 +29,7 @@
                         @endif
 
                         <span
-                            class="absolute top-3.5 right-3.5 inline-flex -translate-y-1.5 items-center gap-[7px] rounded-full border border-stone-200 bg-white/90 px-3 py-[7px] text-xs font-medium tracking-wide opacity-0 backdrop-blur transition group-hover:translate-y-0 group-hover:opacity-100"
+                            class="absolute top-3.5 right-3.5 inline-flex -translate-y-1.5 items-center gap-[7px] rounded-full border-2 border-ink bg-white/90 px-3 py-[7px] text-xs font-bold tracking-wide opacity-0 backdrop-blur transition group-hover:translate-y-0 group-hover:opacity-100"
                         >
                             Visit live
                             <span>&#8599;</span>
@@ -37,12 +37,12 @@
                     </a>
                     <div>
                         <h3
-                            class="font-display mt-3 text-[clamp(1.5rem,3vw,2.1rem)] leading-[1.08] font-bold tracking-tight text-stone-900"
+                            class="font-display mt-3 text-[clamp(1.5rem,3vw,2.1rem)] leading-[1.08] tracking-tight text-ink uppercase"
                         >
                             {{ $project->title }}
                         </a>
                     </h3>
-                    <p class="mt-3.5 max-w-[44ch] text-stone-600">
+                    <p class="mt-3.5 max-w-[44ch] text-ink/60">
                         {{ $project->description }}
                     </p>
                 </div>

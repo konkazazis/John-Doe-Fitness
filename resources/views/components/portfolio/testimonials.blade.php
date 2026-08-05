@@ -2,7 +2,7 @@
     "testimonials",
 ])
 
-<section class="bg-stone-900 py-24 text-stone-50">
+<section id="testimonials" class="bg-ink py-24 text-white">
     <div
         x-data="{
             active: 0,
@@ -16,7 +16,7 @@
         }"
         class="mx-auto max-w-4xl px-6 text-center lg:px-8"
     >
-        <span class="section-label text-stone-400">Results, not promises</span>
+        <span class="section-label justify-center">Results, not promises</span>
 
         <div
             class="relative mt-10 flex min-h-[180px] items-center justify-center"
@@ -29,13 +29,13 @@
                     x-transition:enter-end="opacity-100 translate-y-0"
                     class="absolute inset-0"
                 >
-                    <p class="font-display text-2xl leading-snug sm:text-3xl">
+                    <p class="text-2xl leading-snug font-semibold sm:text-3xl">
                         &ldquo;{{ $t["quote"] }}&rdquo;
                     </p>
-                    <p class="mt-6 font-semibold text-[#eb5424]">
+                    <p class="mt-6 font-semibold text-brand">
                         {{ $t["client"] }}
                     </p>
-                    <p class="text-sm text-stone-400">{{ $t["description"] }}</p>
+                    <p class="text-sm text-white/50">{{ $t["description"] }}</p>
                 </div>
             @endforeach
         </div>
@@ -44,7 +44,7 @@
             <button
                 @click="prev()"
                 aria-label="Previous testimonial"
-                class="flex h-10 w-10 items-center justify-center rounded-full border border-stone-700 transition-colors hover:border-stone-500"
+                class="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 transition-colors hover:border-white/50"
             >
                 <svg
                     class="h-4 w-4"
@@ -66,7 +66,7 @@
                     <button
                         @click="active = {{ $i }}"
                         class="h-2 w-2 rounded-full transition-colors"
-                        :class="active === {{ $i }} ? 'bg-[#eb5424]' : 'bg-stone-700'"
+                        :class="active === {{ $i }} ? 'bg-brand' : 'bg-white/20'"
                         aria-label="Go to testimonial {{ $i + 1 }}"
                     ></button>
                 @endforeach
@@ -75,7 +75,7 @@
             <button
                 @click="next()"
                 aria-label="Next testimonial"
-                class="flex h-10 w-10 items-center justify-center rounded-full border border-stone-700 transition-colors hover:border-stone-500"
+                class="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 transition-colors hover:border-white/50"
             >
                 <svg
                     class="h-4 w-4"
