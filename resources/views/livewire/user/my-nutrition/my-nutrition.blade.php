@@ -1,79 +1,79 @@
 <div>
-       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-            <x-stat-card label="Calories" value="1,640" unit="/ 2,200 kcal" hint="560 kcal remaining" accent="emerald" />
-            <x-stat-card label="Protein" value="118" unit="/ 165 g" hint="72% of goal" accent="sky" />
-            <x-stat-card label="Carbs" value="152" unit="/ 220 g" hint="69% of goal" accent="amber" />
-            <x-stat-card label="Fat" value="48" unit="/ 70 g" hint="69% of goal" accent="rose" />
+    @if($activePlan)
+        <div class="mb-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+            <x-stat-card label="Calories" :value="$activePlan->daily_calories ?? '—'" unit="kcal / day" accent="emerald" />
+            <x-stat-card label="Protein" :value="$activePlan->protein_grams ?? '—'" unit="g / day" accent="sky" />
+            <x-stat-card label="Carbs" :value="$activePlan->carbs_grams ?? '—'" unit="g / day" accent="amber" />
+            <x-stat-card label="Fat" :value="$activePlan->fat_grams ?? '—'" unit="g / day" accent="rose" />
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-            {{-- Today's meal log --}}
-            <div class="lg:col-span-2 rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800/70 dark:bg-zinc-900/50">
-                <div class="flex items-center justify-between px-6 py-5 border-b border-zinc-200 dark:border-zinc-800/70">
-                    <div>
-                        <h2 class="font-semibold text-zinc-800 dark:text-white">Today's log</h2>
-                        <p class="text-sm text-zinc-500 dark:text-zinc-400">Friday, 24 July</p>
-                    </div>
-                    <button type="button" class="inline-flex items-center gap-1.5 rounded-lg bg-emerald-500 px-3 py-1.5 text-sm font-medium text-zinc-950 hover:bg-emerald-400 transition-colors">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
-                        Log meal
-                    </button>
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+            {{-- Meals --}}
+            <div class="rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800/70 dark:bg-zinc-900/50 lg:col-span-2">
+                <div class="border-b border-zinc-200 px-6 py-5 dark:border-zinc-800/70">
+                    <h2 class="font-semibold text-zinc-800 dark:text-white">{{ $activePlan->title }}</h2>
+                    @if($activePlan->goal)
+                        <p class="text-sm text-zinc-500 dark:text-zinc-400">{{ $activePlan->goal }}</p>
+                    @endif
                 </div>
 
-                <ul class="divide-y divide-zinc-200 dark:divide-zinc-800/70">
-                    @foreach([
-                        ['meal' => 'Breakfast', 'name' => 'Greek yogurt, oats & berries', 'time' => '7:20 AM', 'kcal' => 420],
-                        ['meal' => 'Lunch', 'name' => 'Grilled chicken bowl', 'time' => '12:45 PM', 'kcal' => 610],
-                        ['meal' => 'Snack', 'name' => 'Protein shake & almonds', 'time' => '3:30 PM', 'kcal' => 310],
-                        ['meal' => 'Dinner', 'name' => 'Salmon, rice & greens', 'time' => '7:00 PM', 'kcal' => 300],
-                    ] as $entry)
-                        <li class="flex items-center justify-between px-6 py-4">
-                            <div>
-                                <p class="text-sm font-medium text-zinc-700 dark:text-zinc-200">{{ $entry['name'] }}</p>
-                                <p class="text-xs text-zinc-500 dark:text-zinc-400">{{ $entry['meal'] }} · {{ $entry['time'] }}</p>
-                            </div>
-                            <span class="text-sm font-medium text-zinc-600 dark:text-zinc-300">{{ $entry['kcal'] }} kcal</span>
-                        </li>
-                    @endforeach
-                </ul>
+                @if($activePlan->meals->isNotEmpty())
+                    <ul class="divide-y divide-zinc-200 dark:divide-zinc-800/70">
+                        @foreach($activePlan->meals as $meal)
+                            <li class="flex items-center justify-between px-6 py-4">
+                                <div>
+                                    <p class="text-sm font-medium text-zinc-700 dark:text-zinc-200">{{ $meal->name }}</p>
+                                    @if($meal->description)
+                                        <p class="text-xs text-zinc-500 dark:text-zinc-400">{{ $meal->description }}</p>
+                                    @endif
+                                </div>
+                                @if($meal->calories !== null)
+                                    <span class="text-sm font-medium text-zinc-600 dark:text-zinc-300">{{ $meal->calories }} kcal</span>
+                                @endif
+                            </li>
+                        @endforeach
+                    </ul>
+                @else
+                    <p class="px-6 py-8 text-center text-sm text-zinc-400 dark:text-zinc-500">No meals have been added to this plan yet.</p>
+                @endif
             </div>
 
-            {{-- Side column --}}
+            {{-- Notes --}}
             <div class="space-y-6">
-                {{-- Water intake --}}
-                <div class="rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800/70 dark:bg-zinc-900/50 p-6">
-                    <h2 class="font-semibold text-zinc-800 dark:text-white mb-4">Water intake</h2>
-                    <div class="flex items-end gap-1.5 mb-3">
-                        @for($i = 1; $i <= 8; $i++)
-                            <div class="flex-1 h-10 rounded-md {{ $i <= 5 ? 'bg-sky-500' : 'bg-zinc-200 dark:bg-zinc-800' }}"></div>
-                        @endfor
-                    </div>
-                    <p class="text-sm text-zinc-500 dark:text-zinc-400">5 / 8 glasses <span class="text-zinc-400 dark:text-zinc-600">· 1.25L logged</span></p>
-                </div>
-
-                {{-- Macro plan --}}
-                <div class="rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800/70 dark:bg-zinc-900/50 p-6">
-                    <h2 class="font-semibold text-zinc-800 dark:text-white mb-4">Current plan</h2>
-                    <dl class="space-y-3 text-sm">
-                        <div class="flex justify-between">
-                            <dt class="text-zinc-500 dark:text-zinc-400">Goal</dt>
-                            <dd class="text-zinc-700 dark:text-zinc-200">Lean muscle gain</dd>
-                        </div>
-                        <div class="flex justify-between">
-                            <dt class="text-zinc-500 dark:text-zinc-400">Daily target</dt>
-                            <dd class="text-zinc-700 dark:text-zinc-200">2,200 kcal</dd>
-                        </div>
-                        <div class="flex justify-between">
-                            <dt class="text-zinc-500 dark:text-zinc-400">Split</dt>
-                            <dd class="text-zinc-700 dark:text-zinc-200">30 / 40 / 30</dd>
-                        </div>
-                    </dl>
-                    <a href="#" class="mt-4 inline-block text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 dark:hover:text-emerald-300">Adjust plan &rarr;</a>
+                <div class="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800/70 dark:bg-zinc-900/50">
+                    <h2 class="mb-4 font-semibold text-zinc-800 dark:text-white">Plan notes</h2>
+                    @if($activePlan->notes)
+                        <p class="text-sm whitespace-pre-line text-zinc-600 dark:text-zinc-300">{{ $activePlan->notes }}</p>
+                    @else
+                        <p class="text-sm text-zinc-400 dark:text-zinc-500">No additional notes from your coach.</p>
+                    @endif
                 </div>
             </div>
         </div>
+    @else
+        <div class="flex items-center justify-center rounded-2xl border border-zinc-200 bg-white py-16 dark:border-zinc-800/70 dark:bg-zinc-900/50">
+            <p class="text-sm text-zinc-400 dark:text-zinc-500">Your coach hasn't assigned you a nutrition plan yet.</p>
+        </div>
+    @endif
 
-
-
+    @if($pastPlans->isNotEmpty())
+        <div class="mt-8 rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800/70 dark:bg-zinc-900/50">
+            <div class="border-b border-zinc-200 px-6 py-5 dark:border-zinc-800/70">
+                <h2 class="font-semibold text-zinc-800 dark:text-white">Past plans</h2>
+            </div>
+            <ul class="divide-y divide-zinc-200 dark:divide-zinc-800/70">
+                @foreach($pastPlans as $plan)
+                    <li class="flex items-center justify-between px-6 py-4">
+                        <div>
+                            <p class="text-sm font-medium text-zinc-700 dark:text-zinc-200">{{ $plan->title }}</p>
+                            @if($plan->goal)
+                                <p class="text-xs text-zinc-500 dark:text-zinc-400">{{ $plan->goal }}</p>
+                            @endif
+                        </div>
+                        <span class="text-xs text-zinc-400 dark:text-zinc-500">{{ $plan->created_at->format('M j, Y') }}</span>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 </div>

@@ -132,6 +132,14 @@
                     Client Messages
                 </flux:sidebar.item>
                 <flux:sidebar.item
+                    icon="clipboard-document-list"
+                    :href="route('admin.nutrition-plans.index')"
+                    :current="request()->routeIs('admin.nutrition-plans.*')"
+                    wire:navigate
+                >
+                    Nutrition Plans
+                </flux:sidebar.item>
+                <flux:sidebar.item
                     icon="inbox"
                     :href="route('admin.messages.index')"
                     :current="request()->routeIs('admin.messages.*')"

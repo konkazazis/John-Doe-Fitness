@@ -11,6 +11,7 @@ use App\Livewire\Admin\Category\CategoryManager;
 use App\Livewire\Admin\ClientsMessages\ClientsMessagesManager;
 use App\Livewire\Admin\Contact\ContactManager;
 use App\Livewire\Admin\Dashboard as AdminDashboard;
+use App\Livewire\Admin\NutritionPlans\NutritionPlansManager;
 use App\Livewire\Admin\Plans\PlansManager;
 use App\Livewire\Admin\Post\PostManager;
 use App\Livewire\Admin\Project\ProjectManager;
@@ -87,6 +88,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
         Route::get('/tags', TagManager::class)->name('tags.index');
         Route::get('/messages', ContactManager::class)->name('messages.index');
         Route::get('/client-messages', ClientsMessagesManager::class)->name('clients-messages.index');
+        Route::get('/nutrition-plans', NutritionPlansManager::class)->name('nutrition-plans.index');
         Route::redirect('/settings', '/admin/settings/profile')->name('settings');
         Route::get('/settings/profile', SettingsProfile::class)->name('settings.profile');
         Route::get('/settings/security', SettingsSecurity::class)->name('settings.security');

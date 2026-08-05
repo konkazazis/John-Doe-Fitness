@@ -46,6 +46,11 @@ class User extends Authenticatable
         return $this->hasMany(ClientMessage::class);
     }
 
+    public function nutritionPlans(): HasMany
+    {
+        return $this->hasMany(NutritionPlan::class);
+    }
+
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'user_roles');
