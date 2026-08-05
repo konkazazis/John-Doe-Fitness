@@ -113,90 +113,102 @@
                         </a>
                     @endauth
                 </nav>
-                @auth
-                    <div
-                        class="group relative inline-block text-left"
+                <div
+                    class="group relative inline-block justify-self-end text-left"
                         id="dropdown-container"
                     >
-                        <button
-                            type="button"
-                            id="dropdown-button"
-                            class="hidden w-full justify-center bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:outline-none md:inline-flex"
-                        >
-                            <img
-                                src="https://s3.eu-north-1.amazonaws.com/kazazis.dev/profile-pic.png"
-                                alt="User profile image"
-                                class="h-10 w-10 rounded-full bg-stone-100 object-cover"
-                            />
-                            <svg
-                                class="-mr-1 ml-2 h-5 w-5 transition-transform duration-200"
-                                id="dropdown-arrow"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                            >
-                                <path
-                                    fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"
-                                />
-                            </svg>
-                        </button>
-                        <div
-                            id="dropdown-menu"
-                            class="ring-opacity-5 absolute right-0 mt-2 hidden w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black focus:outline-none"
-                        >
-                            <div class="py-1">
-                                @auth
-                                    @if (auth()->user()->role('admin'))
-                                        <a
-                                            href="{{ route("admin.dashboard") }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 hover:text-gray-900"
-                                        >
-                                            Admin
-                                        </a>
-                                    @elseif (auth()->user()->role('user'))
-                                        <a
-                                            href="{{ route("user.dashboard") }}"
-                                            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 hover:text-gray-900"
-                                        >
-                                            My Dashboard
-                                        </a>
-                                    @endif
-                                @endauth
-                                <form
-                                    method="POST"
-                                    action="{{ route("logout") }}"
+                        @auth
+                            @if (auth()->user()->role('admin') || auth()->user()->role('user'))
+                                <button
+                                    type="button"
+                                    id="dropdown-button"
+                                    class="hidden sm:inline-flex items-center gap-1 rounded-full px-1.5 py-1.5 text-sm font-medium text-stone-600 hover:bg-stone-100 transition-colors focus:outline-none"
                                 >
-                                    @csrf
-                                    <button
-                                        type="submit"
-                                        class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                    <span
+                                        class="flex items-center justify-center w-9 h-9 rounded-full bg-stone-100 text-stone-500 text-lg"
                                     >
-                                        Logout
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                @endauth
+                                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                                        </svg>
+                                    </span>
+                                    <svg
+                                        class="mr-1 h-4 w-4 text-stone-400 transition-transform duration-200"
+                                        id="dropdown-arrow"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20"
+                                        fill="currentColor"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                            clip-rule="evenodd"
+                                        />
+                                    </svg>
+                                </button>
+                                <div
+                                    id="dropdown-menu"
+                                    class="origin-top-right absolute right-0 mt-2 w-52 rounded-lg shadow-lg bg-white ring-1 ring-stone-200 focus:outline-none hidden overflow-hidden"
+                                >
+                                    <div class="py-1">
+                                        @if (auth()->user()->role('admin'))
+                                            <a
+                                                href="{{ route("admin.dashboard") }}"
+                                                class="flex items-center gap-2.5 px-4 py-2.5 text-sm text-stone-700 hover:bg-stone-50 hover:text-stone-900 transition-colors"
+                                            >
+                                                <svg class="h-4 w-4 text-stone-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                                                </svg>
+                                                Admin Panel
+                                            </a>
+                                        @elseif (auth()->user()->role('user'))
+                                            <a
+                                                href="{{ route("user.dashboard") }}"
+                                                class="flex items-center gap-2.5 px-4 py-2.5 text-sm text-stone-700 hover:bg-stone-50 hover:text-stone-900 transition-colors"
+                                            >
+                                                <svg class="h-4 w-4 text-stone-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                                                </svg>
+                                                My Dashboard
+                                            </a>
+                                        @endif
 
-                <button
-                    id="burger-btn"
-                    class="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-full bg-ink text-white transition-colors sm:hidden"
-                    aria-label="Toggle menu"
-                    aria-expanded="false"
-                >
-                    <span
-                        class="burger-line block h-0.5 w-5 bg-current transition-all duration-300"
-                    ></span>
-                    <span
-                        class="burger-line block h-0.5 w-5 bg-current transition-all duration-300"
-                    ></span>
-                    <span
-                        class="burger-line block h-0.5 w-5 bg-current transition-all duration-300"
-                    ></span>
-                </button>
+                                        <form
+                                            method="POST"
+                                            action="{{ route("logout") }}"
+                                        >
+                                            @csrf
+                                            <button
+                                                type="submit"
+                                                class="flex items-center gap-2.5 w-full text-left px-4 py-2.5 text-sm text-stone-700 hover:bg-stone-50 hover:text-stone-900 border-t border-stone-100 transition-colors"
+                                            >
+                                                <svg class="h-4 w-4 text-stone-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                                                </svg>
+                                                Logout
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            @endif
+                        @endauth
+
+                        <button
+                            id="burger-btn"
+                            class="sm:hidden flex flex-col justify-center items-center gap-1.5 w-8 h-8 text-stone-700 hover:text-stone-900 transition-colors"
+                            aria-label="Toggle menu"
+                            aria-expanded="false"
+                        >
+                            <span
+                                class="burger-line block w-6 h-0.5 bg-current transition-all duration-300"
+                            ></span>
+                            <span
+                                class="burger-line block w-6 h-0.5 bg-current transition-all duration-300"
+                            ></span>
+                            <span
+                                class="burger-line block w-6 h-0.5 bg-current transition-all duration-300"
+                            ></span>
+                        </button>
+                </div>
             </div>
 
             <nav
@@ -294,35 +306,36 @@
         </script>
 
         <script>
-            const button = document.getElementById('dropdown-button');
-            const menu = document.getElementById('dropdown-menu');
-            const arrow = document.getElementById('dropdown-arrow');
+                const button = document.getElementById('dropdown-button');
+                const menu = document.getElementById('dropdown-menu');
+                const arrow = document.getElementById('dropdown-arrow');
+                const container = document.getElementById(
+                    'dropdown-container'
+                );
 
-            button.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent click from bubbling to document
-                const isHidden = menu.classList.contains('hidden');
+                if (button && menu && arrow) {
+                    button.addEventListener('click', (e) => {
+                        e.stopPropagation(); // Prevent click from bubbling to document
+                        const isHidden = menu.classList.contains('hidden');
 
-                if (isHidden) {
-                    menu.classList.remove('hidden');
-                    arrow.classList.add('rotate-180');
-                } else {
-                    menu.classList.add('hidden');
-                    arrow.classList.remove('rotate-180');
+                        if (isHidden) {
+                            menu.classList.remove('hidden');
+                            arrow.classList.add('rotate-180');
+                        } else {
+                            menu.classList.add('hidden');
+                            arrow.classList.remove('rotate-180');
+                        }
+                    });
+
+                    // Close when clicking outside
+                    document.addEventListener('click', (e) => {
+                        if (!container.contains(e.target)) {
+                            menu.classList.add('hidden');
+                            arrow.classList.remove('rotate-180');
+                        }
+                    });
                 }
-            });
-
-            // Close when clicking outside
-            document.addEventListener('click', (e) => {
-                if (
-                !document
-                .getElementById('dropdown-container')
-                .contains(e.target)
-                ) {
-                    menu.classList.add('hidden');
-                    arrow.classList.remove('rotate-180');
-                }
-            });
-        </script>
+            </script>
     </div>
 </body>
 </html>
