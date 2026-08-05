@@ -51,6 +51,11 @@ class User extends Authenticatable
         return $this->hasMany(NutritionPlan::class);
     }
 
+    public function exercisePlans(): HasMany
+    {
+        return $this->hasMany(ExercisePlan::class);
+    }
+
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'user_roles');

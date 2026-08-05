@@ -140,6 +140,14 @@
                     Nutrition Plans
                 </flux:sidebar.item>
                 <flux:sidebar.item
+                    icon="bolt"
+                    :href="route('admin.exercise-plans.index')"
+                    :current="request()->routeIs('admin.exercise-plans.*')"
+                    wire:navigate
+                >
+                    Exercise Plans
+                </flux:sidebar.item>
+                <flux:sidebar.item
                     icon="inbox"
                     :href="route('admin.messages.index')"
                     :current="request()->routeIs('admin.messages.*')"

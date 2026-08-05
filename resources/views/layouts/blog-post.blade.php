@@ -91,7 +91,7 @@
             @endif
         </header>
 
-        @if(auth()->user()->role('admin'))
+        @if(auth()->check() && auth()->user()->role('admin'))
             <div class="mb-10 flex items-center gap-3 border-b border-stone-100 pb-8">
                 <img src="https://s3.eu-north-1.amazonaws.com/kazazis.dev/profile-pic.png" alt="John Doe"
                     class="h-10 w-10 rounded-full bg-stone-100 object-cover object-top">
