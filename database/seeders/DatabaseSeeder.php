@@ -34,5 +34,19 @@ class DatabaseSeeder extends Seeder
 
         $admin->roles()->syncWithoutDetaching([$adminRole->id]);
         $user->roles()->syncWithoutDetaching([$userRole->id]);
+
+        $this->call([
+            UserSeeder::class,
+            CategorySeeder::class,
+            TagSeeder::class,
+            PostSeeder::class,
+            ProjectSeeder::class,
+            TestimonialSeeder::class,
+            PlanSeeder::class,
+            ContactMessageSeeder::class,
+            ClientMessageSeeder::class,
+            NutritionPlanSeeder::class,
+            ExercisePlanSeeder::class,
+        ]);
     }
 }
