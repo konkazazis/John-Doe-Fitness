@@ -104,20 +104,20 @@
                     >
                         Contact
                     </a>
-                    @if (!Auth::user())
-                        <a
-                            href="{{ route("login") }}"
-                            class="rounded-full bg-ink px-5 py-2.5 font-bold text-white transition-colors hover:bg-ink/80"
-                        >
-                            Login/Register
-                        </a>
-                    @endauth
                 </nav>
+                @guest
+                    <a
+                        href="{{ route("login") }}"
+                        class="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-ink/80 sm:inline-block"
+                    >
+                        Login/Register
+                    </a>
+                @endguest
+                @auth
                 <div
                     class="group relative inline-block justify-self-end text-left"
                         id="dropdown-container"
                     >
-                        @auth
                             @if (auth()->user()->role('admin') || auth()->user()->role('user'))
                                 <button
                                     type="button"
@@ -190,7 +190,8 @@
                                     </div>
                                 </div>
                             @endif
-                        @endauth
+                </div>
+                @endauth
 
                         <button
                             id="burger-btn"
@@ -208,7 +209,6 @@
                                 class="burger-line block w-6 h-0.5 bg-current transition-all duration-300"
                             ></span>
                         </button>
-                </div>
             </div>
 
             <nav
