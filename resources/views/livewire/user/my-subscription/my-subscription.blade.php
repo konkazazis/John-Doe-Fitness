@@ -1,7 +1,43 @@
 <div>
      @if (empty($subscription))
-            <div class="flex flex-row min-h-screen justify-center items-center">
-                <h1>No subscriptions at this time</h1>
+            <div class="py-10">
+                <div class="mb-10 text-center">
+                    <h1 class="text-xl font-bold text-zinc-800 dark:text-white">Choose a plan to get started</h1>
+                    <p class="mt-2 text-sm text-zinc-500 dark:text-zinc-400">Subscribe to unlock your dashboard, nutrition plans, and exercise plans.</p>
+                </div>
+
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                    @foreach ($plans as $plan)
+                        <div class="flex flex-col rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800/70 dark:bg-zinc-900/50">
+                            <span class="inline-flex w-fit items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">
+                                {{ $plan->tag }}
+                            </span>
+                            <h2 class="mt-3 text-xl font-semibold text-zinc-800 dark:text-white">{{ $plan->name }}</h2>
+                            <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{{ $plan->description }}</p>
+
+                            <p class="mt-4 text-2xl font-semibold text-zinc-800 dark:text-white">
+                                {{ $plan->price }}€
+                                <span class="text-sm font-normal text-zinc-500 dark:text-zinc-400">/{{ $plan->billing_cycle }}</span>
+                            </p>
+
+                            <ul class="mt-6 flex-1 space-y-3 text-sm">
+                                @foreach ($plan->features as $feature)
+                                    <li class="flex items-start gap-2.5">
+                                        <svg class="w-4 h-4 mt-0.5 text-emerald-600 dark:text-emerald-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                                        <span class="text-zinc-700 dark:text-zinc-300">{{ $feature }}</span>
+                                    </li>
+                                @endforeach
+                            </ul>
+
+                            <form method="POST" action="{{ route('subscription.subscribe', $plan->stripe_price_id) }}" class="mt-6">
+                                @csrf
+                                <button type="submit" class="w-full rounded-full bg-ink px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-ink/80">
+                                    Choose {{ $plan->name }}
+                                </button>
+                            </form>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         @else
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">

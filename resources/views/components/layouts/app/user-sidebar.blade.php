@@ -46,16 +46,18 @@
         </flux:sidebar.header>
 
         <flux:sidebar.nav>
-            <flux:sidebar.group heading="Main" class="grid">
-                <flux:sidebar.item
-                    icon="chart-bar"
-                    :href="route('user.dashboard')"
-                    :current="request()->routeIs('user.dashboard')"
-                    wire:navigate
-                >
-                    Overview
-                </flux:sidebar.item>
-            </flux:sidebar.group>
+            @if (auth()->user()->hasActiveSubscription())
+                <flux:sidebar.group heading="Main" class="grid">
+                    <flux:sidebar.item
+                        icon="chart-bar"
+                        :href="route('user.dashboard')"
+                        :current="request()->routeIs('user.dashboard')"
+                        wire:navigate
+                    >
+                        Overview
+                    </flux:sidebar.item>
+                </flux:sidebar.group>
+            @endif
 
              <flux:sidebar.group heading="Progress" class="grid">
                 <flux:sidebar.item
@@ -67,44 +69,48 @@
                     My Subscription
                 </flux:sidebar.item>
 
-                <flux:sidebar.item
-                    icon="clock"
-                    :href="route('user.account-history')"
-                    :current="request()->routeIs('user.account-history')"
-                    wire:navigate
-                >
-                    Account History
-                </flux:sidebar.item>
+                @if (auth()->user()->hasActiveSubscription())
+                    <flux:sidebar.item
+                        icon="clock"
+                        :href="route('user.account-history')"
+                        :current="request()->routeIs('user.account-history')"
+                        wire:navigate
+                    >
+                        Account History
+                    </flux:sidebar.item>
 
-                <flux:sidebar.item
-                    icon="chart-bar"
-                    :href="route('user.my-nutrition')"
-                    :current="request()->routeIs('user.my-nutrition')"
-                    wire:navigate
-                >
-                    My Nutrition
-                </flux:sidebar.item>
+                    <flux:sidebar.item
+                        icon="chart-bar"
+                        :href="route('user.my-nutrition')"
+                        :current="request()->routeIs('user.my-nutrition')"
+                        wire:navigate
+                    >
+                        My Nutrition
+                    </flux:sidebar.item>
 
-                <flux:sidebar.item
-                    icon="chart-bar"
-                    :href="route('user.my-exercise')"
-                    :current="request()->routeIs('user.my-exercise')"
-                    wire:navigate
-                >
-                    My Exercise
-                </flux:sidebar.item>
+                    <flux:sidebar.item
+                        icon="chart-bar"
+                        :href="route('user.my-exercise')"
+                        :current="request()->routeIs('user.my-exercise')"
+                        wire:navigate
+                    >
+                        My Exercise
+                    </flux:sidebar.item>
+                @endif
             </flux:sidebar.group>
 
-            <flux:sidebar.group heading="Content" class="grid">
-                <flux:sidebar.item
-                    icon="inbox"
-                    :href="route('user.messages')"
-                    :current="request()->routeIs('user.messages.*')"
-                    wire:navigate
-                >
-                    Messages
-                </flux:sidebar.item>
-            </flux:sidebar.group>
+            @if (auth()->user()->hasActiveSubscription())
+                <flux:sidebar.group heading="Content" class="grid">
+                    <flux:sidebar.item
+                        icon="inbox"
+                        :href="route('user.messages')"
+                        :current="request()->routeIs('user.messages.*')"
+                        wire:navigate
+                    >
+                        Messages
+                    </flux:sidebar.item>
+                </flux:sidebar.group>
+            @endif
 
         </flux:sidebar.nav>
 

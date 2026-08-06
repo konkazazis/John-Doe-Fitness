@@ -65,4 +65,9 @@ class User extends Authenticatable
     {
         return $this->roles()->where('name', $name)->exists();
     }
+
+    public function hasActiveSubscription(): bool
+    {
+        return $this->subscriptions()->active()->exists();
+    }
 }

@@ -17,6 +17,8 @@ class MySubscription extends Component
 
     public $next_billing_date = null;
 
+    public $plans = null;
+
     public bool $showCancelModal = false;
 
     public function mount()
@@ -29,6 +31,7 @@ class MySubscription extends Component
             $this->fetchSubscription();
         } else {
             $this->plan = null;
+            $this->plans = Plan::where('is_active', true)->orderBy('order')->get();
         }
     }
 
@@ -84,6 +87,7 @@ class MySubscription extends Component
             'user' => $this->user,
             'next_billing_date' => $this->next_billing_date,
             'invoices' => $this->fetchInvoices(),
+            'plans' => $this->plans,
         ])->layout('layouts.app', ['title' => 'My Subscription']);
     }
 }

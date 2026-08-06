@@ -47,12 +47,8 @@ Route::get('/privacy', [LegalController::class, 'privacy'])->name('privacy');
 
 Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
     Route::middleware(['role:user'])->group(function () {
-        Route::get('/', UserDashboard::class)->name('dashboard');
-        Route::get('/messages', MessageManager::class)->name('messages');
+        // Reachable without an active subscription.
         Route::get('/my-subscription', MySubscription::class)->name('my-subscription');
-        Route::get('/account-history', AccountHistory::class)->name('account-history');
-        Route::get('/my-nutrition', MyNutrition::class)->name('my-nutrition');
-        Route::get('/my-exercise', MyExercise::class)->name('my-exercise');
         Route::get('/subscription/change-payment-method', [MySubscription::class, 'changePaymentMethod'])
             ->name('change-payment-method');
         Route::get('/subscription/payment-method-updated', [MySubscription::class, 'paymentMethodUpdated'])
@@ -61,6 +57,15 @@ Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
         Route::get('/settings/profile', SettingsProfile::class)->name('settings.profile');
         Route::get('/settings/security', SettingsSecurity::class)->name('settings.security');
         Route::get('/settings/appearance', SettingsAppearance::class)->name('settings.appearance');
+
+        // Requires an active subscription.
+        Route::middleware(['subscribed'])->group(function () {
+            Route::get('/', UserDashboard::class)->name('dashboard');
+            Route::get('/messages', MessageManager::class)->name('messages');
+            Route::get('/account-history', AccountHistory::class)->name('account-history');
+            Route::get('/my-nutrition', MyNutrition::class)->name('my-nutrition');
+            Route::get('/my-exercise', MyExercise::class)->name('my-exercise');
+        });
     });
 });
 
