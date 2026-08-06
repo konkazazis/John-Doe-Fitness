@@ -74,6 +74,50 @@
         </flux:sidebar.header>
 
         <flux:sidebar.nav>
+             <flux:sidebar.group heading="Main" class="grid">
+                <flux:sidebar.item
+                    icon="chart-bar"
+                    :href="route('admin.dashboard')"
+                    :current="request()->routeIs('admin.dashboard')"
+                    wire:navigate
+                >
+                    Overview
+                </flux:sidebar.item>
+                <flux:sidebar.item
+                    icon="users"
+                    :href="route('admin.users.index')"
+                    :current="request()->routeIs('admin.users.*')"
+                    wire:navigate
+                >
+                    Users
+                </flux:sidebar.item>
+            </flux:sidebar.group>
+            <flux:sidebar.group heading="Clients" class="grid">
+                <flux:sidebar.item
+                    icon="clipboard-document-list"
+                    :href="route('admin.nutrition-plans.index')"
+                    :current="request()->routeIs('admin.nutrition-plans.*')"
+                    wire:navigate
+                >
+                    Nutrition Plans
+                </flux:sidebar.item>
+                <flux:sidebar.item
+                    icon="bolt"
+                    :href="route('admin.exercise-plans.index')"
+                    :current="request()->routeIs('admin.exercise-plans.*')"
+                    wire:navigate
+                >
+                    Exercise Plans
+                </flux:sidebar.item>
+                <flux:sidebar.item
+                    icon="briefcase"
+                    :href="route('admin.plans.index')"
+                    :current="request()->routeIs('admin.plans.*')"
+                    wire:navigate
+                >
+                    Plans
+                </flux:sidebar.item>
+            </flux:sidebar.group>
             <flux:sidebar.group heading="Content" class="grid">
                 <flux:sidebar.item
                     icon="document-text"
@@ -100,14 +144,6 @@
                     Testimonials
                 </flux:sidebar.item>
                 <flux:sidebar.item
-                    icon="briefcase"
-                    :href="route('admin.plans.index')"
-                    :current="request()->routeIs('admin.plans.*')"
-                    wire:navigate
-                >
-                    Plans
-                </flux:sidebar.item>
-                <flux:sidebar.item
                     icon="tag"
                     :href="route('admin.categories.index')"
                     :current="request()->routeIs('admin.categories.*')"
@@ -123,6 +159,8 @@
                 >
                     Tags
                 </flux:sidebar.item>
+            </flux:sidebar.group>
+            <flux:sidebar.group heading="Messages" class="grid">
                 <flux:sidebar.item
                     icon="inbox-arrow-down"
                     :href="route('admin.clients-messages.index')"
@@ -132,47 +170,12 @@
                     Client Messages
                 </flux:sidebar.item>
                 <flux:sidebar.item
-                    icon="clipboard-document-list"
-                    :href="route('admin.nutrition-plans.index')"
-                    :current="request()->routeIs('admin.nutrition-plans.*')"
-                    wire:navigate
-                >
-                    Nutrition Plans
-                </flux:sidebar.item>
-                <flux:sidebar.item
-                    icon="bolt"
-                    :href="route('admin.exercise-plans.index')"
-                    :current="request()->routeIs('admin.exercise-plans.*')"
-                    wire:navigate
-                >
-                    Exercise Plans
-                </flux:sidebar.item>
-                <flux:sidebar.item
                     icon="inbox"
                     :href="route('admin.messages.index')"
                     :current="request()->routeIs('admin.messages.*')"
                     wire:navigate
                 >
                     Contact Messages
-                </flux:sidebar.item>
-            </flux:sidebar.group>
-
-            <flux:sidebar.group heading="Admin" class="grid">
-                <flux:sidebar.item
-                    icon="chart-bar"
-                    :href="route('admin.dashboard')"
-                    :current="request()->routeIs('admin.dashboard')"
-                    wire:navigate
-                >
-                    Overview
-                </flux:sidebar.item>
-                <flux:sidebar.item
-                    icon="users"
-                    :href="route('admin.users.index')"
-                    :current="request()->routeIs('admin.users.*')"
-                    wire:navigate
-                >
-                    Users
                 </flux:sidebar.item>
             </flux:sidebar.group>
         </flux:sidebar.nav>
