@@ -257,6 +257,14 @@
                 >
                     Privacy
                 </a>
+                @guest
+                    <a
+                        href="{{ route("login") }}"
+                        class="py-3 text-ink transition-colors hover:text-brand"
+                    >
+                        Login/Register
+                    </a>
+                @endguest
                 @auth
                     <form method="POST" action="{{ route("logout") }}">
                         @csrf
