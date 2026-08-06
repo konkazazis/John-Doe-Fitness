@@ -30,6 +30,6 @@ class SubscriptionController extends Controller
             );
         }
 
-        return view('subscription.success');
+        return redirect()->route('user.my-subscription');
     }
 }
