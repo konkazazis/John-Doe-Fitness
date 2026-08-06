@@ -111,7 +111,7 @@ class PlansManager extends Component
         $this->price = $plan->price;
 
         $this->description = $plan->description ?? '';
-        $this->tag = $plan->tag;
+        $this->tag = $plan->tag ?? '';
         $this->stripe_price_id = $plan->stripe_price_id;
         $this->features = is_array($plan->features) ? implode("\n", $plan->features) : $plan->features;
 

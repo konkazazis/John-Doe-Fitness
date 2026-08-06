@@ -49,10 +49,10 @@
                                     {{ $plan->price }}
                                 </td>
                                 <td class="hidden px-4 py-4 text-xs text-zinc-500 md:table-cell dark:text-zinc-400">
-                                    {{ substr($plan->description, 0 , 20) . ' ' . "..." ?? '—' }}
+                                    {{ $plan->description ? Str::limit($plan->description, 20) : '—' }}
                                 </td>
                                 <td class="hidden px-4 py-4 text-xs text-zinc-500 md:table-cell dark:text-zinc-400">
-                                    {{ substr($plan->tag, 0 , 20) . ' ' . "..." ?? '—' }}
+                                    {{ $plan->tag ? Str::limit($plan->tag, 20) : '—' }}
                                 </td>
                                 <td class="hidden px-4 py-4 text-xs text-zinc-500 md:table-cell dark:text-zinc-400">
                                     @php
@@ -175,21 +175,20 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        {{-- Delete confirmation --}}
-        <div x-data="{ show: @entangle('deletingId').live }"
-            x-show="show !== null"
-            x-transition:enter="transition duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-            class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm"
-            style="display: none;">
-            <div @click.stop class="w-full max-w-sm rounded-2xl border border-zinc-100 bg-white p-6 text-center shadow-xl dark:border-zinc-800 dark:bg-zinc-900">
-                <p class="mb-2 text-lg font-bold text-zinc-800 dark:text-zinc-100">Delete plan?</p>
-                <p class="mb-6 text-sm text-zinc-500">This cannot be undone.</p>
-                <div class="flex justify-center gap-3">
-                    <button wire:click="cancelDelete" class="px-4 py-2 text-sm font-semibold text-zinc-500 hover:text-zinc-900">Cancel</button>
-                    <button wire:click="delete" class="rounded-lg bg-red-600 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-red-700">Delete</button>
-                </div>
+    {{-- Delete confirmation --}}
+    <div x-data="{ show: @entangle('deletingId').live }"
+        x-show="show !== null"
+        x-transition:enter="transition duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm"
+        style="display: none;">
+        <div @click.stop class="w-full max-w-sm rounded-2xl border border-zinc-100 bg-white p-6 text-center shadow-xl dark:border-zinc-800 dark:bg-zinc-900">
+            <p class="mb-2 text-lg font-bold text-zinc-800 dark:text-zinc-100">Delete plan?</p>
+            <p class="mb-6 text-sm text-zinc-500">This cannot be undone.</p>
+            <div class="flex justify-center gap-3">
+                <button wire:click="cancelDelete" class="px-4 py-2 text-sm font-semibold text-zinc-500 hover:text-zinc-900">Cancel</button>
+                <button wire:click="delete" class="rounded-lg bg-red-600 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-red-700">Delete</button>
             </div>
         </div>
-
     </div>
