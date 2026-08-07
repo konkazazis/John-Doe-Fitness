@@ -59,57 +59,63 @@
 @endpush
 
 @section('content')
-    <div class="mx-auto mt-8 max-w-2xl">
+    <section class="bg-stone-50 px-6 py-16 sm:px-8 md:py-24">
+        <div class="mx-auto max-w-3xl">
 
-        <a href="{{ route('blog') }}"
-            class="text-brand hover:text-brand-dark mb-8 inline-block text-sm font-semibold transition-colors">
-            &larr; Back to blog
-        </a>
+            <a href="{{ route('blog') }}"
+                class="mb-8 inline-flex items-center gap-1.5 text-sm font-semibold text-brand transition-colors hover:text-brand-dark">
+                &larr; Back to blog
+            </a>
 
-        <header class="mb-10">
-            <div class="mb-4 flex items-center gap-3 text-xs">
-                @if($post->category)
-                    <span class="category-badge">{{ $post->category->name }}</span>
+            <article class="rounded-3xl border border-stone-200 bg-white p-6 sm:p-10 md:p-14">
+                <header class="mb-10">
+                    <div class="mb-4 flex flex-wrap items-center gap-3 text-xs">
+                        @if($post->category)
+                            <a href="{{ route('blog', ['category' => $post->category->slug]) }}" class="category-badge hover:bg-brand-dark">
+                                {{ $post->category->name }}
+                            </a>
+                        @endif
+                        <span class="text-stone-400">{{ $post->published_at->format('M d, Y') }}</span>
+                    </div>
+
+                    <h1 class="mb-4 text-3xl leading-tight font-bold tracking-tight text-stone-900 sm:text-4xl md:text-5xl">
+                        {{ $post->title }}
+                    </h1>
+
+                    @if($post->excerpt)
+                        <p class="text-lg leading-relaxed text-stone-500">{!! $post->excerpt !!}</p>
+                    @endif
+
+                    @if($post->tags->isNotEmpty())
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            @foreach($post->tags as $tag)
+                                <span class="tag-badge">#{{ $tag->name }}</span>
+                            @endforeach
+                        </div>
+                    @endif
+                </header>
+
+                @if(auth()->check() && auth()->user()->role('admin'))
+                    <div class="mb-10 flex items-center gap-3 border-b border-stone-100 pb-8">
+                        <img src="https://s3.eu-north-1.amazonaws.com/kazazis.dev/profile-pic.png" alt="John Doe"
+                            class="h-10 w-10 shrink-0 rounded-full bg-stone-100 object-cover object-top">
+                        <div>
+                            <p class="text-sm font-semibold text-stone-800">John Doe</p>
+                            <a href="{{ route('home') }}#about" rel="author"
+                                class="hover:text-brand text-xs text-stone-400 transition-colors">
+                                Personal Trainer &amp; Nutrition Coach
+                            </a>
+                        </div>
+                    </div>
                 @endif
-                <span class="text-stone-400">{{ $post->published_at->format('M d, Y') }}</span>
-            </div>
 
-            <h1 class="mb-4 text-4xl leading-tight font-bold tracking-tight text-stone-900 max-sm:text-3xl">
-                {{ $post->title }}
-            </h1>
-
-            @if($post->excerpt)
-                <p class="text-lg leading-relaxed text-stone-500">{!! $post->excerpt !!}</p>
-            @endif
-
-            @if($post->tags->isNotEmpty())
-                <div class="mt-4 flex flex-wrap gap-2">
-                    @foreach($post->tags as $tag)
-                        <span class="tag-badge">#{{ $tag->name }}</span>
-                    @endforeach
+                <div class="post-content">
+                    {!! $post->content !!}
                 </div>
-            @endif
-        </header>
+            </article>
 
-        @if(auth()->check() && auth()->user()->role('admin'))
-            <div class="mb-10 flex items-center gap-3 border-b border-stone-100 pb-8">
-                <img src="https://s3.eu-north-1.amazonaws.com/kazazis.dev/profile-pic.png" alt="John Doe"
-                    class="h-10 w-10 rounded-full bg-stone-100 object-cover object-top">
-                <div>
-                    <p class="text-sm font-semibold text-stone-800">Konstantinos Kazazis</p>
-                    <a href="{{ route('home') }}#about" rel="author"
-                        class="hover:text-brand text-xs text-stone-400 transition-colors">
-                        Personal Trainer &amp; Nutrition Coach
-                    </a>
-                </div>
-            </div>
-        @endif
-
-        <div class="prose prose-stone max-w-none leading-relaxed text-stone-700">
-            {!! $post->content !!}
         </div>
-
-    </div>
+    </section>
 @endsection
 
 @push('scripts')

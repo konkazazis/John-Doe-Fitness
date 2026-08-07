@@ -86,4 +86,38 @@
         background-image: radial-gradient(#ffffff55 1.5px, transparent 1.5px);
         background-size: 18px 18px;
     }
+
+    .post-content {
+        @apply break-words text-stone-700 leading-relaxed;
+    }
+
+    .post-content :where(h1, h2, h3, h4) {
+        @apply mt-10 mb-4 font-bold tracking-tight text-stone-900;
+    }
+    .post-content h1 { @apply text-3xl; }
+    .post-content h2 { @apply text-2xl; }
+    .post-content h3 { @apply text-xl; }
+    .post-content h4 { @apply text-lg; }
+
+    .post-content p { @apply mb-5; }
+
+    .post-content ul { @apply mb-5 ml-5 list-disc space-y-1.5; }
+    .post-content ol { @apply mb-5 ml-5 list-decimal space-y-1.5; }
+    .post-content li > ul, .post-content li > ol { @apply mt-1.5 mb-0; }
+
+    .post-content a { @apply font-semibold text-brand underline decoration-brand/30 underline-offset-2 transition-colors hover:text-brand-dark; }
+
+    .post-content blockquote { @apply my-6 border-l-4 border-brand/30 pl-4 text-stone-500 italic; }
+
+    .post-content img { @apply my-6 rounded-2xl; }
+
+    .post-content pre { @apply my-6 overflow-x-auto rounded-xl bg-stone-900 p-4 text-sm text-stone-100; }
+    .post-content code { @apply rounded bg-stone-100 px-1.5 py-0.5 text-sm text-stone-800; }
+    .post-content pre code { @apply bg-transparent p-0 text-inherit; }
+
+    .post-content table { @apply my-6 w-full border-collapse text-sm; }
+    .post-content th, .post-content td { @apply border border-stone-200 px-3 py-2 text-left; }
+    .post-content th { @apply bg-stone-50 font-semibold text-stone-800; }
+
+    .post-content hr { @apply my-10 border-stone-200; }
 }
